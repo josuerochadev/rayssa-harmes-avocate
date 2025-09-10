@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { Inter, Roboto_Slab } from 'next/font/google'
+import { Inter, Besley } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const robotoSlab = Roboto_Slab({ subsets: ['latin'], variable: '--font-roboto-slab' })
+const besley = Besley({ subsets: ['latin'], variable: '--font-besley' })
 
 export const metadata: Metadata = {
   title: 'Avocate à Strasbourg - Contrats, Famille, Étrangers, Travail, Immobilier',
@@ -58,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${robotoSlab.variable}`}>
+    <html lang="fr" className={`${inter.variable} ${besley.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>

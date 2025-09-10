@@ -150,10 +150,10 @@ export default function ContactForm() {
         />
       </div>
 
-      <div className="bg-yellow-50 border border-yellow-200 rounded-button p-4">
+      <div className="bg-green-mint border border-green-light rounded-button p-4">
         <div className="flex items-start space-x-3">
-          <AlertCircle className="h-5 w-5 text-yellow-600 flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-yellow-800">
+          <AlertCircle className="h-5 w-5 text-green-accent flex-shrink-0 mt-0.5" />
+          <p className="text-sm text-green-primary">
             <strong>Important :</strong> Ne transmettez pas d&apos;informations confidentielles ou sensibles 
             via ce formulaire. Pour une communication sécurisée, contactez-nous directement par téléphone 
             ou prenez rendez-vous.
@@ -179,8 +179,8 @@ export default function ContactForm() {
       </div>
 
       {submitStatus === 'success' && (
-        <div className="bg-green-50 border border-green-200 rounded-button p-4">
-          <p className="text-green-800">
+        <div className="bg-green-mint border border-green-light rounded-button p-4">
+          <p className="text-green-primary">
             Merci pour votre message ! Nous vous recontacterons dans les plus brefs délais.
           </p>
         </div>
@@ -197,7 +197,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting || !formData.consent}
-        className="btn-primary w-full md:w-auto flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="btn-green w-full md:w-auto flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <Send className="h-4 w-4" />
         <span>{isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}</span>

@@ -5,7 +5,7 @@ import LanguageBadges from '@/components/ui/LanguageBadges'
 
 export default function Hero() {
   return (
-    <section className="relative bg-gradient-to-br from-white via-secondary/30 to-white section-padding">
+    <section className="relative section-hero geometric-accent">
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
@@ -51,7 +51,7 @@ export default function Hero() {
                 <Calendar className="inline h-4 w-4 mr-2" />
                 Prendre RDV
               </Link>
-              <Link href="/contact" className="btn-outline text-center">
+              <Link href="/contact" className="btn-green text-center">
                 <Mail className="inline h-4 w-4 mr-2" />
                 Contact
               </Link>
@@ -76,9 +76,9 @@ export default function Hero() {
                 
                 {/* Credentials */}
                 <div className="mt-6 space-y-2">
-                  <div className="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full shadow-sm">
-                    <Star className="h-4 w-4 text-accent" />
-                    <span className="text-sm font-medium text-primary">
+                  <div className="inline-flex items-center space-x-2 bg-cream px-4 py-2 rounded-full shadow-sm">
+                    <Star className="h-4 w-4 text-green-accent" />
+                    <span className="text-sm font-medium text-green-primary">
                       Barreau de Strasbourg
                     </span>
                   </div>

@@ -91,7 +91,7 @@ export default function Header() {
               <div key={item.name} className="relative group">
                 <Link
                   href={item.href}
-                  className={`font-medium transition-colors hover:text-accent ${
+                  className={`font-medium transition-colors hover:text-green-accent ${
                     isActiveLink(item.href) ? 'text-primary' : 'text-gray-700'
                   }`}
                 >
@@ -104,8 +104,8 @@ export default function Header() {
                         <Link
                           key={child.name}
                           href={child.href}
-                          className={`block px-4 py-2 text-sm transition-colors hover:bg-secondary hover:text-primary ${
-                            isActiveLink(child.href) ? 'text-primary bg-secondary/50' : 'text-gray-700'
+                          className={`block px-4 py-2 text-sm transition-colors hover:bg-green-mint hover:text-green-primary ${
+                            isActiveLink(child.href) ? 'text-primary bg-green-mint/50' : 'text-gray-700'
                           }`}
                         >
                           {child.name}
@@ -155,7 +155,7 @@ export default function Header() {
                     <Link
                       href={item.href}
                       className={`block py-2 font-medium transition-colors ${
-                        isActiveLink(item.href) ? 'text-primary' : 'text-gray-700 hover:text-accent'
+                        isActiveLink(item.href) ? 'text-primary' : 'text-gray-700 hover:text-green-accent'
                       }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
@@ -168,7 +168,7 @@ export default function Header() {
                             key={child.name}
                             href={child.href}
                             className={`block py-1 text-sm transition-colors ${
-                              isActiveLink(child.href) ? 'text-primary' : 'text-gray-600 hover:text-accent'
+                              isActiveLink(child.href) ? 'text-primary' : 'text-gray-600 hover:text-green-accent'
                             }`}
                             onClick={() => setMobileMenuOpen(false)}
                           >

@@ -52,11 +52,19 @@
   }
   
   .btn-secondary {
-    @apply bg-secondary text-primary px-6 py-3 rounded-button font-medium border-2 border-primary hover:bg-primary hover:text-white;
+    @apply bg-green-primary text-white px-6 py-3 rounded-button font-medium hover:bg-green-accent;
   }
   
   .btn-outline {
-    @apply border-2 border-primary text-primary px-6 py-3 rounded-button font-medium hover:bg-primary hover:text-white;
+    @apply border-2 border-green-primary text-green-primary px-6 py-3 rounded-button font-medium hover:bg-green-primary hover:text-white;
+  }
+
+  .btn-green {
+    @apply bg-green-light text-white px-6 py-3 rounded-button font-medium hover:bg-green-accent;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-white px-6 py-3 rounded-button font-medium hover:bg-opacity-90;
   }
   
 }
@@ -71,7 +79,15 @@
   }
   
   .card {
-    @apply bg-white rounded-lg border border-gray-200 hover:shadow-lg transition-shadow duration-300;
+    @apply bg-white rounded-lg border border-gray-light hover:shadow-lg transition-shadow duration-300;
+  }
+
+  .card-green {
+    @apply bg-green-mint rounded-lg border border-green-light hover:shadow-lg transition-shadow duration-300;
+  }
+
+  .card-secondary {
+    @apply bg-secondary rounded-lg border border-gray-light hover:shadow-lg transition-shadow duration-300;
   }
   
   .animate-on-scroll {

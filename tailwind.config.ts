@@ -9,11 +9,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#7A3E1E',
-        secondary: '#F2E8DC',
-        accent: '#B58B00',
+        primary: '#882D17',
+        secondary: '#F5F1EC',
+        accent: '#E35336',
+        green: {
+          primary: '#2F5233',
+          light: '#98A869',
+          mint: '#ADEBB3',
+          accent: '#4A7C59',
+        },
+        cream: '#FDFBD4',
         gray: {
-          900: '#333333',
+          warm: '#6B6B6B',
+          light: '#E8E2DA',
+          medium: '#A69B91',
+          900: '#2D1B15',
         },
       },
       fontFamily: {
