@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Scale, Award, Shield, Heart, Clock, Users, ArrowRight } from 'lucide-react'
+import { Scale, Award, Shield, Heart, Clock, ArrowRight, Users } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -84,18 +84,22 @@ export default function AboutPage() {
             </div>
             
             <div className="animate-on-scroll">
-              {/* Professional photo placeholder */}
-              <div className="bg-secondary rounded-2xl p-8">
-                <div className="w-full max-w-md mx-auto bg-gray-200 rounded-lg aspect-[3/4] flex items-center justify-center">
-                  <div className="text-center">
-                    <Users className="h-20 w-20 text-gray-400 mx-auto mb-4" />
-                    <p className="text-gray-500">
-                      Photo professionnelle
-                      <br />
-                      à remplacer
-                    </p>
-                  </div>
+              {/* Professional photo */}
+              <div className="relative max-w-md mx-auto">
+                <div className="relative h-[550px] rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src="/rayssa-about.jpg"
+                    alt="Rayssa Harmes - Avocate passionnée et à l'écoute"
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 768px) 100vw, 448px"
+                  />
                 </div>
+
+                {/* Decorative element */}
+                <div className="absolute -bottom-4 -left-4 bg-primary/10 w-32 h-32 rounded-full -z-10" />
+                <div className="absolute -top-4 -right-4 bg-accent/10 w-24 h-24 rounded-full -z-10" />
               </div>
             </div>
           </div>

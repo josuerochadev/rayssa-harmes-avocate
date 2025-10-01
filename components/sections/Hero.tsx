@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Calendar, Mail, Shield, Clock, Users, Star, Heart } from 'lucide-react'
+import { Calendar, Mail, Shield, Clock, Star, Heart } from 'lucide-react'
 import LanguageBadges from '@/components/ui/LanguageBadges'
 
 export default function Hero() {
@@ -59,41 +59,39 @@ export default function Hero() {
             </div>
           </div>
           
-          {/* Professional photo placeholder */}
+          {/* Professional photo */}
           <div className="animate-on-scroll">
-            <div className="relative">
-              <div className="bg-secondary rounded-2xl p-8 text-center">
-                {/* Placeholder for professional photo */}
-                <div className="w-64 h-80 mx-auto bg-gray-200 rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <Users className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                    <p className="text-gray-500 text-sm">
-                      Photo professionnelle
-                      <br />
-                      à remplacer
-                    </p>
-                  </div>
+            <div className="relative max-w-md mx-auto">
+              {/* Main photo */}
+              <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/rayssa-hero.jpg"
+                  alt="Rayssa Harmes - Avocate au Barreau de Strasbourg"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 100vw, 448px"
+                />
+              </div>
+
+              {/* Credentials badge - floating over photo */}
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm px-6 py-4 rounded-2xl shadow-xl border border-gray-100">
+                <div className="flex items-center space-x-3 mb-2">
+                  <Star className="h-5 w-5 text-accent" />
+                  <span className="font-semibold text-primary">
+                    Barreau de Strasbourg
+                  </span>
                 </div>
-                
-                {/* Credentials */}
-                <div className="mt-6 space-y-2">
-                  <div className="inline-flex items-center space-x-2 bg-cream px-4 py-2 rounded-full shadow-sm">
-                    <Star className="h-4 w-4 text-green-accent" />
-                    <span className="text-sm font-medium text-green-primary">
-                      Barreau de Strasbourg
-                    </span>
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    Avocate depuis 2024
-                  </div>
+                <div className="text-sm text-gray-600 text-center">
+                  Avocate depuis 2024
                 </div>
               </div>
-              
-              {/* Floating elements */}
-              <div className="absolute -top-4 -right-4 bg-white p-4 rounded-xl shadow-lg animate-bounce">
+
+              {/* Floating call badge */}
+              <div className="absolute -top-4 -right-4 bg-primary text-white p-4 rounded-xl shadow-lg">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">15min</div>
-                  <div className="text-xs text-gray-600">Appel gratuit</div>
+                  <div className="text-2xl font-bold">15min</div>
+                  <div className="text-xs opacity-90">Appel gratuit</div>
                 </div>
               </div>
             </div>
