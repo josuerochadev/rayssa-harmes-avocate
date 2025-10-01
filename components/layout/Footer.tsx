@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Scale, Phone, Mail, MapPin, Clock } from 'lucide-react'
+import { Scale, Phone, Mail, MapPin, Clock, Linkedin } from 'lucide-react'
 import LanguageBadges from '@/components/ui/LanguageBadges'
 
 const navigation = {
@@ -68,7 +68,7 @@ export default function Footer() {
                   <Phone className="h-5 w-5 text-white/70 flex-shrink-0" />
                   <a
                     href="tel:+33745048395"
-                    className="text-white/90 hover:text-white transition-colors"
+                    className="text-white/90 hover:!text-white hover:underline transition-colors"
                   >
                     +33 7 45 04 83 95
                   </a>
@@ -77,9 +77,20 @@ export default function Footer() {
                   <Mail className="h-5 w-5 text-white/70 flex-shrink-0" />
                   <a
                     href="mailto:harmes.avocat@gmail.com"
-                    className="text-white/90 hover:text-white transition-colors"
+                    className="text-white/90 hover:!text-white hover:underline transition-colors"
                   >
                     harmes.avocat@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Linkedin className="h-5 w-5 text-white/70 flex-shrink-0" />
+                  <a
+                    href="https://www.linkedin.com/in/rayssa-eskinazi"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/90 hover:!text-white hover:underline transition-colors"
+                  >
+                    Profil LinkedIn
                   </a>
                 </div>
                 <div className="flex items-start space-x-3">
@@ -100,7 +111,7 @@ export default function Footer() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block text-white/80 hover:text-accent hover:translate-x-1 transition-all duration-200"
+                    className="block text-white/80 hover:!text-white hover:underline hover:translate-x-1 transition-all duration-200"
                   >
                     {item.name}
                   </Link>
@@ -117,7 +128,7 @@ export default function Footer() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-white/80 hover:text-accent hover:translate-x-1 inline-block transition-all duration-200"
+                  className="text-white/80 hover:!text-white hover:underline hover:translate-x-1 inline-block transition-all duration-200"
                 >
                   {item.name}
                 </Link>
@@ -139,7 +150,7 @@ export default function Footer() {
                   {index > 0 && <span className="mr-6 text-white/40">•</span>}
                   <Link
                     href={item.href}
-                    className="text-white/80 hover:text-white transition-colors"
+                    className="text-white/80 hover:!text-white hover:underline transition-colors"
                   >
                     {item.name}
                   </Link>

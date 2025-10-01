@@ -197,7 +197,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting || !formData.consent}
-        className="btn-green w-full md:w-auto flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="btn-outline w-full md:w-auto flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <Send className="h-4 w-4" />
         <span>{isSubmitting ? 'Envoi en cours...' : 'Envoyer le message'}</span>

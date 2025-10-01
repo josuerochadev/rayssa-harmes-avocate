@@ -52,7 +52,7 @@ export default function Hero() {
                 <Calendar className="inline h-4 w-4 mr-2" />
                 Prendre RDV
               </Link>
-              <Link href="/contact" className="btn-green text-center">
+              <Link href="/contact" className="btn-outline text-center">
                 <Mail className="inline h-4 w-4 mr-2" />
                 Contact
               </Link>
