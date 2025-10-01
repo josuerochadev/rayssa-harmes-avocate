@@ -139,7 +139,7 @@ export default function TravailPage() {
           <div className="text-center mb-12">
             <h2 className="mb-6">Domaines d&apos;intervention</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Notre expertise couvre tous les aspects du droit du travail, 
+              Mon expertise couvre tous les aspects du droit du travail, 
               de la prévention des conflits à leur résolution judiciaire.
             </p>
           </div>

@@ -84,7 +84,7 @@ export default function Hero() {
                     </span>
                   </div>
                   <div className="text-sm text-gray-600">
-                    Serment [ANNÉE] • Expérience confirmée
+                    Avocate depuis 2024
                   </div>
                 </div>
               </div>

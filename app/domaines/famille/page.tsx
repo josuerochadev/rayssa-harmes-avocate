@@ -116,16 +116,16 @@ export default function FamillePage() {
               </p>
               
               <p className="text-gray-700 leading-relaxed mb-6">
-                Notre cabinet privilégie l&apos;écoute, la discrétion et la recherche de solutions 
-                apaisées. Nous mettons tout en œuvre pour préserver l&apos;intérêt des enfants 
-                et maintenir le dialogue entre les parties, tout en défendant fermement 
+                Je privilégie l&apos;écoute, la discrétion et la recherche de solutions
+                apaisées. Je mets tout en œuvre pour préserver l&apos;intérêt des enfants
+                et maintenir le dialogue entre les parties, tout en défendant fermement
                 vos droits et vos intérêts.
               </p>
-              
+
               <p className="text-gray-700 leading-relaxed">
-                Que vous traversiez une crise conjugale, que vous ayez des questions 
-                successorales ou que vous cherchiez à protéger votre famille, nous vous 
-                accompagnons avec professionnalisme et humanité à chaque étape.
+                Que vous traversiez une crise conjugale, que vous ayez des questions
+                successorales ou que vous cherchiez à protéger votre famille, je vous
+                accompagne avec professionnalisme et humanité à chaque étape.
               </p>
             </div>
           </div>
@@ -138,7 +138,7 @@ export default function FamillePage() {
           <div className="text-center mb-12">
             <h2 className="mb-6">Domaines d&apos;intervention</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Notre expertise couvre tous les aspects du droit de la famille, 
+              Mon expertise couvre tous les aspects du droit de la famille,
               de la prévention des conflits à leur résolution judiciaire.
             </p>
           </div>

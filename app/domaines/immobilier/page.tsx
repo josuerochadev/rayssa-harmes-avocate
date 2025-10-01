@@ -139,7 +139,7 @@ export default function ImmobilierPage() {
           <div className="text-center mb-12">
             <h2 className="mb-6">Domaines d&apos;intervention</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Notre expertise couvre tous les aspects du droit immobilier, 
+              Mon expertise couvre tous les aspects du droit immobilier, 
               des transactions aux contentieux spécialisés.
             </p>
           </div>

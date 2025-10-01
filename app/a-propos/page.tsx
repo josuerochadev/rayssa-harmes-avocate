@@ -79,7 +79,7 @@ export default function AboutPage() {
               
               <div className="flex items-center space-x-2 text-sm text-gray-600 mb-8">
                 <Award className="h-4 w-4 text-accent" />
-                <span>Serment prêté en [ANNÉE] • [X] années d&apos;expérience</span>
+                <span>Serment prêté en 2024 • Avocate inscrite au Barreau de Strasbourg</span>
               </div>
             </div>
             
@@ -138,10 +138,10 @@ export default function AboutPage() {
                   Formation
                 </h3>
                 <ul className="space-y-2 text-gray-700">
-                  <li>• Master 2 en Droit [SPÉCIALITÉ] - Université de [UNIVERSITÉ]</li>
-                  <li>• Formation continue en [DOMAINES SPÉCIFIQUES]</li>
-                  <li>• Formations en médiation et négociation</li>
-                  <li>• Veille juridique permanente</li>
+                  <li>• Master 2 Droit de l&apos;Homme - Université de Strasbourg (2020-2021)</li>
+                  <li>• DSU Droit international public - Panthéon-Assas (2022-2023)</li>
+                  <li>• DU Clinique des droits de l&apos;homme - Strasbourg (2021-2023)</li>
+                  <li>• Licence en droit - Brésil (2014-2019)</li>
                 </ul>
               </div>
               
@@ -201,7 +201,7 @@ export default function AboutPage() {
             <div className="text-center mb-12">
               <h2 className="mb-6">Mes engagements</h2>
               <p className="text-xl text-gray-600 leading-relaxed">
-                En choisissant notre cabinet, vous bénéficiez de garanties claires 
+                En me choisissant, vous bénéficiez de garanties claires
                 pour un accompagnement juridique de qualité.
               </p>
             </div>

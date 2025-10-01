@@ -77,9 +77,9 @@ export default function HomePage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="mb-6">Pourquoi choisir notre cabinet ?</h2>
+            <h2 className="mb-6">Pourquoi me choisir ?</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Un accompagnement juridique de qualité avec des valeurs humaines fortes : 
+              Un accompagnement juridique de qualité avec des valeurs humaines fortes :
               transparence, écoute et engagement pour défendre vos intérêts.
             </p>
           </div>
@@ -93,7 +93,7 @@ export default function HomePage() {
                 Expertise confirmée
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Formation solide et expérience pratique dans nos domaines de spécialisation. 
+                Formation solide et expérience pratique dans mes domaines de spécialisation.
                 Veille juridique constante pour vous offrir les conseils les plus actuels.
               </p>
             </div>
@@ -154,7 +154,7 @@ export default function HomePage() {
           
           <div className="text-center">
             <Link href="/domaines" className="btn-outline">
-              Voir tous nos domaines
+              Voir tous mes domaines
               <ArrowRight className="inline ml-2 h-4 w-4" />
             </Link>
           </div>
@@ -200,15 +200,15 @@ export default function HomePage() {
         <div className="container-custom text-center">
           <h2 className="text-white mb-6">Besoin d&apos;un conseil juridique ?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Contactez-nous dès aujourd&apos;hui pour un premier échange gratuit de 15 minutes. 
-            Nous étudierons votre situation et vous proposerons les meilleures solutions.
+            Contactez-moi dès aujourd&apos;hui pour un premier échange gratuit de 15 minutes.
+            J&apos;étudierai votre situation et vous proposerai les meilleures solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">
               Prendre rendez-vous
             </Link>
             <Link href="/contact" className="border-2 border-white text-white px-8 py-4 rounded-button font-medium hover:bg-white hover:text-primary transition-colors">
-              Nous contacter
+              Me contacter
             </Link>
           </div>
         </div>

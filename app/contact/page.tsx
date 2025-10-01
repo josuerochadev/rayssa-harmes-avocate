@@ -38,7 +38,7 @@ const accessInfo = [
   {
     icon: Train,
     title: 'Transports en commun',
-    description: 'Tram A, B, C • Bus 10, 20 • Arrêt [NOM_ARRET]',
+    description: 'Tram A, B, C, D • Lignes de bus • Strasbourg centre',
   },
   {
     icon: Navigation,
@@ -62,8 +62,8 @@ export default function ContactPage() {
             </h1>
             
             <p className="text-xl text-gray-600 leading-relaxed">
-              Contactez-nous pour un premier échange gratuit de 15 minutes. 
-              Nous analysons votre situation et vous proposons les meilleures solutions 
+              Contactez-moi pour un premier échange gratuit de 15 minutes.
+              J&apos;analyse votre situation et vous propose les meilleures solutions
               juridiques adaptées à vos besoins.
             </p>
           </div>
@@ -76,7 +76,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact form */}
             <div className="animate-on-scroll">
-              <h2 className="mb-8">Envoyez-nous un message</h2>
+              <h2 className="mb-8">Envoyez-moi un message</h2>
               <ContactForm />
             </div>
             
