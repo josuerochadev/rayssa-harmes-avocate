@@ -3,6 +3,7 @@ import { Inter, Besley } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import ScrollAnimation from '@/components/ui/ScrollAnimation'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const besley = Besley({ subsets: ['latin'], variable: '--font-besley' })
@@ -11,9 +12,9 @@ export const metadata: Metadata = {
   title: 'Avocate à Strasbourg - Contrats, Famille, Étrangers, Travail, Immobilier',
   description: 'Cabinet d\'avocat à Strasbourg spécialisé en droit des contrats, droit de la famille, droit des étrangers, droit du travail et droit immobilier. Conseil et contentieux avec prise de rendez-vous rapide.',
   keywords: 'avocat Strasbourg, droit des contrats, droit de la famille, droit des étrangers, droit du travail, droit immobilier, conseil juridique',
-  authors: [{ name: 'Cabinet d\'Avocat Strasbourg' }],
-  creator: 'Cabinet d\'Avocat Strasbourg',
-  publisher: 'Cabinet d\'Avocat Strasbourg',
+  authors: [{ name: 'Rayssa Harmes' }],
+  creator: 'Rayssa Harmes',
+  publisher: 'Rayssa Harmes',
   formatDetection: {
     email: false,
     address: false,
@@ -63,6 +64,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className="min-h-screen flex flex-col">
+        <ScrollAnimation />
         <a href="#main-content" className="skip-link">
           Aller au contenu principal
         </a>
@@ -77,14 +79,14 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LegalService",
-              "name": "[NOM_CABINET]",
+              "name": "Rayssa Harmes - Avocate",
               "image": "[URL_PHOTO_PROFESSIONNELLE]",
               "description": "Cabinet d'avocat à Strasbourg spécialisé en droit des contrats, droit de la famille, droit des étrangers, droit du travail et droit immobilier.",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "[ADRESSE_COMPLETE]",
+                "streetAddress": "24 avenue des Vosges",
                 "addressLocality": "Strasbourg",
-                "postalCode": "[CODE_POSTAL]",
+                "postalCode": "67000",
                 "addressCountry": "FR"
               },
               "geo": {
@@ -93,18 +95,12 @@ export default function RootLayout({
                 "longitude": "[LONGITUDE]"
               },
               "url": "https://your-domain.com",
-              "telephone": "[NUMERO_TELEPHONE]",
+              "telephone": "+33745048395",
               "openingHoursSpecification": [
                 {
                   "@type": "OpeningHoursSpecification",
                   "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
                   "opens": "09:00",
-                  "closes": "12:00"
-                },
-                {
-                  "@type": "OpeningHoursSpecification", 
-                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                  "opens": "14:00",
                   "closes": "18:00"
                 }
               ],
