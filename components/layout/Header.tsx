@@ -56,14 +56,14 @@ export default function Header() {
             <div className="flex items-center space-x-6">
               <a
                 href="tel:+33745048395"
-                className="flex items-center space-x-2 hover:text-white/80 transition-colors"
+                className="flex items-center space-x-2 hover:!text-white hover:underline transition-colors"
               >
                 <Phone size={14} />
                 <span>+33 7 45 04 83 95</span>
               </a>
               <a
                 href="mailto:harmes.avocat@gmail.com"
-                className="flex items-center space-x-2 hover:text-white/80 transition-colors"
+                className="flex items-center space-x-2 hover:!text-white hover:underline transition-colors"
               >
                 <Mail size={14} />
                 <span className="hidden sm:inline">harmes.avocat@gmail.com</span>
