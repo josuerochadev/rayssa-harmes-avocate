@@ -12,8 +12,40 @@ export default function ContactForm() {
     message: '',
     consent: false,
   })
+  const [errors, setErrors] = useState<Record<string, string>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {}
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Le nom est requis'
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'L\'email est requis'
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Email invalide'
+    }
+
+    if (!formData.subject) {
+      newErrors.subject = 'Veuillez sélectionner un domaine'
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Le message est requis'
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Le message doit contenir au moins 10 caractères'
+    }
+
+    if (!formData.consent) {
+      newErrors.consent = 'Vous devez accepter le traitement de vos données'
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
@@ -21,10 +53,19 @@ export default function ContactForm() {
       ...prev,
       [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
     }))
+    // Clear error when user types
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }))
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (!validateForm()) {
+      return
+    }
+
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
@@ -73,9 +114,18 @@ export default function ContactForm() {
             value={formData.name}
             onChange={handleInputChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-button focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+            aria-invalid={errors.name ? 'true' : 'false'}
+            aria-describedby={errors.name ? 'name-error' : undefined}
+            className={`w-full px-4 py-3 border rounded-button focus:ring-2 transition-colors ${
+              errors.name
+                ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                : 'border-gray-300 focus:ring-primary focus:border-primary'
+            }`}
             placeholder="Votre nom complet"
           />
+          {errors.name && (
+            <p id="name-error" className="mt-1 text-sm text-red-600">{errors.name}</p>
+          )}
         </div>
         
         <div>
@@ -89,9 +139,18 @@ export default function ContactForm() {
             value={formData.email}
             onChange={handleInputChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-button focus:ring-2 focus:ring-primary focus:border-primary transition-colors"
+            aria-invalid={errors.email ? 'true' : 'false'}
+            aria-describedby={errors.email ? 'email-error' : undefined}
+            className={`w-full px-4 py-3 border rounded-button focus:ring-2 transition-colors ${
+              errors.email
+                ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                : 'border-gray-300 focus:ring-primary focus:border-primary'
+            }`}
             placeholder="votre@email.com"
           />
+          {errors.email && (
+            <p id="email-error" className="mt-1 text-sm text-red-600">{errors.email}</p>
+          )}
         </div>
       </div>
 
@@ -121,7 +180,13 @@ export default function ContactForm() {
             value={formData.subject}
             onChange={handleInputChange}
             required
-            className="w-full px-4 py-3 border border-gray-300 rounded-button focus:ring-2 focus:ring-primary focus:border-primary transition-colors bg-white"
+            aria-invalid={errors.subject ? 'true' : 'false'}
+            aria-describedby={errors.subject ? 'subject-error' : undefined}
+            className={`w-full px-4 py-3 border rounded-button focus:ring-2 transition-colors bg-white ${
+              errors.subject
+                ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                : 'border-gray-300 focus:ring-primary focus:border-primary'
+            }`}
           >
             <option value="">Sélectionner un domaine</option>
             <option value="contrats">Droit des contrats</option>
@@ -131,6 +196,9 @@ export default function ContactForm() {
             <option value="immobilier">Droit immobilier</option>
             <option value="autre">Autre</option>
           </select>
+          {errors.subject && (
+            <p id="subject-error" className="mt-1 text-sm text-red-600">{errors.subject}</p>
+          )}
         </div>
       </div>
 
@@ -145,9 +213,18 @@ export default function ContactForm() {
           onChange={handleInputChange}
           required
           rows={6}
-          className="w-full px-4 py-3 border border-gray-300 rounded-button focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-vertical"
+          aria-invalid={errors.message ? 'true' : 'false'}
+          aria-describedby={errors.message ? 'message-error' : undefined}
+          className={`w-full px-4 py-3 border rounded-button focus:ring-2 transition-colors resize-vertical ${
+            errors.message
+              ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+              : 'border-gray-300 focus:ring-primary focus:border-primary'
+          }`}
           placeholder="Décrivez brièvement votre situation (évitez les informations trop sensibles dans ce formulaire)"
         />
+        {errors.message && (
+          <p id="message-error" className="mt-1 text-sm text-red-600">{errors.message}</p>
+        )}
       </div>
 
       <div className="bg-accent-light/10 border border-accent rounded-button p-4">
@@ -176,6 +253,9 @@ export default function ContactForm() {
           Ces données ne seront utilisées que pour répondre à votre demande et ne seront pas transmises à des tiers.
           <span className="text-red-600 ml-1">*</span>
         </label>
+        {errors.consent && (
+          <p className="mt-1 text-sm text-red-600">{errors.consent}</p>
+        )}
       </div>
 
       {submitStatus === 'success' && (

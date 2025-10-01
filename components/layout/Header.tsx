@@ -134,16 +134,26 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            className="lg:hidden p-2 rounded-md text-gray-700 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
-            onClick={() => setMobileMenuOpen(true)}
-            aria-label="Ouvrir le menu de navigation"
-            aria-expanded={mobileMenuOpen}
-          >
-            <Menu className="h-6 w-6" aria-hidden="true" />
-          </button>
+          {/* Mobile actions */}
+          <div className="lg:hidden flex items-center gap-2">
+            <a
+              href="tel:+33745048395"
+              className="btn-primary py-2 px-4 text-sm"
+              aria-label="Appeler maintenant"
+            >
+              <Phone className="h-4 w-4 inline mr-1" />
+              Appeler
+            </a>
+            <button
+              type="button"
+              className="p-2 rounded-md text-gray-700 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="Ouvrir le menu de navigation"
+              aria-expanded={mobileMenuOpen}
+            >
+              <Menu className="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
         </div>
 
         {/* Mobile menu */}
