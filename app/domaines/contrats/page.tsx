@@ -9,38 +9,36 @@ export const metadata: Metadata = {
 }
 
 const casesHandled = [
-  'Rédaction et négociation de contrats commerciaux',
+  'Rédaction et analyse de contrats civils ou commerciaux',
+  'Litiges liés à l\'inexécution, la résiliation ou la responsabilité contractuelle',
+  'Recouvrement de créances contractuelles',
   'Contrats de vente et de prestations de services',
   'Baux commerciaux et professionnels',
-  'Contrats de partenariat et de distribution',
-  'Contentieux contractuels et ruptures',
-  'Recouvrement amiable et judiciaire de créances',
   'Garanties et responsabilités contractuelles',
-  'Résolution de litiges commerciaux',
-  'Conseil en droit des affaires',
   'Médiation et négociation commerciale',
+]
+
+const examples = [
+  {
+    title: 'Conseil entreprise',
+    description: 'Conseil à une entreprise pour sécuriser un contrat commercial.',
+  },
+  {
+    title: 'Rupture abusive',
+    description: 'Représentation d\'un particulier pour rupture abusive d\'un contrat de prestation de services.',
+  },
 ]
 
 const processSteps = [
   {
     number: 1,
-    title: 'Prise de contact',
-    description: 'Analyse de vos besoins contractuels et de votre contexte commercial.',
+    title: 'Audit du contrat',
+    description: 'Audit du contrat et analyse juridique approfondie.',
   },
   {
     number: 2,
-    title: 'Analyse juridique',
-    description: 'Étude des clauses, des risques juridiques et des enjeux commerciaux.',
-  },
-  {
-    number: 3,
-    title: 'Stratégie adaptée',
-    description: 'Élaboration d\'une stratégie de négociation ou de résolution du litige.',
-  },
-  {
-    number: 4,
-    title: 'Suivi personnalisé',
-    description: 'Accompagnement dans la mise en œuvre et suivi des résultats obtenus.',
+    title: 'Mise en demeure et négociation',
+    description: 'Mise en demeure, négociation ou saisine du tribunal judiciaire selon le litige.',
   },
 ]
 
@@ -156,19 +154,39 @@ export default function ContractsPage() {
         </div>
       </section>
       
-      {/* Process section */}
+      {/* Examples section */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="mb-6">Notre processus d&apos;accompagnement</h2>
+          <div className="text-center mb-12">
+            <h2 className="mb-6">Exemples concrets</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Une méthode éprouvée pour analyser votre situation contractuelle 
+              Des situations réelles que nous traitons au quotidien
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+            {examples.map((example, index) => (
+              <div key={index} className="bg-gray-50 p-6 rounded-lg animate-on-scroll">
+                <h3 className="font-slab font-semibold text-lg text-primary mb-3">
+                  {example.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {example.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mb-16">
+            <h2 className="mb-6">Procédure type</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Une méthode éprouvée pour analyser votre situation contractuelle
               et vous proposer les meilleures solutions juridiques.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => (
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {processSteps.map((step) => (
               <div key={step.number} className="text-center animate-on-scroll">
                 <div className="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
                   {step.number}

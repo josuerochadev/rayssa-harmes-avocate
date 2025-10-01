@@ -9,38 +9,36 @@ export const metadata: Metadata = {
 }
 
 const casesHandled = [
-  'Vente et achat de biens immobiliers',
-  'Contentieux de copropriété',
+  'Litiges bailleurs / locataires (loyers impayés, charges, réparations, expulsion)',
+  'Conflits de copropriété et troubles de voisinage',
+  'Litiges liés à la vente ou l\'acquisition (vices cachés, promesse de vente, malfaçons)',
   'Baux d\'habitation et commerciaux',
-  'Troubles de voisinage',
   'Servitudes et mitoyenneté',
-  'Expertise et vices cachés',
-  'Saisie immobilière',
   'Droit de la construction',
   'Urbanisme et permis de construire',
-  'Indivision et partage',
+]
+
+const examples = [
+  {
+    title: 'Propriétaire vs locataire',
+    description: 'Défense d\'un propriétaire face à un locataire en impayés.',
+  },
+  {
+    title: 'Vice caché',
+    description: 'Assistance d\'un acquéreur ayant découvert un vice caché après achat.',
+  },
 ]
 
 const processSteps = [
   {
     number: 1,
-    title: 'Analyse du projet',
-    description: 'Étude approfondie de votre dossier immobilier et des enjeux juridiques.',
+    title: 'Échanges amiables',
+    description: 'Tentative de règlement amiable et mise en demeure.',
   },
   {
     number: 2,
-    title: 'Sécurisation juridique',
-    description: 'Vérification des documents et identification des risques potentiels.',
-  },
-  {
-    number: 3,
-    title: 'Accompagnement',
-    description: 'Suivi de votre dossier et conseil à chaque étape de la transaction.',
-  },
-  {
-    number: 4,
-    title: 'Finalisation',
-    description: 'Assistance jusqu\'à la signature définitive et résolution des litiges.',
+    title: 'Saisine judiciaire',
+    description: 'Si nécessaire, saisine du juge compétent (tribunal judiciaire, juge des contentieux de la protection).',
   },
 ]
 
@@ -157,18 +155,38 @@ export default function ImmobilierPage() {
         </div>
       </section>
       
-      {/* Process section */}
+      {/* Examples section */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="mb-6">Notre méthode d&apos;accompagnement</h2>
+          <div className="text-center mb-12">
+            <h2 className="mb-6">Exemples concrets</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Une approche méthodique et sécurisée pour mener à bien 
+              Des situations réelles que nous traitons au quotidien
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+            {examples.map((example, index) => (
+              <div key={index} className="bg-gray-50 p-6 rounded-lg animate-on-scroll">
+                <h3 className="font-slab font-semibold text-lg text-primary mb-3">
+                  {example.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {example.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mb-16">
+            <h2 className="mb-6">Procédure type</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Une approche méthodique pour mener à bien
               tous vos projets immobiliers en toute sérénité.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {processSteps.map((step) => (
               <div key={step.number} className="text-center animate-on-scroll">
                 <div className="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-2xl font-bold">

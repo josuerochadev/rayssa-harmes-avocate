@@ -150,12 +150,12 @@ export default function ContactForm() {
         />
       </div>
 
-      <div className="bg-green-mint border border-green-light rounded-button p-4">
+      <div className="bg-accent-light/10 border border-accent rounded-button p-4">
         <div className="flex items-start space-x-3">
-          <AlertCircle className="h-5 w-5 text-green-accent flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-green-primary">
-            <strong>Important :</strong> Ne transmettez pas d&apos;informations confidentielles ou sensibles 
-            via ce formulaire. Pour une communication sécurisée, contactez-nous directement par téléphone 
+          <AlertCircle className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+          <p className="text-sm text-neutral-700">
+            <strong>Important :</strong> Ne transmettez pas d&apos;informations confidentielles ou sensibles
+            via ce formulaire. Pour une communication sécurisée, contactez-nous directement par téléphone
             ou prenez rendez-vous.
           </p>
         </div>
@@ -179,8 +179,8 @@ export default function ContactForm() {
       </div>
 
       {submitStatus === 'success' && (
-        <div className="bg-green-mint border border-green-light rounded-button p-4">
-          <p className="text-green-primary">
+        <div className="bg-success/10 border border-success rounded-button p-4">
+          <p className="text-success">
             Merci pour votre message ! Nous vous recontacterons dans les plus brefs délais.
           </p>
         </div>

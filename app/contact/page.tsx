@@ -18,13 +18,13 @@ export const metadata: Metadata = {
 }
 
 const contactInfo = {
-  address: '[ADRESSE_COMPLETE]',
-  postalCode: '[CODE_POSTAL]',
+  address: '24 avenue des Vosges',
+  postalCode: '67000',
   city: 'Strasbourg',
-  phone: '[NUMERO_TELEPHONE]',
-  email: '[ADRESSE_EMAIL]',
+  phone: '+33 7 45 04 83 95',
+  email: 'harmes.avocat@gmail.com',
   hours: {
-    weekdays: 'Lundi - Vendredi : 9h00 - 12h00 / 14h00 - 18h00',
+    weekdays: 'Lundi - Vendredi : 9h00 - 18h00',
     note: 'Sur rendez-vous uniquement',
   }
 }

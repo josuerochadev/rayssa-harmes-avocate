@@ -9,38 +9,36 @@ export const metadata: Metadata = {
 }
 
 const casesHandled = [
-  'Licenciement abusif et contestation',
-  'Harcèlement moral et sexuel au travail',
+  'Contentieux devant le conseil de prud\'hommes (CPH)',
+  'Licenciement abusif ou sans cause réelle et sérieuse',
+  'Harcèlement moral ou sexuel',
+  'Contestation d\'heures supplémentaires non payées',
+  'Rupture conventionnelle ou autres modes de rupture du contrat de travail',
   'Discrimination et égalité professionnelle',
-  'Rupture conventionnelle et négociation',
-  'Heures supplémentaires et temps de travail',
   'Accident du travail et maladie professionnelle',
-  'Rédaction et rupture de contrats de travail',
-  'Contentieux prud\'homal',
-  'Négociation collective et représentation du personnel',
-  'Protection des lanceurs d\'alerte',
+]
+
+const examples = [
+  {
+    title: 'Licenciement sans motif',
+    description: 'Défense d\'un salarié licencié sans motif valable.',
+  },
+  {
+    title: 'Procédure disciplinaire',
+    description: 'Accompagnement d\'une entreprise dans une procédure disciplinaire.',
+  },
 ]
 
 const processSteps = [
   {
     number: 1,
-    title: 'Écoute et conseil',
-    description: 'Analyse de votre situation professionnelle et évaluation de vos droits.',
+    title: 'Phase de conciliation',
+    description: 'Phase de conciliation obligatoire devant le conseil de prud\'hommes.',
   },
   {
     number: 2,
-    title: 'Stratégie juridique',
-    description: 'Élaboration de la meilleure approche : négociation ou action judiciaire.',
-  },
-  {
-    number: 3,
-    title: 'Action et défense',
-    description: 'Mise en œuvre de la stratégie choisie avec accompagnement personnalisé.',
-  },
-  {
-    number: 4,
-    title: 'Suivi du dossier',
-    description: 'Accompagnement jusqu\'à la résolution complète de votre affaire.',
+    title: 'Audience de jugement',
+    description: 'Si échec, audience de jugement et plaidoirie devant la formation paritaire.',
   },
 ]
 
@@ -157,19 +155,39 @@ export default function TravailPage() {
         </div>
       </section>
       
-      {/* Process section */}
+      {/* Examples section */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="mb-6">Notre approche de défense</h2>
+          <div className="text-center mb-12">
+            <h2 className="mb-6">Exemples concrets</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Une stratégie adaptée à chaque situation pour obtenir 
+              Des situations réelles que nous traitons au quotidien
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+            {examples.map((example, index) => (
+              <div key={index} className="bg-gray-50 p-6 rounded-lg animate-on-scroll">
+                <h3 className="font-slab font-semibold text-lg text-primary mb-3">
+                  {example.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {example.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mb-16">
+            <h2 className="mb-6">Procédure type</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Une stratégie adaptée à chaque situation pour obtenir
               la meilleure issue possible à votre conflit du travail.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => (
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {processSteps.map((step) => (
               <div key={step.number} className="text-center animate-on-scroll">
                 <div className="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
                   {step.number}

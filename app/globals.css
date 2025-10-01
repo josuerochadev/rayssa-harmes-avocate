@@ -10,29 +10,34 @@
   }
   
   body {
-    @apply font-sans text-base text-gray-900 bg-white antialiased;
-    font-size: 16px;
-    line-height: 1.6;
+    @apply font-sans text-base text-neutral-800 bg-white antialiased;
+    font-size: 18px;
+    line-height: 1.75;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-slab font-semibold text-primary;
+    letter-spacing: -0.02em;
   }
-  
+
   h1 {
     @apply text-4xl md:text-5xl lg:text-6xl leading-tight;
+    font-weight: 600;
   }
-  
+
   h2 {
     @apply text-3xl md:text-4xl leading-tight;
+    font-weight: 600;
   }
-  
+
   h3 {
     @apply text-2xl md:text-3xl leading-tight;
+    font-weight: 600;
   }
-  
+
   h4 {
     @apply text-xl md:text-2xl leading-tight;
+    font-weight: 500;
   }
   
   p {
@@ -40,7 +45,34 @@
   }
   
   a {
-    @apply transition-colors duration-200;
+    @apply transition-all duration-200;
+    position: relative;
+  }
+
+  /* Underline animation for links */
+  a:not(.btn):not(.btn-primary):not(.btn-secondary):not(.btn-outline):hover {
+    @apply text-primary-dark;
+  }
+
+  /* Smooth link underline */
+  .link-underline {
+    position: relative;
+    text-decoration: none;
+  }
+
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  .link-underline:hover::after {
+    width: 100%;
   }
   
   button, .btn {
@@ -48,23 +80,23 @@
   }
   
   .btn-primary {
-    @apply bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-opacity-90 active:transform active:scale-95;
+    @apply bg-primary text-white px-8 py-4 rounded-button font-medium shadow-sm hover:shadow-soft hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;
   }
-  
+
   .btn-secondary {
-    @apply bg-green-primary text-white px-6 py-3 rounded-button font-medium hover:bg-green-accent;
+    @apply bg-accent text-white px-8 py-4 rounded-button font-medium shadow-sm hover:shadow-soft hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;
   }
-  
+
   .btn-outline {
-    @apply border-2 border-green-primary text-green-primary px-6 py-3 rounded-button font-medium hover:bg-green-primary hover:text-white;
+    @apply border-2 border-primary text-primary px-8 py-4 rounded-button font-medium hover:bg-primary hover:text-white hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;
   }
 
   .btn-green {
-    @apply bg-green-light text-white px-6 py-3 rounded-button font-medium hover:bg-green-accent;
+    @apply bg-success text-white px-8 py-4 rounded-button font-medium shadow-sm hover:shadow-soft hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;
   }
 
   .btn-accent {
-    @apply bg-accent text-white px-6 py-3 rounded-button font-medium hover:bg-opacity-90;
+    @apply bg-accent text-white px-8 py-4 rounded-button font-medium shadow-sm hover:shadow-soft hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;
   }
   
 }
@@ -75,19 +107,19 @@
   }
   
   .section-padding {
-    @apply py-16 lg:py-24;
-  }
-  
-  .card {
-    @apply bg-white rounded-lg border border-gray-light hover:shadow-lg transition-shadow duration-300;
+    @apply py-20 lg:py-32;
   }
 
-  .card-green {
-    @apply bg-green-mint rounded-lg border border-green-light hover:shadow-lg transition-shadow duration-300;
+  .card {
+    @apply bg-white rounded-card border border-neutral-200 hover:shadow-soft-lg hover:scale-[1.02] transition-all duration-300;
   }
 
   .card-secondary {
-    @apply bg-secondary rounded-lg border border-gray-light hover:shadow-lg transition-shadow duration-300;
+    @apply bg-secondary rounded-card border border-neutral-200 hover:shadow-soft-lg hover:scale-[1.02] transition-all duration-300;
+  }
+
+  .card-accent {
+    @apply bg-accent-light/20 rounded-card border border-accent-light hover:shadow-soft-lg hover:scale-[1.02] transition-all duration-300;
   }
   
   .animate-on-scroll {
@@ -101,7 +133,50 @@
 
 /* Focus styles for accessibility */
 :focus-visible {
-  @apply outline-none ring-2 ring-primary ring-offset-2;
+  @apply outline-none ring-2 ring-primary/50 ring-offset-2;
+}
+
+/* Smooth transitions for interactive elements */
+.hover-lift {
+  @apply transition-transform duration-200 hover:-translate-y-1;
+}
+
+.hover-scale {
+  @apply transition-transform duration-200 hover:scale-105;
+}
+
+/* Input styles */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+  @apply w-full px-4 py-4 rounded-button border border-neutral-300 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+  @apply outline-none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-neutral-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-neutral-400 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
 }
 
 /* Skip to content link */

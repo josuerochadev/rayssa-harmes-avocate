@@ -9,38 +9,36 @@ export const metadata: Metadata = {
 }
 
 const casesHandled = [
-  'Divorce par consentement mutuel et contentieux',
-  'Séparation de corps et de biens',
-  'Garde d\'enfants et droit de visite',
-  'Pension alimentaire et prestation compensatoire',
+  'Divorce amiable ou contentieux',
+  'Fixation ou révision de l\'autorité parentale, garde et droit de visite',
+  'Pension alimentaire (fixation, révision, recouvrement)',
+  'Prestation compensatoire',
   'Successions et partages de biens',
-  'Donations et testaments',
-  'Adoption et filiation',
-  'Protection des majeurs (tutelle, curatelle)',
   'Violence conjugale et ordonnances de protection',
   'Médiation familiale',
+]
+
+const examples = [
+  {
+    title: 'Divorce par consentement mutuel',
+    description: 'Accompagnement d\'un couple dans un divorce par consentement mutuel.',
+  },
+  {
+    title: 'Garde alternée',
+    description: 'Défense d\'un parent pour obtenir une garde alternée.',
+  },
 ]
 
 const processSteps = [
   {
     number: 1,
-    title: 'Écoute et accueil',
-    description: 'Accueil bienveillant pour comprendre votre situation familiale et vos préoccupations.',
+    title: 'Tentative de règlement amiable',
+    description: 'Tentative de règlement amiable si possible.',
   },
   {
     number: 2,
-    title: 'Analyse juridique',
-    description: 'Étude de vos droits, des procédures applicables et des solutions possibles.',
-  },
-  {
-    number: 3,
-    title: 'Stratégie personnalisée',
-    description: 'Définition de la meilleure approche : négociation, médiation ou procédure contentieuse.',
-  },
-  {
-    number: 4,
-    title: 'Accompagnement continu',
-    description: 'Suivi régulier et soutien tout au long de la procédure jusqu\'à sa conclusion.',
+    title: 'Rédaction et représentation',
+    description: 'Rédaction des actes et représentation devant le juge aux affaires familiales.',
   },
 ]
 
@@ -156,19 +154,39 @@ export default function FamillePage() {
         </div>
       </section>
       
-      {/* Process section */}
+      {/* Examples section */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="mb-6">Notre approche d&apos;accompagnement</h2>
+          <div className="text-center mb-12">
+            <h2 className="mb-6">Exemples concrets</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Une démarche respectueuse et bienveillante pour vous aider 
+              Des situations réelles que nous traitons au quotidien
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+            {examples.map((example, index) => (
+              <div key={index} className="bg-gray-50 p-6 rounded-lg animate-on-scroll">
+                <h3 className="font-slab font-semibold text-lg text-primary mb-3">
+                  {example.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {example.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mb-16">
+            <h2 className="mb-6">Procédure type</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Une démarche respectueuse et bienveillante pour vous aider
               à traverser cette période difficile avec sérénité.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => (
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {processSteps.map((step) => (
               <div key={step.number} className="text-center animate-on-scroll">
                 <div className="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
                   {step.number}

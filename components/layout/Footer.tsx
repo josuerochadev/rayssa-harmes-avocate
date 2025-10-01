@@ -38,7 +38,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <div className="font-slab font-bold text-xl">
-                    [NOM PRÉNOM]
+                    Rayssa Harmes
                   </div>
                   <div className="text-white/80">
                     Avocate à Strasbourg
@@ -46,9 +46,9 @@ export default function Footer() {
                 </div>
               </div>
               <p className="text-white/90 mb-6 max-w-md">
-                Cabinet d&apos;avocat spécialisé en droit des contrats, droit de la famille, 
-                droit des étrangers, droit du travail et droit immobilier. 
-                Conseil et contentieux avec écoute, clarté et réactivité.
+                Avocate passionnée et à l&apos;écoute, j&apos;accompagne particuliers et entreprises
+                en droit des étrangers, de la famille, du travail, de l&apos;immobilier,
+                du pénal et du droit des sociétés.
               </p>
               <LanguageBadges variant="footer" />
             </div>
@@ -60,32 +60,32 @@ export default function Footer() {
                 <div className="flex items-start space-x-3">
                   <MapPin className="h-5 w-5 text-white/70 mt-0.5 flex-shrink-0" />
                   <div className="text-white/90">
-                    <div>[ADRESSE_COMPLETE]</div>
-                    <div>Strasbourg, [CODE_POSTAL]</div>
+                    <div>24 avenue des Vosges</div>
+                    <div>67000 Strasbourg</div>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-white/70 flex-shrink-0" />
-                  <a 
-                    href="tel:[TELEPHONE]" 
+                  <a
+                    href="tel:+33745048395"
                     className="text-white/90 hover:text-white transition-colors"
                   >
-                    [TELEPHONE]
+                    +33 7 45 04 83 95
                   </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-white/70 flex-shrink-0" />
-                  <a 
-                    href="mailto:[EMAIL]" 
+                  <a
+                    href="mailto:harmes.avocat@gmail.com"
                     className="text-white/90 hover:text-white transition-colors"
                   >
-                    [EMAIL]
+                    harmes.avocat@gmail.com
                   </a>
                 </div>
                 <div className="flex items-start space-x-3">
                   <Clock className="h-5 w-5 text-white/70 mt-0.5 flex-shrink-0" />
                   <div className="text-white/90 text-sm">
-                    <div>Lun - Ven : 9h-12h / 14h-18h</div>
+                    <div>Lun - Ven : 9h - 18h</div>
                     <div>Sur rendez-vous uniquement</div>
                   </div>
                 </div>
@@ -100,7 +100,7 @@ export default function Footer() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block text-white/90 hover:text-white transition-colors"
+                    className="block text-white/80 hover:text-accent hover:translate-x-1 transition-all duration-200"
                   >
                     {item.name}
                   </Link>
@@ -117,7 +117,7 @@ export default function Footer() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-white/90 hover:text-white transition-colors"
+                  className="text-white/80 hover:text-accent hover:translate-x-1 inline-block transition-all duration-200"
                 >
                   {item.name}
                 </Link>
@@ -130,7 +130,7 @@ export default function Footer() {
         <div className="border-t border-white/20 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex flex-wrap items-center space-x-6 text-sm text-white/80">
-              <div>© 2024 [NOM PRÉNOM] - Tous droits réservés</div>
+              <div>© 2024 Rayssa Harmes - Tous droits réservés</div>
               <div>Barreau de Strasbourg</div>
             </div>
             <div className="flex items-center space-x-6 text-sm">

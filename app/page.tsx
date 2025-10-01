@@ -49,7 +49,7 @@ const domains = [
 
 const featuredTestimonials = [
   {
-    quote: 'Maître [NOM] a su m\'accompagner avec professionnalisme et humanité dans une procédure de divorce complexe. Sa clarté d\'explication et sa réactivité m\'ont beaucoup aidée.',
+    quote: 'Maître Harmes a su m\'accompagner avec professionnalisme et humanité dans une procédure de divorce complexe. Sa clarté d\'explication et sa réactivité m\'ont beaucoup aidée.',
     author: 'Mme M.',
     caseType: 'Droit de la famille',
     location: 'Strasbourg',

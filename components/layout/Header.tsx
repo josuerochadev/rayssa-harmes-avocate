@@ -56,11 +56,11 @@ export default function Header() {
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
                 <Phone size={14} />
-                <span>[TELEPHONE]</span>
+                <span>+33 7 45 04 83 95</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail size={14} />
-                <span>[EMAIL]</span>
+                <span>harmes.avocat@gmail.com</span>
               </div>
             </div>
             <LanguageBadges />
@@ -77,7 +77,7 @@ export default function Header() {
             </div>
             <div>
               <div className="font-slab font-bold text-xl text-primary">
-                [NOM PRÉNOM]
+                Rayssa Harmes
               </div>
               <div className="text-sm text-gray-600">
                 Avocate à Strasbourg
@@ -91,8 +91,8 @@ export default function Header() {
               <div key={item.name} className="relative group">
                 <Link
                   href={item.href}
-                  className={`font-medium transition-colors hover:text-green-accent ${
-                    isActiveLink(item.href) ? 'text-primary' : 'text-gray-700'
+                  className={`font-medium transition-colors hover:text-accent ${
+                    isActiveLink(item.href) ? 'text-primary' : 'text-neutral-700'
                   }`}
                 >
                   {item.name}
@@ -104,8 +104,8 @@ export default function Header() {
                         <Link
                           key={child.name}
                           href={child.href}
-                          className={`block px-4 py-2 text-sm transition-colors hover:bg-green-mint hover:text-green-primary ${
-                            isActiveLink(child.href) ? 'text-primary bg-green-mint/50' : 'text-gray-700'
+                          className={`block px-4 py-2 text-sm transition-colors hover:bg-secondary hover:text-primary ${
+                            isActiveLink(child.href) ? 'text-primary bg-secondary' : 'text-neutral-700'
                           }`}
                         >
                           {child.name}
@@ -155,7 +155,7 @@ export default function Header() {
                     <Link
                       href={item.href}
                       className={`block py-2 font-medium transition-colors ${
-                        isActiveLink(item.href) ? 'text-primary' : 'text-gray-700 hover:text-green-accent'
+                        isActiveLink(item.href) ? 'text-primary' : 'text-neutral-700 hover:text-accent'
                       }`}
                       onClick={() => setMobileMenuOpen(false)}
                     >
@@ -168,7 +168,7 @@ export default function Header() {
                             key={child.name}
                             href={child.href}
                             className={`block py-1 text-sm transition-colors ${
-                              isActiveLink(child.href) ? 'text-primary' : 'text-gray-600 hover:text-green-accent'
+                              isActiveLink(child.href) ? 'text-primary' : 'text-neutral-600 hover:text-accent'
                             }`}
                             onClick={() => setMobileMenuOpen(false)}
                           >

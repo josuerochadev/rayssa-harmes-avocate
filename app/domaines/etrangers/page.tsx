@@ -9,38 +9,42 @@ export const metadata: Metadata = {
 }
 
 const casesHandled = [
-  'Demandes de titres de séjour et renouvellements',
-  'Cartes de séjour temporaire et pluriannuelle',
-  'Naturalisation française et acquisition nationalité',
-  'Regroupement familial et visa famille',
-  'Contestation d\'obligations de quitter le territoire',
-  'Recours contre refus de visa',
-  'Demandes d\'asile et protection subsidiaire',
-  'Cartes de séjour UE longue durée',
+  'Recours contre un refus de titre de séjour',
+  'Contestation d\'une OQTF (obligation de quitter le territoire français)',
+  'Demande de naturalisation ou de nationalité française',
+  'Regroupement ou réunification familiale',
+  'Assignation à résidence',
+  'Recours devant la Cour nationale du droit d\'asile (CNDA)',
+  'Renouvellement de titres de séjour',
   'Titres de séjour étudiant et professionnel',
-  'Accès à la nationalité par mariage',
+]
+
+const examples = [
+  {
+    title: 'Étudiant étranger',
+    description: 'Accompagnement d\'un étudiant étranger face au refus de renouvellement de son titre de séjour.',
+  },
+  {
+    title: 'Demandeur d\'asile',
+    description: 'Recours devant la CNDA pour un demandeur d\'asile débouté.',
+  },
 ]
 
 const processSteps = [
   {
     number: 1,
-    title: 'Analyse du dossier',
-    description: 'Étude complète de votre situation administrative et de vos droits au séjour.',
+    title: 'Analyse de la décision',
+    description: 'Étude complète de la décision préfectorale ou administrative.',
   },
   {
     number: 2,
-    title: 'Constitution du dossier',
-    description: 'Préparation méticuleuse des documents nécessaires et rédaction des courriers.',
+    title: 'Rédaction du recours',
+    description: 'Rédaction et dépôt du recours dans les délais légaux stricts.',
   },
   {
     number: 3,
-    title: 'Procédures administratives',
-    description: 'Accompagnement dans vos démarches auprès des préfectures et consulats.',
-  },
-  {
-    number: 4,
-    title: 'Suivi et recours',
-    description: 'Surveillance des délais et exercice des recours en cas de décision défavorable.',
+    title: 'Représentation juridique',
+    description: 'Représentation devant la juridiction compétente (CRRV, tribunal administratif, CNDA, tribunal administratif de Nantes selon le cas).',
   },
 ]
 
@@ -157,18 +161,38 @@ export default function EtrangersPage() {
         </div>
       </section>
       
-      {/* Process section */}
+      {/* Examples section */}
       <section className="section-padding bg-white">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="mb-6">Notre méthode d&apos;accompagnement</h2>
+          <div className="text-center mb-12">
+            <h2 className="mb-6">Exemples concrets</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Une approche méthodique et rigoureuse pour maximiser 
+              Des situations réelles que nous traitons au quotidien
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+            {examples.map((example, index) => (
+              <div key={index} className="bg-gray-50 p-6 rounded-lg animate-on-scroll">
+                <h3 className="font-slab font-semibold text-lg text-primary mb-3">
+                  {example.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {example.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mb-16">
+            <h2 className="mb-6">Procédure type</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Une approche méthodique et rigoureuse pour maximiser
               vos chances de succès dans vos démarches.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {processSteps.map((step, index) => (
               <div key={step.number} className="text-center animate-on-scroll">
                 <div className="bg-primary text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 text-2xl font-bold">

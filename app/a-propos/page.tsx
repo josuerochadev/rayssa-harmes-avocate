@@ -11,14 +11,14 @@ export const metadata: Metadata = {
 
 const values = [
   {
-    icon: Shield,
-    title: 'Rigueur & Expertise',
-    description: 'Formation juridique solide et veille constante pour vous offrir les conseils les plus actuels et pertinents.',
+    icon: Heart,
+    title: 'Écoute & Bienveillance',
+    description: 'Chaque situation est unique. Je prends le temps de comprendre vos préoccupations et vos objectifs avec empathie et respect.',
   },
   {
-    icon: Heart,
-    title: 'Écoute & Humanité',
-    description: 'Chaque situation est unique. Nous prenons le temps de comprendre vos préoccupations et vos objectifs.',
+    icon: Shield,
+    title: 'Sérieux & Rigueur',
+    description: 'Formation juridique solide et approche méthodique pour vous offrir les conseils les plus fiables et pertinents.',
   },
   {
     icon: Clock,
@@ -27,8 +27,8 @@ const values = [
   },
   {
     icon: Users,
-    title: 'Transparence & Confiance',
-    description: 'Communication claire sur les procédures, les coûts et les délais. Honoraires transparents et devis préalable.',
+    title: 'Pédagogie & Transparence',
+    description: 'Explications claires et accessibles du droit. Communication transparente sur les procédures, les coûts et les délais.',
   },
 ]
 
@@ -57,9 +57,10 @@ export default function AboutPage() {
               </h1>
               
               <p className="text-xl text-gray-600 mb-6 leading-relaxed">
-                Juriste de formation et avocate depuis [ANNÉE], je mets mon expertise 
-                au service de particuliers et d&apos;entreprises pour défendre leurs droits 
-                et leurs intérêts avec rigueur et humanité.
+                Avocate passionnée et à l&apos;écoute, j&apos;accompagne particuliers et entreprises
+                dans leurs démarches en droit des étrangers, de la famille, du travail,
+                de l&apos;immobilier, du pénal et du droit des sociétés. Mon parcours international
+                me permet d&apos;offrir une approche ouverte, sensible et adaptée à chaque histoire.
               </p>
               
               <div className="flex items-center space-x-4 mb-6">
@@ -68,7 +69,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <div className="font-slab font-semibold text-lg text-primary">
-                    [NOM PRÉNOM]
+                    Rayssa Harmes
                   </div>
                   <div className="text-gray-600">
                     Avocate au Barreau de Strasbourg
@@ -109,23 +110,25 @@ export default function AboutPage() {
             
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 leading-relaxed mb-6">
-                Diplômée en droit de l&apos;Université de [UNIVERSITÉ], j&apos;ai prêté serment 
-                au Barreau de Strasbourg en [ANNÉE]. Mon parcours m&apos;a menée à me spécialiser 
-                dans plusieurs domaines du droit qui touchent directement la vie quotidienne 
-                de mes clients.
+                Diplômée en droit, j&apos;ai prêté serment au Barreau de Strasbourg.
+                Mon parcours m&apos;a menée à me spécialiser dans plusieurs domaines du droit
+                qui touchent directement la vie quotidienne de mes clients : droit des étrangers,
+                droit de la famille, droit du travail, droit immobilier, droit pénal et droit des sociétés.
               </p>
-              
+
               <p className="text-gray-700 leading-relaxed mb-6">
-                Forte d&apos;une expérience de [X] années, j&apos;ai développé une approche 
-                pragmatique du droit, alliant rigueur juridique et compréhension des enjeux 
-                humains et économiques de chaque dossier. Ma pratique couvre aussi bien 
-                le conseil préventif que la défense contentieuse.
+                J&apos;ai développé une approche pragmatique du droit, alliant rigueur juridique
+                et compréhension des enjeux humains et économiques de chaque dossier. Ma pratique
+                couvre aussi bien le conseil préventif que la défense contentieuse, toujours avec
+                la même attention portée à votre situation personnelle.
               </p>
-              
+
               <p className="text-gray-700 leading-relaxed mb-8">
-                Multilingue (français, anglais, portugais, espagnol), je peux accompagner 
-                une clientèle internationale et faciliter les échanges dans des dossiers 
+                Multilingue (français, portugais, anglais, espagnol), je peux accompagner
+                une clientèle internationale et faciliter les échanges dans des dossiers
                 transfrontaliers, particulièrement fréquents dans la région strasbourgeoise.
+                Mon parcours international enrichit mon approche et me permet d&apos;être sensible
+                aux différences culturelles.
               </p>
             </div>
             

@@ -15,12 +15,12 @@ export default function MentionsLegalesPage() {
           
           <h2>1. Éditeur du site</h2>
           <p>
-            <strong>Nom :</strong> [NOM PRÉNOM]<br />
+            <strong>Nom :</strong> Rayssa Harmes<br />
             <strong>Profession :</strong> Avocat<br />
-            <strong>Adresse :</strong> [ADRESSE_COMPLETE], [CODE_POSTAL] Strasbourg<br />
-            <strong>Téléphone :</strong> [NUMERO_TELEPHONE]<br />
-            <strong>Email :</strong> [ADRESSE_EMAIL]<br />
-            <strong>SIRET :</strong> [NUMERO_SIRET]<br />
+            <strong>Adresse :</strong> 24 avenue des Vosges, 67000 Strasbourg<br />
+            <strong>Téléphone :</strong> +33 7 45 04 83 95<br />
+            <strong>Email :</strong> harmes.avocat@gmail.com<br />
+            <strong>SIRET :</strong> 91837784700028<br />
             <strong>TVA :</strong> [NUMERO_TVA]<br />
           </p>
           
@@ -69,7 +69,7 @@ export default function MentionsLegalesPage() {
           <p>
             Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée et au RGPD, 
             vous bénéficiez d&apos;un droit d&apos;accès, de rectification, de portabilité et d&apos;effacement des informations qui vous concernent. 
-            Pour exercer ce droit, contactez-nous à l&apos;adresse : [ADRESSE_EMAIL]
+            Pour exercer ce droit, contactez-nous à l&apos;adresse : harmes.avocat@gmail.com
           </p>
           
           <h2>7. Cookies</h2>
@@ -104,7 +104,7 @@ export default function MentionsLegalesPage() {
           <hr className="my-8" />
           
           <p className="text-sm text-gray-600">
-            <em>Dernière mise à jour : [DATE_MAJ]</em>
+            <em>Dernière mise à jour : Octobre 2024</em>
           </p>
         </div>
       </div>
