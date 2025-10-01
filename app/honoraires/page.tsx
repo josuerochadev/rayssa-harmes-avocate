@@ -292,7 +292,7 @@ export default function HonorairesPage() {
             Nous étudierons votre situation pour vous proposer la solution 
             tarifaire la plus adaptée.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors inline-flex items-center justify-center">
               <Phone className="mr-2 h-4 w-4" />
               Demander un devis

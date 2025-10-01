@@ -47,7 +47,7 @@ export default function Hero() {
             </div>
             
             {/* CTA buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-6">
               <Link href="/contact" className="btn-primary text-center">
                 <Calendar className="inline h-4 w-4 mr-2" />
                 Prendre RDV

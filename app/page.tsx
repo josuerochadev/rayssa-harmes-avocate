@@ -203,7 +203,7 @@ export default function HomePage() {
             Contactez-moi dès aujourd&apos;hui pour un premier échange gratuit de 15 minutes.
             J&apos;étudierai votre situation et vous proposerai les meilleures solutions.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">
               Prendre rendez-vous
             </Link>

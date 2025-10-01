@@ -179,17 +179,26 @@ export default function ContactForm() {
       </div>
 
       {submitStatus === 'success' && (
-        <div className="bg-success/10 border border-success rounded-button p-4">
-          <p className="text-success">
-            Merci pour votre message ! Nous vous recontacterons dans les plus brefs délais.
+        <div className="bg-green-50 border border-green-200 rounded-button p-4">
+          <p className="text-green-800 font-medium mb-1">
+            ✅ Message envoyé avec succès !
+          </p>
+          <p className="text-green-700 text-sm">
+            Merci pour votre message. Je vous recontacterai dans les plus brefs délais, généralement sous 24h ouvrées.
           </p>
         </div>
       )}
 
       {submitStatus === 'error' && (
         <div className="bg-red-50 border border-red-200 rounded-button p-4">
-          <p className="text-red-800">
-            Une erreur est survenue lors de l&apos;envoi de votre message. Veuillez réessayer ou nous contacter directement.
+          <p className="text-red-800 font-medium mb-2">
+            ❌ Erreur d&apos;envoi
+          </p>
+          <p className="text-red-700 text-sm">
+            Une erreur est survenue lors de l&apos;envoi de votre message. Veuillez réessayer ou nous contacter directement par téléphone au{' '}
+            <a href="tel:+33745048395" className="underline font-medium">+33 7 45 04 83 95</a>
+            {' '}ou par email à{' '}
+            <a href="mailto:harmes.avocat@gmail.com" className="underline font-medium">harmes.avocat@gmail.com</a>
           </p>
         </div>
       )}

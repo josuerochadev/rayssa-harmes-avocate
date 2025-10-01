@@ -72,7 +72,7 @@ export default function ContractsPage() {
                 commerciaux avec une expertise juridique confirmée.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-6">
                 <Link href="/contact" className="btn-primary text-center">
                   <Phone className="inline h-4 w-4 mr-2" />
                   Consultation
@@ -237,7 +237,7 @@ export default function ContractsPage() {
             Contactez-nous pour analyser votre situation et vous proposer 
             la stratégie juridique la plus adaptée à vos enjeux.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">
               Prendre rendez-vous
             </Link>

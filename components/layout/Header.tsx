@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Scale, Phone, Mail } from 'lucide-react'
+import { Menu, X, Scale, Phone, Mail, ChevronDown } from 'lucide-react'
 import LanguageBadges from '@/components/ui/LanguageBadges'
 
 const navigation = [
@@ -54,14 +54,21 @@ export default function Header() {
         <div className="container-custom">
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center space-x-6">
-              <div className="flex items-center space-x-2">
+              <a
+                href="tel:+33745048395"
+                className="flex items-center space-x-2 hover:text-white/80 transition-colors"
+              >
                 <Phone size={14} />
                 <span>+33 7 45 04 83 95</span>
-              </div>
-              <div className="flex items-center space-x-2">
+              </a>
+              <a
+                href="mailto:harmes.avocat@gmail.com"
+                className="flex items-center space-x-2 hover:text-white/80 transition-colors"
+              >
                 <Mail size={14} />
-                <span>harmes.avocat@gmail.com</span>
-              </div>
+                <span className="hidden sm:inline">harmes.avocat@gmail.com</span>
+                <span className="sm:hidden">Email</span>
+              </a>
             </div>
             <LanguageBadges />
           </div>
@@ -91,11 +98,14 @@ export default function Header() {
               <div key={item.name} className="relative group">
                 <Link
                   href={item.href}
-                  className={`font-medium transition-colors hover:text-accent ${
+                  className={`font-medium transition-colors hover:text-accent flex items-center gap-1 ${
                     isActiveLink(item.href) ? 'text-primary' : 'text-neutral-700'
                   }`}
                 >
                   {item.name}
+                  {item.children && (
+                    <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
+                  )}
                 </Link>
                 {item.children && (
                   <div className="absolute left-0 top-full mt-2 w-64 bg-white shadow-xl rounded-lg border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
@@ -129,24 +139,27 @@ export default function Header() {
             type="button"
             className="lg:hidden p-2 rounded-md text-gray-700 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
             onClick={() => setMobileMenuOpen(true)}
+            aria-label="Ouvrir le menu de navigation"
+            aria-expanded={mobileMenuOpen}
           >
-            <Menu className="h-6 w-6" />
+            <Menu className="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="fixed inset-0 z-50 lg:hidden">
-            <div className="fixed inset-0 bg-black bg-opacity-25" onClick={() => setMobileMenuOpen(false)} />
-            <div className="fixed right-0 top-0 h-full w-full max-w-xs bg-white shadow-xl">
+          <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+            <div className="fixed inset-0 bg-black bg-opacity-25" onClick={() => setMobileMenuOpen(false)} aria-hidden="true" />
+            <nav className="fixed right-0 top-0 h-full w-full max-w-xs bg-white shadow-xl">
               <div className="flex items-center justify-between p-4 border-b">
                 <span className="font-slab font-semibold text-primary">Menu</span>
                 <button
                   type="button"
                   className="p-2 rounded-md text-gray-700 hover:text-primary"
                   onClick={() => setMobileMenuOpen(false)}
+                  aria-label="Fermer le menu"
                 >
-                  <X className="h-6 w-6" />
+                  <X className="h-6 w-6" aria-hidden="true" />
                 </button>
               </div>
               <div className="px-4 py-6 space-y-4">
@@ -189,7 +202,7 @@ export default function Header() {
                   </Link>
                 </div>
               </div>
-            </div>
+            </nav>
           </div>
         )}
       </nav>

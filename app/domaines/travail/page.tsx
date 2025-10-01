@@ -72,7 +72,7 @@ export default function TravailPage() {
                 approfondie du droit social et accompagnement personnalisé.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-6">
                 <Link href="/contact" className="btn-primary text-center">
                   <Phone className="inline h-4 w-4 mr-2" />
                   Consultation
@@ -237,7 +237,7 @@ export default function TravailPage() {
             Contactez-nous pour un entretien confidentiel. Nous évaluerons 
             votre situation et vous conseillerons sur la meilleure marche à suivre.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">
               Prendre rendez-vous
             </Link>

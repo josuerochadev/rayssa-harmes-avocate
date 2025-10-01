@@ -216,7 +216,7 @@ export default function DomainsPage() {
             N&apos;attendez pas que la situation se complique. Contactez-nous dès maintenant 
             pour un premier échange gratuit et sans engagement.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">
               Prendre rendez-vous
             </Link>

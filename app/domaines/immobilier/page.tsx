@@ -72,7 +72,7 @@ export default function ImmobilierPage() {
                 avec expertise juridique et accompagnement personnalisé.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-6">
                 <Link href="/contact" className="btn-primary text-center">
                   <Phone className="inline h-4 w-4 mr-2" />
                   Consultation
@@ -237,7 +237,7 @@ export default function ImmobilierPage() {
             Contactez-nous pour un entretien personnalisé. Nous analyserons 
             votre projet et vous proposerons les meilleures solutions juridiques.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">
               Prendre rendez-vous
             </Link>

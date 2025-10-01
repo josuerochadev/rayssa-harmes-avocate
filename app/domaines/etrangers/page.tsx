@@ -78,7 +78,7 @@ export default function EtrangersPage() {
                 et de séjour en France avec suivi personnalisé.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-6">
                 <Link href="/contact" className="btn-primary text-center">
                   <Phone className="inline h-4 w-4 mr-2" />
                   Consultation
@@ -243,7 +243,7 @@ export default function EtrangersPage() {
             Contactez-nous pour un entretien personnalisé. Nous analyserons 
             votre situation et vous proposerons la stratégie la plus adaptée.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">
               Prendre rendez-vous
             </Link>

@@ -228,7 +228,7 @@ export default function AboutPage() {
             Contactez-moi pour un premier échange gratuit et confidentiel. 
             Ensemble, nous trouverons la meilleure stratégie pour votre situation.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">
               Prendre rendez-vous
             </Link>
