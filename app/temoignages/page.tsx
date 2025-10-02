@@ -174,7 +174,6 @@ export default function TestimonialsPage() {
                 approach={caseStudy.approach}
                 result={caseStudy.result}
                 className="animate-on-scroll"
-                style={{ animationDelay: `${index * 0.1}s` }}
               />
             ))}
           </div>
