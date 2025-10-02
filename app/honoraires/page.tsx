@@ -234,14 +234,14 @@ export default function HonorairesPage() {
                       informe et obtient votre accord préalable.
                     </p>
                     <p>
-                      <strong>Factures détaillées :</strong> Chaque facture précise les 
-                      prestations réalisées, le temps passé et les débours engagés pour 
+                      <strong>Factures détaillées :</strong> Chaque facture précise les
+                      prestations réalisées, le temps passé et les débours engagés pour
                       une transparence totale.
                     </p>
                     <p>
-                      <strong>Assurance responsabilité civile professionnelle :</strong> 
-                       Assurée auprès de [NOM_ASSURANCE] pour vous 
-                      garantir une protection optimale.
+                      <strong>Assurance responsabilité civile professionnelle :</strong>
+                      Couverture professionnelle obligatoire conforme aux exigences du Barreau
+                      pour vous garantir une protection optimale.
                     </p>
                   </div>
                 </div>

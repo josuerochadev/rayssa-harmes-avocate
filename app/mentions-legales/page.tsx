@@ -23,14 +23,12 @@ export default function MentionsLegalesPage() {
             <strong>SIRET :</strong> 91837784700028<br />
           </p>
           
-          <h2>2. Barreau et assurance</h2>
+          <h2>2. Barreau</h2>
           <p>
             <strong>Barreau :</strong> Barreau de Strasbourg<br />
-            <strong>Assurance Responsabilité Civile Professionnelle :</strong> [NOM_ASSURANCE]<br />
-            <strong>Adresse de l&apos;assureur :</strong> [ADRESSE_ASSURANCE]<br />
-            <strong>Couverture géographique :</strong> France et Union Européenne
+            <strong>Ordre :</strong> Conseil National des Barreaux (CNB)
           </p>
-          
+
           <h2>3. Règles professionnelles</h2>
           <p>
             La profession d&apos;avocat est régie par :
