@@ -21,10 +21,10 @@ export default function PolitiqueConfidentialitePage() {
           
           <h2>1. Responsable du traitement</h2>
           <p>
-            <strong>Identité :</strong> [NOM PRÉNOM], Avocat<br />
-            <strong>Adresse :</strong> [ADRESSE_COMPLETE], [CODE_POSTAL] Strasbourg<br />
+            <strong>Identité :</strong> Rayssa Harmes, Avocat<br />
+            <strong>Adresse :</strong> 24 avenue des Vosges, 67000 Strasbourg<br />
             <strong>Email :</strong> harmes.avocat@gmail.com<br />
-            <strong>Téléphone :</strong> [NUMERO_TELEPHONE]
+            <strong>Téléphone :</strong> +33 7 45 04 83 95
           </p>
           
           <h2>2. Données collectées</h2>
