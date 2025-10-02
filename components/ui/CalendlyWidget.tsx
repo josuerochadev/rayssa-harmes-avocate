@@ -8,11 +8,17 @@ interface CalendlyWidgetProps {
   className?: string
 }
 
-export default function CalendlyWidget({ 
-  url = '[CALENDLY_URL]', 
-  className = '' 
+export default function CalendlyWidget({
+  url = 'https://calendly.com/harmes-avocat',
+  className = ''
 }: CalendlyWidgetProps) {
   useEffect(() => {
+    // Load Calendly widget CSS
+    const link = document.createElement('link')
+    link.href = 'https://assets.calendly.com/assets/external/widget.css'
+    link.rel = 'stylesheet'
+    document.head.appendChild(link)
+
     // Load Calendly widget script
     const script = document.createElement('script')
     script.src = 'https://assets.calendly.com/assets/external/widget.js'
@@ -20,7 +26,11 @@ export default function CalendlyWidget({
     document.body.appendChild(script)
 
     return () => {
-      // Cleanup script if component unmounts
+      // Cleanup
+      const existingLink = document.querySelector('link[href="https://assets.calendly.com/assets/external/widget.css"]')
+      if (existingLink) {
+        document.head.removeChild(existingLink)
+      }
       const existingScript = document.querySelector('script[src="https://assets.calendly.com/assets/external/widget.js"]')
       if (existingScript) {
         document.body.removeChild(existingScript)
@@ -52,8 +62,8 @@ export default function CalendlyWidget({
         </div>
         
         <p className="text-gray-600 mb-6">
-          Réservez un appel de cadrage gratuit de 15-20 minutes pour discuter 
-          de votre situation et déterminer comment nous pouvons vous aider.
+          Réservez un appel de cadrage gratuit de 15-20 minutes pour discuter
+          de votre situation et déterminer comment je peux vous aider.
         </p>
         
         <button
@@ -67,7 +77,7 @@ export default function CalendlyWidget({
       
       <div className="text-sm text-gray-600 bg-gray-50 p-4 rounded-button">
         <p>
-          <strong>Lors du rendez-vous :</strong> Nous ferons le point sur votre situation, 
+          <strong>Lors du rendez-vous :</strong> Je ferai le point sur votre situation,
           vos besoins et les options qui s&apos;offrent à vous. Aucun engagement n&apos;est requis.
         </p>
       </div>
