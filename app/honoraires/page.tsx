@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Honoraires & Tarifs - Avocat Strasbourg | Transparence des Coûts Juridiques',
-  description: 'Découvrez nos tarifs transparents : forfait, taux horaire, convention d\'honoraires. Devis préalable gratuit pour tous vos besoins juridiques.',
+  description: 'Découvrez mes tarifs transparents : forfait, taux horaire, convention d\'honoraires. Devis préalable gratuit pour tous vos besoins juridiques.',
   keywords: 'honoraires avocat Strasbourg, tarifs conseil juridique, devis gratuit, forfait avocat, taux horaire',
 }
 
@@ -74,11 +74,11 @@ const includedServices = [
 const paymentInfo = [
   {
     title: 'Aide juridictionnelle',
-    description: 'Possibilité de bénéficier de l\'aide juridictionnelle selon vos ressources. Nous vous accompagnons dans cette démarche.',
+    description: 'Possibilité de bénéficier de l\'aide juridictionnelle selon vos ressources. Je vous accompagne dans cette démarche.',
   },
   {
     title: 'Assurance protection juridique',
-    description: 'Vérifiez si votre assurance habitation ou automobile couvre les frais d\'avocat. Nous acceptons les prises en charge.',
+    description: 'Vérifiez si votre assurance habitation ou automobile couvre les frais d\'avocat. J\'accepte les prises en charge.',
   },
   {
     title: 'Paiement échelonné',
@@ -102,12 +102,12 @@ export default function HonorairesPage() {
             <h1 className="mb-6">
               <span className="block text-primary">Honoraires & Tarifs</span>
               <span className="block text-2xl md:text-3xl font-normal text-gray-700 mt-2">
-                Transparence et équité dans nos tarifs
+                Transparence et équité dans les tarifs
               </span>
             </h1>
             
             <p className="text-xl text-gray-600 leading-relaxed">
-              Découvrez nos différentes modalités tarifaires adaptées à chaque situation. 
+              Découvrez mes différentes modalités tarifaires adaptées à chaque situation. 
               Devis préalable gratuit et transparence totale sur les coûts pour vous permettre 
               de prendre vos décisions en toute connaissance de cause.
             </p>
@@ -119,9 +119,9 @@ export default function HonorairesPage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="mb-6">Nos modes de facturation</h2>
+            <h2 className="mb-6">Mes modes de facturation</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Nous adaptons notre mode de facturation à votre dossier et à vos besoins 
+              J&apos;adapte mon mode de facturation à votre dossier et à vos besoins 
               pour vous offrir la solution la plus équitable et transparente.
             </p>
           </div>
@@ -178,7 +178,7 @@ export default function HonorairesPage() {
             <div className="animate-on-scroll">
               <h2 className="mb-8">Ce qui est inclus</h2>
               <p className="text-gray-600 leading-relaxed mb-8">
-                Nos honoraires incluent l&apos;ensemble des prestations nécessaires 
+                Mes honoraires incluent l&apos;ensemble des prestations nécessaires 
                 à votre accompagnement juridique, sans surprise ni frais cachés.
               </p>
               
@@ -220,18 +220,18 @@ export default function HonorairesPage() {
                 <Shield className="h-8 w-8 text-blue-600 flex-shrink-0 mt-1" />
                 <div>
                   <h3 className="font-slab font-semibold text-xl text-blue-900 mb-4">
-                    Nos engagements tarifaires
+                    Les engagements tarifaires
                   </h3>
                   <div className="space-y-4 text-blue-800">
                     <p>
                       <strong>Devis préalable obligatoire :</strong> Avant toute intervention, 
-                      nous établissons un devis détaillé gratuit précisant les honoraires 
+                      j&apos;établis un devis détaillé gratuit précisant les honoraires 
                       prévisibles et les modalités de facturation.
                     </p>
                     <p>
                       <strong>Pas de dépassement sans accord :</strong> En cas d&apos;évolution 
-                      du dossier nécessitant des honoraires supplémentaires, nous vous 
-                      informons et obtenons votre accord préalable.
+                      du dossier nécessitant des honoraires supplémentaires, je vous 
+                      informe et obtient votre accord préalable.
                     </p>
                     <p>
                       <strong>Factures détaillées :</strong> Chaque facture précise les 
@@ -240,7 +240,7 @@ export default function HonorairesPage() {
                     </p>
                     <p>
                       <strong>Assurance responsabilité civile professionnelle :</strong> 
-                      Notre cabinet est assuré auprès de [NOM_ASSURANCE] pour vous 
+                       Assurée auprès de [NOM_ASSURANCE] pour vous 
                       garantir une protection optimale.
                     </p>
                   </div>
@@ -288,8 +288,8 @@ export default function HonorairesPage() {
         <div className="container-custom text-center">
           <h2 className="text-white mb-6">Besoin d&apos;un devis personnalisé ?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Contactez-nous pour obtenir un devis gratuit et personnalisé. 
-            Nous étudierons votre situation pour vous proposer la solution 
+            Contactez-moi pour obtenir un devis gratuit et personnalisé. 
+            J&apos;étudierai votre situation pour vous proposer la solution 
             tarifaire la plus adaptée.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">

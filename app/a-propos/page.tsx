@@ -230,7 +230,7 @@ export default function AboutPage() {
           <h2 className="text-white mb-6">Prêt(e) à faire valoir vos droits ?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
             Contactez-moi pour un premier échange gratuit et confidentiel. 
-            Ensemble, nous trouverons la meilleure stratégie pour votre situation.
+            Ensemble, je trouverai la meilleure stratégie pour votre situation.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">

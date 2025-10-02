@@ -117,15 +117,15 @@ export default function ImmobilierPage() {
               </p>
               
               <p className="text-gray-700 leading-relaxed mb-6">
-                Notre cabinet vous accompagne dans tous vos projets immobiliers, de la 
+                Je vous accompagne dans tous vos projets immobiliers, de la 
                 simple transaction à la résolution des contentieux les plus complexes. 
-                Nous mettons notre expertise du droit immobilier au service de la 
+                Je mets mon expertise du droit immobilier au service de la 
                 protection de vos intérêts, avec une approche préventive et curative.
               </p>
               
               <p className="text-gray-700 leading-relaxed">
                 Face à la complexité croissante du marché immobilier et aux enjeux 
-                financiers considérables, nous vous offrons une sécurisation juridique 
+                financiers considérables, je vous offre une sécurisation juridique 
                 complète, des conseils stratégiques et une défense efficace de vos droits.
               </p>
             </div>
@@ -161,7 +161,7 @@ export default function ImmobilierPage() {
           <div className="text-center mb-12">
             <h2 className="mb-6">Exemples concrets</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Des situations réelles que nous traitons au quotidien
+              Des situations réelles que je traite au quotidien
             </p>
           </div>
 
@@ -220,7 +220,7 @@ export default function ImmobilierPage() {
                   les conditions d&apos;un bail peut vous éviter de lourdes conséquences.
                 </p>
                 <p className="text-blue-800 leading-relaxed">
-                  N&apos;hésitez pas à nous consulter en amont de vos projets immobiliers. 
+                  N&apos;hésitez pas à me consulter en amont de vos projets immobiliers. 
                   Un conseil préventif peut vous épargner des années de contentieux.
                 </p>
               </div>
@@ -234,8 +234,8 @@ export default function ImmobilierPage() {
         <div className="container-custom text-center">
           <h2 className="text-white mb-6">Un projet immobilier ? Sécurisez-le</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Contactez-nous pour un entretien personnalisé. Nous analyserons 
-            votre projet et vous proposerons les meilleures solutions juridiques.
+            Contactez-moi pour un entretien personnalisé. J&apos;analyserai 
+            votre projet et vous proposerai les meilleures solutions juridiques.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">

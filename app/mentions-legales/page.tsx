@@ -21,7 +21,6 @@ export default function MentionsLegalesPage() {
             <strong>Téléphone :</strong> +33 7 45 04 83 95<br />
             <strong>Email :</strong> harmes.avocat@gmail.com<br />
             <strong>SIRET :</strong> 91837784700028<br />
-            <strong>TVA :</strong> [NUMERO_TVA]<br />
           </p>
           
           <h2>2. Barreau et assurance</h2>
@@ -69,7 +68,7 @@ export default function MentionsLegalesPage() {
           <p>
             Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée et au RGPD, 
             vous bénéficiez d&apos;un droit d&apos;accès, de rectification, de portabilité et d&apos;effacement des informations qui vous concernent. 
-            Pour exercer ce droit, contactez-nous à l&apos;adresse : harmes.avocat@gmail.com
+            Pour exercer ce droit, contactez-moi à l&apos;adresse : harmes.avocat@gmail.com
           </p>
           
           <h2>7. Cookies</h2>

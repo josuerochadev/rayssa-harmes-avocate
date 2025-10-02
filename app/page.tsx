@@ -140,15 +140,18 @@ export default function HomePage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {domains.map((domain, index) => (
-              <DomainCard
+              <div
                 key={domain.title}
-                title={domain.title}
-                description={domain.description}
-                href={domain.href}
-                icon={domain.icon}
                 className="animate-on-scroll"
                 style={{ animationDelay: `${index * 0.1}s` }}
-              />
+              >
+                <DomainCard
+                  title={domain.title}
+                  description={domain.description}
+                  href={domain.href}
+                  icon={domain.icon}
+                />
+              </div>
             ))}
           </div>
           
@@ -167,8 +170,8 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <h2 className="mb-6">Témoignages clients</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              La confiance de nos clients est notre plus belle récompense. 
-              Découvrez leurs témoignages sur notre accompagnement.
+              La confiance de mes clients est ma plus belle récompense. 
+              Découvrez leurs témoignages sur mon accompagnement.
             </p>
           </div>
           
@@ -181,7 +184,6 @@ export default function HomePage() {
                 caseType={testimonial.caseType}
                 location={testimonial.location}
                 className="animate-on-scroll"
-                style={{ animationDelay: `${index * 0.1}s` }}
               />
             ))}
           </div>

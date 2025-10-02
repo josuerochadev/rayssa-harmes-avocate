@@ -160,7 +160,7 @@ export default function FamillePage() {
           <div className="text-center mb-12">
             <h2 className="mb-6">Exemples concrets</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Des situations réelles que nous traitons au quotidien
+              Des situations réelles que je traite au quotidien
             </p>
           </div>
 
@@ -214,13 +214,13 @@ export default function FamillePage() {
                   L&apos;intérêt supérieur de l&apos;enfant
                 </h3>
                 <p className="text-blue-800 leading-relaxed mb-4">
-                  Dans toutes les procédures impliquant des enfants mineurs, nous plaçons 
-                  leur intérêt supérieur au centre de nos préoccupations. Notre objectif 
+                  Dans toutes les procédures impliquant des enfants mineurs, je place 
+                  leur intérêt supérieur au centre de mes préoccupations. Mon objectif 
                   est de préserver leur équilibre et leurs liens familiaux autant que possible.
                 </p>
                 <p className="text-blue-800 leading-relaxed">
                   La médiation familiale peut souvent offrir des solutions plus apaisées 
-                  que les procédures contentieuses. N&apos;hésitez pas à nous consulter pour 
+                  que les procédures contentieuses. N&apos;hésitez pas à me consulter pour 
                   explorer cette option.
                 </p>
               </div>
@@ -234,8 +234,7 @@ export default function FamillePage() {
         <div className="container-custom text-center">
           <h2 className="text-white mb-6">Besoin d&apos;aide pour votre situation familiale ?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Contactez-nous pour un premier entretien confidentiel. Nous vous 
-            écouterons avec bienveillance et vous proposerons les meilleures solutions.
+            Contactez-moi pour un premier entretien confidentiel. Je vous écouterai avec bienveillance et vous proposerai les meilleures solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">

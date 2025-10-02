@@ -82,7 +82,7 @@ export default function ContactPage() {
             
             {/* Contact info */}
             <div className="animate-on-scroll">
-              <h2 className="mb-8">Nos coordonnées</h2>
+              <h2 className="mb-8">Mes coordonnées</h2>
               
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
@@ -198,7 +198,7 @@ export default function ContactPage() {
             
             {/* Access info */}
             <div className="animate-on-scroll">
-              <h2 className="mb-8">Comment nous rejoindre</h2>
+              <h2 className="mb-8">Comment me rejoindre</h2>
               
               <div className="space-y-6">
                 {accessInfo.map((access, index) => (
@@ -223,8 +223,8 @@ export default function ContactPage() {
                   Cabinet accessible
                 </h3>
                 <p className="text-gray-700 text-sm">
-                  Notre cabinet est accessible aux personnes à mobilité réduite. 
-                  N&apos;hésitez pas à nous signaler tout besoin spécifique lors de 
+                  Le cabinet est accessible aux personnes à mobilité réduite. 
+                  N&apos;hésitez pas à me signaler tout besoin spécifique lors de 
                   la prise de rendez-vous.
                 </p>
               </div>
@@ -240,8 +240,8 @@ export default function ContactPage() {
             <h2 className="text-red-800 mb-6">Situations d&apos;urgence</h2>
             <p className="text-red-700 leading-relaxed mb-6">
               En cas de situation juridique urgente (garde à vue, procédure d&apos;expulsion, 
-              assignation avec délai court), contactez-nous immédiatement par téléphone. 
-              Nous étudierons la possibilité d&apos;un rendez-vous en urgence.
+              assignation avec délai court), contactez-moi immédiatement par téléphone. 
+              J&apos;étudierai la possibilité d&apos;un rendez-vous en urgence.
             </p>
             <div className="inline-flex items-center space-x-3 bg-red-600 text-white px-6 py-3 rounded-button">
               <Phone className="h-5 w-5" />

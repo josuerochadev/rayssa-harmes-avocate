@@ -232,7 +232,7 @@ export default function ContactForm() {
           <AlertCircle className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
           <p className="text-sm text-neutral-700">
             <strong>Important :</strong> Ne transmettez pas d&apos;informations confidentielles ou sensibles
-            via ce formulaire. Pour une communication sécurisée, contactez-nous directement par téléphone
+            via ce formulaire. Pour une communication sécurisée, contactez-moi directement par téléphone
             ou prenez rendez-vous.
           </p>
         </div>
@@ -275,7 +275,7 @@ export default function ContactForm() {
             ❌ Erreur d&apos;envoi
           </p>
           <p className="text-red-700 text-sm">
-            Une erreur est survenue lors de l&apos;envoi de votre message. Veuillez réessayer ou nous contacter directement par téléphone au{' '}
+            Une erreur est survenue lors de l&apos;envoi de votre message. Veuillez réessayer ou me contacter directement par téléphone au{' '}
             <a href="tel:+33745048395" className="underline font-medium">+33 7 45 04 83 95</a>
             {' '}ou par email à{' '}
             <a href="mailto:harmes.avocat@gmail.com" className="underline font-medium">harmes.avocat@gmail.com</a>

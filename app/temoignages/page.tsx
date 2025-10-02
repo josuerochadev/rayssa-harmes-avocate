@@ -6,7 +6,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Témoignages Clients - Avocat Strasbourg | Avis et Cas de Succès',
-  description: 'Découvrez les témoignages de nos clients et nos cas de succès. Avis authentiques sur notre accompagnement juridique à Strasbourg.',
+  description: 'Découvrez les témoignages de mes clients et mes cas de succès. Avis authentiques sur mon accompagnement juridique à Strasbourg.',
   keywords: 'témoignages avocat Strasbourg, avis clients, cas succès, satisfaction clients, résultats juridiques',
 }
 
@@ -30,7 +30,7 @@ const testimonials = [
     location: 'Strasbourg',
   },
   {
-    quote: 'Accompagnement parfait pour l\'achat de notre maison. Tous les pièges ont été évités grâce à son expertise. Nous sommes aujourd\'hui propriétaires en toute sérénité.',
+    quote: 'Accompagnement parfait pour l\'achat de notre maison. Tous les pièges ont été évités grâce à son expertise. Je suis aujourd\'hui propriétaire en toute sérénité.',
     author: 'M. et Mme D.',
     caseType: 'Droit immobilier',
     location: 'Schiltigheim',
@@ -104,13 +104,13 @@ export default function TestimonialsPage() {
             <h1 className="mb-6">
               <span className="block text-primary">Témoignages & Cas de Succès</span>
               <span className="block text-2xl md:text-3xl font-normal text-gray-700 mt-2">
-                La satisfaction de nos clients, notre priorité
+                La satisfaction de mes clients, ma priorité
               </span>
             </h1>
             
             <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              Découvrez les témoignages authentiques de nos clients et nos cas de succès. 
-              Leur confiance et leur satisfaction guident notre engagement quotidien 
+              Découvrez les témoignages authentiques de mes clients et mes cas de succès. 
+              Leur confiance et leur satisfaction guident mon engagement quotidien 
               à vos côtés.
             </p>
             
@@ -132,10 +132,10 @@ export default function TestimonialsPage() {
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="mb-6">Ce que disent nos clients</h2>
+            <h2 className="mb-6">Ce que disent mes clients</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Témoignages authentiques de clients accompagnés dans leurs démarches juridiques, 
-              illustrant notre engagement à leurs côtés.
+              illustrant mon engagement à leurs côtés.
             </p>
           </div>
           
@@ -148,7 +148,6 @@ export default function TestimonialsPage() {
                 caseType={testimonial.caseType}
                 location={testimonial.location}
                 className="animate-on-scroll"
-                style={{ animationDelay: `${index * 0.1}s` }}
               />
             ))}
           </div>
@@ -161,8 +160,8 @@ export default function TestimonialsPage() {
           <div className="text-center mb-16">
             <h2 className="mb-6">Cas de succès</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Exemples concrets de dossiers traités avec succès, illustrant notre approche 
-              et les résultats obtenus pour nos clients.
+              Exemples concrets de dossiers traités avec succès, illustrant mon approche 
+              et les résultats obtenus pour mes clients.
             </p>
           </div>
           
@@ -204,17 +203,17 @@ export default function TestimonialsPage() {
       {/* CTA section */}
       <section className="section-padding bg-primary text-white">
         <div className="container-custom text-center">
-          <h2 className="text-white mb-6">Prêt(e) à rejoindre nos clients satisfaits ?</h2>
+          <h2 className="text-white mb-6">Prêt(e) à rejoindre mes clients satisfaits ?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Contactez-nous pour bénéficier du même niveau d&apos;accompagnement et d&apos;expertise. 
-            Votre satisfaction est notre engagement.
+            Contactez-moi pour bénéficier du même niveau d&apos;accompagnement et d&apos;expertise. 
+            Votre satisfaction est mon engagement.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">
               Prendre rendez-vous
             </Link>
             <Link href="/domaines" className="border-2 border-white text-white px-8 py-4 rounded-button font-medium hover:bg-white hover:text-primary transition-colors">
-              Voir nos domaines
+              Voir mes domaines d&apos;intervention
             </Link>
           </div>
         </div>

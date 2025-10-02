@@ -111,21 +111,21 @@ export default function ContractsPage() {
               <p className="text-gray-700 leading-relaxed mb-6">
                 Le droit des contrats constitue le socle de toute relation commerciale. 
                 Qu&apos;il s&apos;agisse de conseil préventif pour sécuriser vos accords ou 
-                de défense contentieuse pour faire valoir vos droits, notre expertise 
+                de défense contentieuse pour faire valoir vos droits, ma expertise 
                 vous accompagne à chaque étape.
               </p>
               
               <p className="text-gray-700 leading-relaxed mb-6">
                 De la rédaction de contrats sur-mesure à la résolution de litiges complexes, 
-                nous mettons notre connaissance approfondie du droit commercial et civil 
-                au service de votre réussite. Notre approche pragmatique vise toujours 
+                je mets ma connaissance approfondie du droit commercial et civil 
+                au service de votre réussite. Mon approche pragmatique vise toujours 
                 à trouver des solutions efficaces et économiquement viables.
               </p>
               
               <p className="text-gray-700 leading-relaxed">
                 Que vous soyez entrepreneur, dirigeant d&apos;entreprise ou particulier 
-                engagé dans des relations contractuelles importantes, nous vous conseillons 
-                et vous défendons avec rigueur et détermination.
+                engagé dans des relations contractuelles importantes, je vous conseille 
+                et vous défends avec rigueur et détermination.
               </p>
             </div>
           </div>
@@ -160,7 +160,7 @@ export default function ContractsPage() {
           <div className="text-center mb-12">
             <h2 className="mb-6">Exemples concrets</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Des situations réelles que nous traitons au quotidien
+              Des situations réelles que je traite au quotidien
             </p>
           </div>
 
@@ -215,7 +215,7 @@ export default function ContractsPage() {
                 </h3>
                 <p className="text-yellow-800 leading-relaxed mb-4">
                   Un contrat bien rédigé en amont évite de nombreux litiges. N&apos;hésitez pas 
-                  à nous consulter avant la signature de vos accords importants pour sécuriser 
+                  à me consulter avant la signature de vos accords importants pour sécuriser 
                   vos intérêts et prévenir les conflits.
                 </p>
                 <p className="text-yellow-800 leading-relaxed">
@@ -234,7 +234,7 @@ export default function ContractsPage() {
         <div className="container-custom text-center">
           <h2 className="text-white mb-6">Un projet contractuel ou un litige ?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Contactez-nous pour analyser votre situation et vous proposer 
+            Contactez-moi pour analyser votre situation et vous proposer 
             la stratégie juridique la plus adaptée à vos enjeux.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">

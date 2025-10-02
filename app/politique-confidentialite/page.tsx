@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Politique de Confidentialité - Cabinet d\'Avocat Strasbourg',
-  description: 'Politique de confidentialité et de protection des données personnelles. Vos droits RGPD et nos engagements.',
+  description: 'Politique de confidentialité et de protection des données personnelles. Vos droits RGPD et mes engagements.',
   robots: { index: false, follow: true },
 }
 
@@ -14,8 +14,8 @@ export default function PolitiqueConfidentialitePage() {
           <h1>Politique de Confidentialité</h1>
           
           <p className="lead">
-            La protection de vos données personnelles est une priorité pour notre cabinet. 
-            Cette politique explique comment nous collectons, utilisons et protégeons vos informations 
+            La protection de vos données personnelles est une priorité pour mon cabinet. 
+            Cette politique explique comment je collecte, utilise et protège vos informations 
             dans le respect du Règlement Général sur la Protection des Données (RGPD).
           </p>
           
@@ -23,7 +23,7 @@ export default function PolitiqueConfidentialitePage() {
           <p>
             <strong>Identité :</strong> [NOM PRÉNOM], Avocat<br />
             <strong>Adresse :</strong> [ADRESSE_COMPLETE], [CODE_POSTAL] Strasbourg<br />
-            <strong>Email :</strong> [ADRESSE_EMAIL]<br />
+            <strong>Email :</strong> harmes.avocat@gmail.com<br />
             <strong>Téléphone :</strong> [NUMERO_TELEPHONE]
           </p>
           
@@ -77,7 +77,7 @@ export default function PolitiqueConfidentialitePage() {
           <p>Conformément au RGPD, vous disposez des droits suivants :</p>
           
           <h3>4.1 Droit d&apos;accès</h3>
-          <p>Vous pouvez demander une copie de toutes les données personnelles que nous détenons sur vous.</p>
+          <p>Vous pouvez demander une copie de toutes les données personnelles que je détiens sur vous.</p>
           
           <h3>4.2 Droit de rectification</h3>
           <p>Vous pouvez demander la correction de données inexactes ou incomplètes.</p>
@@ -96,8 +96,8 @@ export default function PolitiqueConfidentialitePage() {
           
           <h3>4.7 Exercice de vos droits</h3>
           <p>
-            Pour exercer ces droits, contactez-nous à l&apos;adresse : [ADRESSE_EMAIL]<br />
-            Nous vous répondrons dans un délai d&apos;un mois maximum.
+            Pour exercer ces droits, contactez-moi à l&apos;adresse : harmes.avocat@gmail.com<br />
+            Je vous répondrai dans un délai d&apos;un mois maximum.
           </p>
           
           <h2>5. Sécurité des données</h2>
@@ -144,7 +144,7 @@ export default function PolitiqueConfidentialitePage() {
           
           <p>
             Cette politique de confidentialité peut être mise à jour pour refléter les changements 
-            dans nos pratiques ou pour des raisons opérationnelles, légales ou réglementaires. 
+            dans mes pratiques ou pour des raisons opérationnelles, légales ou réglementaires. 
             La date de dernière modification est indiquée en bas de cette page.
           </p>
           
@@ -152,10 +152,10 @@ export default function PolitiqueConfidentialitePage() {
           
           <h3>9.1 Contact</h3>
           <p>
-            Pour toute question concernant cette politique de confidentialité, contactez-nous :<br />
-            <strong>Email :</strong> [ADRESSE_EMAIL]<br />
-            <strong>Téléphone :</strong> [NUMERO_TELEPHONE]<br />
-            <strong>Courrier :</strong> [ADRESSE_COMPLETE], [CODE_POSTAL] Strasbourg
+            Pour toute question concernant cette politique de confidentialité, contactez-moi :<br />
+            <strong>Email :</strong> harmes.avocat@gmail.com<br />
+            <strong>Téléphone :</strong> +33 7 45 04 83 95<br />
+            <strong>Courrier :</strong> 24 avenue des Vosges, 67000 Strasbourg
           </p>
           
           <h3>9.2 Réclamations</h3>

@@ -14,7 +14,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Domaines d\'intervention - Avocat Strasbourg | Contrats, Famille, Étrangers, Travail, Immobilier',
-  description: 'Découvrez tous nos domaines d\'intervention : droit des contrats, famille, étrangers, travail et immobilier. Conseil et contentieux à Strasbourg.',
+  description: 'Découvrez tous mes domaines d\'intervention : droit des contrats, famille, étrangers, travail et immobilier. Conseil et contentieux à Strasbourg.',
   keywords: 'domaines intervention avocat, droit contrats, droit famille, droit étrangers, droit travail, droit immobilier, Strasbourg',
 }
 
@@ -125,9 +125,9 @@ export default function DomainsPage() {
             </h1>
             
             <p className="text-xl text-gray-600 leading-relaxed">
-              Du conseil préventif au contentieux, notre cabinet vous accompagne 
+              Du conseil préventif au contentieux, je vous accompagne 
               dans tous vos besoins juridiques avec rigueur, réactivité et humanité. 
-              Découvrez nos domaines d&apos;expertise.
+              Découvrez mes domaines d&apos;expertise.
             </p>
           </div>
         </div>
@@ -183,7 +183,7 @@ export default function DomainsPage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <h2 className="mb-6">Notre processus d&apos;accompagnement</h2>
+            <h2 className="mb-6">Mon processus d&apos;accompagnement</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Une méthode éprouvée pour vous garantir un service de qualité, 
               quelle que soit la complexité de votre dossier.
@@ -213,7 +213,7 @@ export default function DomainsPage() {
         <div className="container-custom text-center">
           <h2 className="text-white mb-6">Une question juridique ?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            N&apos;attendez pas que la situation se complique. Contactez-nous dès maintenant 
+            N&apos;attendez pas que la situation se complique. Contactez-moi dès maintenant 
             pour un premier échange gratuit et sans engagement.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">

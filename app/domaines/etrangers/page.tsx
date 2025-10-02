@@ -123,15 +123,15 @@ export default function EtrangersPage() {
               </p>
               
               <p className="text-gray-700 leading-relaxed mb-6">
-                Notre cabinet vous accompagne dans toutes vos démarches d&apos;immigration et 
-                de séjour en France. Nous mettons notre expertise au service de vos projets 
+                Je vous accompagne dans toutes vos démarches d&apos;immigration et 
+                de séjour en France. Je mets mon expertise au service de vos projets 
                 de vie, que vous soyez étudiant, travailleur, conjoint de français ou que 
                 vous souhaitiez vous installer durablement en France.
               </p>
               
               <p className="text-gray-700 leading-relaxed">
                 Face à la complexité administrative et aux enjeux importants de ces procédures, 
-                nous vous offrons un accompagnement rigoureux, des conseils avisés et une 
+                je vous offre un accompagnement rigoureux, des conseils avisés et une 
                 défense efficace de vos droits.
               </p>
             </div>
@@ -167,7 +167,7 @@ export default function EtrangersPage() {
           <div className="text-center mb-12">
             <h2 className="mb-6">Exemples concrets</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Des situations réelles que nous traitons au quotidien
+              Des situations réelles que je traite au quotidien
             </p>
           </div>
 
@@ -226,8 +226,7 @@ export default function EtrangersPage() {
                   les décisions défavorables sont soumis à des délais stricts.
                 </p>
                 <p className="text-blue-800 leading-relaxed">
-                  N&apos;attendez pas la dernière minute pour nous consulter. Plus nous 
-                  intervenons tôt dans votre dossier, meilleures sont vos chances de succès.
+                  N&apos;attendez pas la dernière minute pour me consulter. Plus j&apos;interviens tôt dans votre dossier, meilleures sont vos chances de succès.
                 </p>
               </div>
             </div>
@@ -240,8 +239,8 @@ export default function EtrangersPage() {
         <div className="container-custom text-center">
           <h2 className="text-white mb-6">Besoin d&apos;aide pour vos démarches ?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Contactez-nous pour un entretien personnalisé. Nous analyserons 
-            votre situation et vous proposerons la stratégie la plus adaptée.
+            Contactez-moi pour un entretien personnalisé. J&apos;analyserai 
+            votre situation et vous proposerai la stratégie la plus adaptée.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">

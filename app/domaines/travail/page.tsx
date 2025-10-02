@@ -117,15 +117,15 @@ export default function TravailPage() {
               </p>
               
               <p className="text-gray-700 leading-relaxed mb-6">
-                Notre cabinet vous accompagne dans tous vos conflits du travail, que vous 
-                soyez salarié du secteur privé ou public. Nous mettons notre expertise du 
+                Je vous accompagne dans tous vos conflits du travail, que vous 
+                soyez salarié du secteur privé ou public. Je mets mon expertise du 
                 droit social au service de la défense de vos intérêts professionnels et 
                 personnels, avec une approche à la fois ferme et pragmatique.
               </p>
               
               <p className="text-gray-700 leading-relaxed">
                 Face à la complexité du droit du travail et aux enjeux financiers et 
-                humains importants, nous vous offrons un accompagnement personnalisé, 
+                humains importants, je vous offre un accompagnement personnalisé, 
                 des conseils stratégiques et une défense efficace devant les prud&apos;hommes.
               </p>
             </div>
@@ -161,7 +161,7 @@ export default function TravailPage() {
           <div className="text-center mb-12">
             <h2 className="mb-6">Exemples concrets</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Des situations réelles que nous traitons au quotidien
+              Des situations réelles que je traite au quotidien
             </p>
           </div>
 
@@ -221,7 +221,7 @@ export default function TravailPage() {
                 </p>
                 <p className="text-blue-800 leading-relaxed">
                   Dès que vous rencontrez des difficultés au travail, n&apos;hésitez pas à 
-                  nous consulter pour préserver vos droits et évaluer vos options.
+                  me consulter pour préserver vos droits et évaluer vos options.
                 </p>
               </div>
             </div>
@@ -234,8 +234,8 @@ export default function TravailPage() {
         <div className="container-custom text-center">
           <h2 className="text-white mb-6">Problème au travail ? Faites valoir vos droits</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Contactez-nous pour un entretien confidentiel. Nous évaluerons 
-            votre situation et vous conseillerons sur la meilleure marche à suivre.
+            Contactez-moi pour un entretien confidentiel. J&apos;évaluerai 
+            votre situation et vous conseillerai sur la meilleure marche à suivre.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">
