@@ -1,5 +1,5 @@
 import { render, screen } from '@/test/utils'
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import userEvent from '@testing-library/user-event'
 import MobileNavItem from './MobileNavItem'
 import type { NavigationItem } from '@/data/navigation'

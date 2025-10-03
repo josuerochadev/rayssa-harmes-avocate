@@ -186,8 +186,8 @@ describe('ContactForm Integration', () => {
 
   it('should show loading state while submitting', async () => {
     const user = userEvent.setup()
-    const mockFetch = vi.fn(() => new Promise((resolve) => setTimeout(() => resolve({ ok: true }), 100)))
-    global.fetch = mockFetch
+    const mockFetch = vi.fn(() => new Promise((resolve) => setTimeout(() => resolve({ ok: true } as Response), 100)))
+    global.fetch = mockFetch as any
 
     render(<ContactForm />)
 
