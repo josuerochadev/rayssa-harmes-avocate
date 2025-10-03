@@ -7,7 +7,7 @@ export default defineConfig({
   testDir: './e2e',
 
   /* Global timeout for all tests - increased for CI */
-  timeout: process.env.CI ? 60000 : 30000,
+  timeout: process.env.CI ? 90000 : 30000,
 
   /* Run tests in files in parallel */
   fullyParallel: !process.env.CI,
@@ -40,6 +40,11 @@ export default defineConfig({
 
     /* Action timeout - time to wait for actions like click, fill */
     actionTimeout: process.env.CI ? 15000 : 5000,
+  },
+
+  /* Global timeout for expect assertions - increased for CI */
+  expect: {
+    timeout: process.env.CI ? 10000 : 5000,
   },
 
   /* Configure projects for major browsers */
