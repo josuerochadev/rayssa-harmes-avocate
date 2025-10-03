@@ -45,7 +45,7 @@ export default function FormSelect({
             : 'border-gray-300 focus:ring-primary focus:border-primary'
         }`}
       >
-        <option value="">{placeholder}</option>
+        <option value="" disabled>{placeholder}</option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>
             {option.label}

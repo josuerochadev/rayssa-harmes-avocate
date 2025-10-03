@@ -27,13 +27,21 @@ export default function FormCheckbox({
           checked={checked}
           onChange={onChange}
           required={required}
-          className="mt-1 h-4 w-4 text-primary border-gray-300 rounded focus:ring-2 focus:ring-primary"
+          aria-invalid={error ? 'true' : 'false'}
+          aria-describedby={error ? `${id}-error` : undefined}
+          className={`mt-1 h-4 w-4 text-primary rounded focus:ring-2 focus:ring-primary ${
+            error ? 'border-red-500' : 'border-gray-300'
+          }`}
         />
         <label htmlFor={id} className="text-sm text-gray-700 leading-relaxed">
-          {label}
+          {label} {required && <span className="text-red-600 ml-1">*</span>}
         </label>
       </div>
-      {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+      {error && (
+        <p id={`${id}-error`} className="mt-1 text-sm text-red-600">
+          {error}
+        </p>
+      )}
     </div>
   )
 }
