@@ -1,12 +1,21 @@
 import Link from 'next/link'
 import { Briefcase, CheckCircle, AlertCircle, Phone, Mail } from 'lucide-react'
 import type { Metadata } from 'next'
+import { generateDomainMetadata, generateDomainJsonLd } from '@/lib/metadata'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateDomainMetadata({
   title: 'Avocat en Droit du Travail à Strasbourg | Licenciement, Harcèlement, Prud\'hommes',
   description: 'Avocat spécialisé en droit du travail à Strasbourg. Licenciement, harcèlement, prud\'hommes, rupture conventionnelle. Défense de vos droits.',
   keywords: 'avocat droit travail Strasbourg, licenciement, harcèlement, prud\'hommes, rupture conventionnelle, contrat travail',
-}
+  domain: 'travail',
+})
+
+const jsonLd = generateDomainJsonLd({
+  name: 'Droit du Travail',
+  description: 'Services juridiques en droit du travail : licenciement, harcèlement, prud\'hommes, rupture conventionnelle.',
+  url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://rayssa-harmes-avocate.fr'}/domaines/travail`,
+  serviceType: 'Droit du Travail',
+})
 
 const casesHandled = [
   'Contentieux devant le conseil de prud\'hommes (CPH)',
@@ -45,6 +54,12 @@ const processSteps = [
 export default function TravailPage() {
   return (
     <>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero section */}
       <section className="section-padding bg-gradient-to-br from-white via-secondary/30 to-white">
         <div className="container-custom">

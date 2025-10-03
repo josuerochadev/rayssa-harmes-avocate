@@ -1,12 +1,21 @@
 import Link from 'next/link'
 import { Heart, ArrowRight, CheckCircle, AlertCircle, Phone, Mail } from 'lucide-react'
 import type { Metadata } from 'next'
+import { generateDomainMetadata, generateDomainJsonLd } from '@/lib/metadata'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateDomainMetadata({
   title: 'Avocat en Droit de la Famille à Strasbourg | Divorce, Garde d\'Enfants, Succession',
   description: 'Avocat spécialisé en droit de la famille à Strasbourg. Divorce, séparation, garde d\'enfants, succession. Accompagnement humain et juridique.',
   keywords: 'avocat droit famille Strasbourg, divorce, garde enfants, succession, pension alimentaire, séparation',
-}
+  domain: 'famille',
+})
+
+const jsonLd = generateDomainJsonLd({
+  name: 'Droit de la Famille',
+  description: 'Services juridiques en droit de la famille : divorce, séparation, garde d\'enfants, succession.',
+  url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://rayssa-harmes-avocate.fr'}/domaines/famille`,
+  serviceType: 'Droit de la Famille',
+})
 
 const casesHandled = [
   'Divorce amiable ou contentieux',
@@ -45,6 +54,12 @@ const processSteps = [
 export default function FamillePage() {
   return (
     <>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero section */}
       <section className="section-padding bg-gradient-to-br from-white via-secondary/30 to-white">
         <div className="container-custom">

@@ -1,12 +1,21 @@
 import Link from 'next/link'
 import { Home, CheckCircle, AlertCircle, Phone, Mail } from 'lucide-react'
 import type { Metadata } from 'next'
+import { generateDomainMetadata, generateDomainJsonLd } from '@/lib/metadata'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateDomainMetadata({
   title: 'Avocat en Droit Immobilier à Strasbourg | Vente, Achat, Contentieux Immobilier',
   description: 'Avocat spécialisé en droit immobilier à Strasbourg. Vente, achat, contentieux, copropriété, bail. Sécurisation de vos transactions immobilières.',
   keywords: 'avocat droit immobilier Strasbourg, vente maison, achat appartement, contentieux immobilier, copropriété, bail',
-}
+  domain: 'immobilier',
+})
+
+const jsonLd = generateDomainJsonLd({
+  name: 'Droit Immobilier',
+  description: 'Services juridiques en droit immobilier : vente, achat, contentieux, copropriété, bail.',
+  url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://rayssa-harmes-avocate.fr'}/domaines/immobilier`,
+  serviceType: 'Droit Immobilier',
+})
 
 const casesHandled = [
   'Litiges bailleurs / locataires (loyers impayés, charges, réparations, expulsion)',
@@ -45,6 +54,12 @@ const processSteps = [
 export default function ImmobilierPage() {
   return (
     <>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero section */}
       <section className="section-padding bg-gradient-to-br from-white via-secondary/30 to-white">
         <div className="container-custom">

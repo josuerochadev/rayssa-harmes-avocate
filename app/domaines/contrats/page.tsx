@@ -1,12 +1,21 @@
 import Link from 'next/link'
 import { FileText, ArrowRight, CheckCircle, AlertCircle, Phone, Mail } from 'lucide-react'
 import type { Metadata } from 'next'
+import { generateDomainMetadata, generateDomainJsonLd } from '@/lib/metadata'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateDomainMetadata({
   title: 'Avocat en Droit des Contrats à Strasbourg | Conseil & Contentieux Commercial',
   description: 'Avocat spécialisé en droit des contrats à Strasbourg. Rédaction, négociation, contentieux commercial et recouvrement de créances. Conseil personnalisé.',
   keywords: 'avocat droit contrats Strasbourg, contentieux commercial, rédaction contrats, recouvrement créances, droit affaires',
-}
+  domain: 'contrats',
+})
+
+const jsonLd = generateDomainJsonLd({
+  name: 'Droit des Contrats',
+  description: 'Services juridiques en droit des contrats : rédaction, négociation, contentieux commercial et recouvrement de créances.',
+  url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://rayssa-harmes-avocate.fr'}/domaines/contrats`,
+  serviceType: 'Droit des Contrats',
+})
 
 const casesHandled = [
   'Rédaction et analyse de contrats civils ou commerciaux',
@@ -45,6 +54,12 @@ const processSteps = [
 export default function ContractsPage() {
   return (
     <>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero section */}
       <section className="section-padding bg-gradient-to-br from-white via-secondary/30 to-white">
         <div className="container-custom">

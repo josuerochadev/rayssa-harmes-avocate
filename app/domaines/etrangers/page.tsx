@@ -1,12 +1,21 @@
 import Link from 'next/link'
 import { Users, CheckCircle, AlertCircle, Phone, Mail } from 'lucide-react'
 import type { Metadata } from 'next'
+import { generateDomainMetadata, generateDomainJsonLd } from '@/lib/metadata'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateDomainMetadata({
   title: 'Avocat en Droit des Étrangers à Strasbourg | Titres de Séjour, Naturalisation',
   description: 'Avocat spécialisé en droit des étrangers à Strasbourg. Titres de séjour, naturalisation, regroupement familial. Accompagnement personnalisé.',
   keywords: 'avocat droit étrangers Strasbourg, titre séjour, naturalisation, visa, regroupement familial, immigration',
-}
+  domain: 'etrangers',
+})
+
+const jsonLd = generateDomainJsonLd({
+  name: 'Droit des Étrangers',
+  description: 'Services juridiques en droit des étrangers : titres de séjour, naturalisation, regroupement familial.',
+  url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://rayssa-harmes-avocate.fr'}/domaines/etrangers`,
+  serviceType: 'Droit des Étrangers',
+})
 
 const casesHandled = [
   'Recours contre un refus de titre de séjour',
@@ -51,6 +60,12 @@ const processSteps = [
 export default function EtrangersPage() {
   return (
     <>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero section */}
       <section className="section-padding bg-gradient-to-br from-white via-secondary/30 to-white">
         <div className="container-custom">
