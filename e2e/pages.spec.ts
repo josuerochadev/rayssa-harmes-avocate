@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Pages Content E2E', () => {
   test('should display homepage with hero section', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     // Check for main heading
     await expect(page.locator('h1').first()).toBeVisible()
@@ -16,7 +16,7 @@ test.describe('Pages Content E2E', () => {
   })
 
   test('should display about page with lawyer information', async ({ page }) => {
-    await page.goto('/a-propos')
+    await page.goto('/a-propos', { waitUntil: 'domcontentloaded' })
 
     await expect(page.locator('h1')).toContainText(/à propos/i)
 
@@ -25,7 +25,7 @@ test.describe('Pages Content E2E', () => {
   })
 
   test('should display testimonials page', async ({ page }) => {
-    await page.goto('/témoignages')
+    await page.goto('/témoignages', { waitUntil: 'domcontentloaded' })
 
     await expect(page.locator('h1')).toContainText(/témoignages/i)
 
@@ -35,7 +35,7 @@ test.describe('Pages Content E2E', () => {
   })
 
   test('should display honoraires page with pricing information', async ({ page }) => {
-    await page.goto('/honoraires')
+    await page.goto('/honoraires', { waitUntil: 'domcontentloaded' })
 
     await expect(page.locator('h1')).toContainText(/honoraires/i)
 
@@ -44,7 +44,7 @@ test.describe('Pages Content E2E', () => {
   })
 
   test('should display contact page with form and contact info', async ({ page }) => {
-    await page.goto('/contact')
+    await page.goto('/contact', { waitUntil: 'domcontentloaded' })
 
     await expect(page.locator('h1')).toContainText(/contact/i)
 
@@ -57,7 +57,7 @@ test.describe('Pages Content E2E', () => {
   })
 
   test('should display domain page with relevant information', async ({ page }) => {
-    await page.goto('/domaines/famille')
+    await page.goto('/domaines/famille', { waitUntil: 'domcontentloaded' })
 
     // Check for domain title
     await expect(page.locator('h1')).toContainText(/droit de la famille/i)
@@ -70,7 +70,7 @@ test.describe('Pages Content E2E', () => {
   })
 
   test('should display legal notices page', async ({ page }) => {
-    await page.goto('/mentions-legales')
+    await page.goto('/mentions-legales', { waitUntil: 'domcontentloaded' })
 
     await expect(page.locator('h1')).toContainText(/mentions légales/i)
 
@@ -79,7 +79,7 @@ test.describe('Pages Content E2E', () => {
   })
 
   test('should display privacy policy page', async ({ page }) => {
-    await page.goto('/politique-confidentialite')
+    await page.goto('/politique-confidentialite', { waitUntil: 'domcontentloaded' })
 
     await expect(page.locator('h1')).toContainText(/politique de confidentialité/i)
 
@@ -88,7 +88,7 @@ test.describe('Pages Content E2E', () => {
   })
 
   test('should have proper meta tags on homepage', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     // Check meta description
     const metaDescription = await page.locator('meta[name="description"]').getAttribute('content')
@@ -101,7 +101,7 @@ test.describe('Pages Content E2E', () => {
   })
 
   test('should have proper meta tags on domain pages', async ({ page }) => {
-    await page.goto('/domaines/famille')
+    await page.goto('/domaines/famille', { waitUntil: 'domcontentloaded' })
 
     const metaDescription = await page.locator('meta[name="description"]').getAttribute('content')
     expect(metaDescription).toBeTruthy()
@@ -120,21 +120,21 @@ test.describe('Pages Content E2E', () => {
     ]
 
     for (const domain of domains) {
-      const response = await page.goto(domain)
+      const response = await page.goto(domain, { waitUntil: 'domcontentloaded' })
       expect(response?.status()).toBe(200)
       await expect(page.locator('h1')).toBeVisible()
     }
   })
 
   test('should display process steps on domain pages', async ({ page }) => {
-    await page.goto('/domaines/contrats')
+    await page.goto('/domaines/contrats', { waitUntil: 'domcontentloaded' })
 
     // Check for process/steps section
     await expect(page.getByText(/processus|étapes|comment|déroulement/i)).toBeVisible()
   })
 
   test('should have working internal links in content', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     // Find and click a domain card link
     await page.getByRole('link', { name: /droit des contrats/i }).first().click()
@@ -145,7 +145,7 @@ test.describe('Pages Content E2E', () => {
   })
 
   test('should display breadcrumbs on nested pages', async ({ page }) => {
-    await page.goto('/domaines/famille')
+    await page.goto('/domaines/famille', { waitUntil: 'domcontentloaded' })
 
     // Check if there's navigation context (breadcrumbs or back links)
     const hasNavContext = await page.locator('nav, [class*="breadcrumb"]').count()
@@ -158,7 +158,7 @@ test.describe('Pages Content E2E', () => {
     const pages = ['/', '/a-propos', '/contact', '/honoraires', '/domaines/famille']
 
     for (const pagePath of pages) {
-      await page.goto(pagePath)
+      await page.goto(pagePath, { waitUntil: 'domcontentloaded' })
 
       // Check that main content is visible
       await expect(page.locator('h1')).toBeVisible()
@@ -169,7 +169,7 @@ test.describe('Pages Content E2E', () => {
   })
 
   test('should have accessible images with alt text', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     const images = await page.locator('img').all()
 
@@ -189,7 +189,7 @@ test.describe('Pages Content E2E', () => {
       }
     })
 
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     // Filter out known acceptable errors (like network errors in dev)
     const criticalErrors = errors.filter(

@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Navigation E2E', () => {
   test('should navigate to all main pages from header', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     // Test Accueil link
     await page.getByRole('link', { name: 'Accueil' }).first().click()
@@ -13,23 +13,23 @@ test.describe('Navigation E2E', () => {
     await expect(page).toHaveURL('/a-propos')
 
     // Test Témoignages link
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
     await page.getByRole('link', { name: 'Témoignages' }).first().click()
     await expect(page).toHaveURL('/témoignages')
 
     // Test Honoraires link
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
     await page.getByRole('link', { name: 'Honoraires' }).first().click()
     await expect(page).toHaveURL('/honoraires')
 
     // Test Contact link
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
     await page.getByRole('link', { name: 'Contact' }).first().click()
     await expect(page).toHaveURL('/contact')
   })
 
   test('should navigate to domain pages from dropdown menu', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     // Hover over Domaines d'intervention
     await page.getByRole('link', { name: /domaines d'intervention/i }).first().hover()
@@ -39,14 +39,14 @@ test.describe('Navigation E2E', () => {
     await expect(page).toHaveURL('/domaines/contrats')
 
     // Go back and test another domain
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
     await page.getByRole('link', { name: /domaines d'intervention/i }).first().hover()
     await page.getByRole('link', { name: /droit de la famille/i }).first().click()
     await expect(page).toHaveURL('/domaines/famille')
   })
 
   test('should show active link highlighting', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     // Check if Accueil is highlighted
     const accueilLink = page.getByRole('link', { name: 'Accueil' }).first()
@@ -57,13 +57,13 @@ test.describe('Navigation E2E', () => {
     const pages = ['/', '/a-propos', '/contact', '/honoraires']
 
     for (const pagePath of pages) {
-      await page.goto(pagePath)
+      await page.goto(pagePath, { waitUntil: 'domcontentloaded' })
       await expect(page.getByRole('link', { name: /prendre rdv/i })).toBeVisible()
     }
   })
 
   test('should have working phone and email links in header', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     // Check phone link
     const phoneLink = page.getByRole('link', { name: /\+33 7 45 04 83 95/i }).first()
@@ -77,7 +77,7 @@ test.describe('Navigation E2E', () => {
   test('should navigate using mobile menu', async ({ page }) => {
     // Set mobile viewport
     await page.setViewportSize({ width: 375, height: 667 })
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     // Open mobile menu
     await page.getByRole('button', { name: /ouvrir le menu/i }).click()
@@ -94,7 +94,7 @@ test.describe('Navigation E2E', () => {
 
   test('should close mobile menu when clicking backdrop', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 })
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     // Open mobile menu
     await page.getByRole('button', { name: /ouvrir le menu/i }).click()
@@ -108,14 +108,14 @@ test.describe('Navigation E2E', () => {
   })
 
   test('should display language badges in header', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     // Check for language badges (assuming they're visible)
     await expect(page.locator('text=/français|portugais|anglais/i').first()).toBeVisible()
   })
 
   test('should have sticky header that stays on top when scrolling', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     const header = page.locator('header')
     await expect(header).toHaveClass(/sticky/)
@@ -138,14 +138,14 @@ test.describe('Navigation E2E', () => {
     ]
 
     for (const domain of domains) {
-      await page.goto(domain.path)
+      await page.goto(domain.path, { waitUntil: 'domcontentloaded' })
       await expect(page).toHaveURL(domain.path)
       await expect(page.locator('h1')).toContainText(domain.name)
     }
   })
 
   test('should have working footer links', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     // Scroll to footer
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
@@ -155,14 +155,14 @@ test.describe('Navigation E2E', () => {
     await expect(page).toHaveURL('/mentions-legales')
 
     // Test politique de confidentialité link
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
     await page.getByRole('link', { name: /politique de confidentialité/i }).click()
     await expect(page).toHaveURL('/politique-confidentialite')
   })
 
   test('should display contact information in footer', async ({ page }) => {
-    await page.goto('/')
+    await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     // Scroll to footer
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))

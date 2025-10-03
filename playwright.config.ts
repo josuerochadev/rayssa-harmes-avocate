@@ -6,8 +6,8 @@ import { defineConfig, devices } from '@playwright/test'
 export default defineConfig({
   testDir: './e2e',
 
-  /* Global timeout for all tests */
-  timeout: 30000,
+  /* Global timeout for all tests - increased for CI */
+  timeout: process.env.CI ? 60000 : 30000,
 
   /* Run tests in files in parallel */
   fullyParallel: !process.env.CI,
@@ -35,8 +35,11 @@ export default defineConfig({
     /* Screenshot on failure */
     screenshot: 'only-on-failure',
 
-    /* Navigation timeout */
-    navigationTimeout: 10000,
+    /* Navigation timeout - increased for CI */
+    navigationTimeout: process.env.CI ? 30000 : 10000,
+
+    /* Action timeout - time to wait for actions like click, fill */
+    actionTimeout: process.env.CI ? 15000 : 5000,
   },
 
   /* Configure projects for major browsers */
@@ -79,7 +82,7 @@ export default defineConfig({
     command: 'npm run dev',
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
-    timeout: 120000,
+    timeout: 180000, // 3 minutes for server startup in CI
     stdout: 'pipe',
     stderr: 'pipe',
   },

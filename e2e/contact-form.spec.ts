@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Contact Form E2E', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/contact')
+    await page.goto('/contact', { waitUntil: 'domcontentloaded' })
   })
 
   test('should display contact form with all fields', async ({ page }) => {
