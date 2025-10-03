@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { isValidEmail, isNotEmpty, hasMinLength } from '@/lib/utils/validation'
+import { API, ERROR_MESSAGES, VALIDATION } from '@/lib/constants'
 
 export interface ContactFormData {
   name: string
@@ -52,32 +54,32 @@ export function useContactForm(): UseContactFormReturn {
     const newErrors: ContactFormErrors = {}
 
     // Validation du nom
-    if (!formData.name.trim()) {
-      newErrors.name = 'Le nom est requis'
+    if (!isNotEmpty(formData.name)) {
+      newErrors.name = ERROR_MESSAGES.NAME_REQUIRED
     }
 
     // Validation de l'email
-    if (!formData.email.trim()) {
-      newErrors.email = "L'email est requis"
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Email invalide'
+    if (!isNotEmpty(formData.email)) {
+      newErrors.email = ERROR_MESSAGES.EMAIL_REQUIRED
+    } else if (!isValidEmail(formData.email)) {
+      newErrors.email = ERROR_MESSAGES.INVALID_EMAIL
     }
 
     // Validation du domaine
     if (!formData.subject) {
-      newErrors.subject = 'Veuillez sélectionner un domaine'
+      newErrors.subject = ERROR_MESSAGES.SUBJECT_REQUIRED
     }
 
     // Validation du message
-    if (!formData.message.trim()) {
-      newErrors.message = 'Le message est requis'
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Le message doit contenir au moins 10 caractères'
+    if (!isNotEmpty(formData.message)) {
+      newErrors.message = ERROR_MESSAGES.MESSAGE_REQUIRED
+    } else if (!hasMinLength(formData.message, VALIDATION.MIN_MESSAGE_LENGTH)) {
+      newErrors.message = ERROR_MESSAGES.MESSAGE_MIN_LENGTH
     }
 
     // Validation du consentement RGPD
     if (!formData.consent) {
-      newErrors.consent = 'Vous devez accepter le traitement de vos données'
+      newErrors.consent = ERROR_MESSAGES.CONSENT_REQUIRED
     }
 
     setErrors(newErrors)
@@ -117,9 +119,7 @@ export function useContactForm(): UseContactFormReturn {
     setSubmitStatus('idle')
 
     try {
-      const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || '[FORMSPREE_ENDPOINT]'
-
-      const response = await fetch(formspreeEndpoint, {
+      const response = await fetch(API.FORMSPREE || '[FORMSPREE_ENDPOINT]', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
