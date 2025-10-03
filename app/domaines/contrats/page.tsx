@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { FileText, ArrowRight, CheckCircle, AlertCircle, Phone, Mail } from 'lucide-react'
 import type { Metadata } from 'next'
 import { generateDomainMetadata, generateDomainJsonLd } from '@/lib/metadata'
+import { domainDetails } from '@/data/domainDetails'
 
 export const metadata: Metadata = generateDomainMetadata({
   title: 'Avocat en Droit des Contrats à Strasbourg | Conseil & Contentieux Commercial',
@@ -17,39 +18,7 @@ const jsonLd = generateDomainJsonLd({
   serviceType: 'Droit des Contrats',
 })
 
-const casesHandled = [
-  'Rédaction et analyse de contrats civils ou commerciaux',
-  'Litiges liés à l\'inexécution, la résiliation ou la responsabilité contractuelle',
-  'Recouvrement de créances contractuelles',
-  'Contrats de vente et de prestations de services',
-  'Baux commerciaux et professionnels',
-  'Garanties et responsabilités contractuelles',
-  'Médiation et négociation commerciale',
-]
-
-const examples = [
-  {
-    title: 'Conseil entreprise',
-    description: 'Conseil à une entreprise pour sécuriser un contrat commercial.',
-  },
-  {
-    title: 'Rupture abusive',
-    description: 'Représentation d\'un particulier pour rupture abusive d\'un contrat de prestation de services.',
-  },
-]
-
-const processSteps = [
-  {
-    number: 1,
-    title: 'Audit du contrat',
-    description: 'Audit du contrat et analyse juridique approfondie.',
-  },
-  {
-    number: 2,
-    title: 'Mise en demeure et négociation',
-    description: 'Mise en demeure, négociation ou saisine du tribunal judiciaire selon le litige.',
-  },
-]
+const { casesHandled, examples, processSteps } = domainDetails.contrats
 
 export default function ContractsPage() {
   return (

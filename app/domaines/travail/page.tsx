@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Briefcase, CheckCircle, AlertCircle, Phone, Mail } from 'lucide-react'
 import type { Metadata } from 'next'
 import { generateDomainMetadata, generateDomainJsonLd } from '@/lib/metadata'
+import { domainDetails } from '@/data/domainDetails'
 
 export const metadata: Metadata = generateDomainMetadata({
   title: 'Avocat en Droit du Travail à Strasbourg | Licenciement, Harcèlement, Prud\'hommes',
@@ -17,39 +18,7 @@ const jsonLd = generateDomainJsonLd({
   serviceType: 'Droit du Travail',
 })
 
-const casesHandled = [
-  'Contentieux devant le conseil de prud\'hommes (CPH)',
-  'Licenciement abusif ou sans cause réelle et sérieuse',
-  'Harcèlement moral ou sexuel',
-  'Contestation d\'heures supplémentaires non payées',
-  'Rupture conventionnelle ou autres modes de rupture du contrat de travail',
-  'Discrimination et égalité professionnelle',
-  'Accident du travail et maladie professionnelle',
-]
-
-const examples = [
-  {
-    title: 'Licenciement sans motif',
-    description: 'Défense d\'un salarié licencié sans motif valable.',
-  },
-  {
-    title: 'Procédure disciplinaire',
-    description: 'Accompagnement d\'une entreprise dans une procédure disciplinaire.',
-  },
-]
-
-const processSteps = [
-  {
-    number: 1,
-    title: 'Phase de conciliation',
-    description: 'Phase de conciliation obligatoire devant le conseil de prud\'hommes.',
-  },
-  {
-    number: 2,
-    title: 'Audience de jugement',
-    description: 'Si échec, audience de jugement et plaidoirie devant la formation paritaire.',
-  },
-]
+const { casesHandled, examples, processSteps } = domainDetails.travail
 
 export default function TravailPage() {
   return (

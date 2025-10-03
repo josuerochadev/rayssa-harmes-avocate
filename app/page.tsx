@@ -2,71 +2,14 @@ import Hero from '@/components/sections/Hero'
 import DomainCard from '@/components/ui/DomainCard'
 import TestimonialCard from '@/components/ui/TestimonialCard'
 import Link from 'next/link'
-import { 
-  FileText, 
-  Heart, 
-  Globe, 
-  Briefcase, 
-  Home,
+import {
   ArrowRight,
   Shield,
   Clock,
   Users
 } from 'lucide-react'
-
-const domains = [
-  {
-    title: 'Droit des contrats',
-    description: 'Rédaction, négociation et contentieux contractuel. Conseils pour sécuriser vos relations d\'affaires et résoudre vos litiges commerciaux.',
-    href: '/domaines/contrats',
-    icon: FileText,
-  },
-  {
-    title: 'Droit de la famille',
-    description: 'Divorce, séparation, garde d\'enfants, succession. Accompagnement humain et juridique dans les moments difficiles de votre vie familiale.',
-    href: '/domaines/famille',
-    icon: Heart,
-  },
-  {
-    title: 'Droit des étrangers',
-    description: 'Titres de séjour, naturalisation, regroupement familial. Défense de vos droits dans vos démarches administratives et recours.',
-    href: '/domaines/etrangers',
-    icon: Globe,
-  },
-  {
-    title: 'Droit du travail',
-    description: 'Licenciement, harcèlement, discrimination, rupture conventionnelle. Protection de vos droits de salarié ou conseil aux employeurs.',
-    href: '/domaines/travail',
-    icon: Briefcase,
-  },
-  {
-    title: 'Droit immobilier',
-    description: 'Achat, vente, locations, copropriété, construction. Sécurisation de vos projets immobiliers et résolution des conflits de voisinage.',
-    href: '/domaines/immobilier',
-    icon: Home,
-  },
-]
-
-const featuredTestimonials = [
-  {
-    quote: 'Maître Harmes a su m\'accompagner avec professionnalisme et humanité dans une procédure de divorce complexe. Sa clarté d\'explication et sa réactivité m\'ont beaucoup aidée.',
-    author: 'Mme M.',
-    caseType: 'Droit de la famille',
-    location: 'Strasbourg',
-  },
-  {
-    quote: 'Grâce à ses conseils avisés, j\'ai pu régulariser ma situation administrative rapidement. Un vrai soulagement après des mois d\'incertitude.',
-    author: 'M. A.',
-    caseType: 'Droit des étrangers',
-    location: 'Haguenau',
-  },
-  {
-    quote: 'Excellente négociation lors de ma rupture conventionnelle. J\'ai obtenu des conditions bien meilleures que ce qui était initialement proposé.',
-    author: 'M. L.',
-    caseType: 'Droit du travail',
-    location: 'Strasbourg',
-  },
-]
+import { domains } from '@/data/domains'
+import { featuredTestimonials } from '@/data/testimonials'
 
 export default function HomePage() {
   return (

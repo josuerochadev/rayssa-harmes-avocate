@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Users, CheckCircle, AlertCircle, Phone, Mail } from 'lucide-react'
 import type { Metadata } from 'next'
 import { generateDomainMetadata, generateDomainJsonLd } from '@/lib/metadata'
+import { domainDetails } from '@/data/domainDetails'
 
 export const metadata: Metadata = generateDomainMetadata({
   title: 'Avocat en Droit des Étrangers à Strasbourg | Titres de Séjour, Naturalisation',
@@ -17,45 +18,7 @@ const jsonLd = generateDomainJsonLd({
   serviceType: 'Droit des Étrangers',
 })
 
-const casesHandled = [
-  'Recours contre un refus de titre de séjour',
-  'Contestation d\'une OQTF (obligation de quitter le territoire français)',
-  'Demande de naturalisation ou de nationalité française',
-  'Regroupement ou réunification familiale',
-  'Assignation à résidence',
-  'Recours devant la Cour nationale du droit d\'asile (CNDA)',
-  'Renouvellement de titres de séjour',
-  'Titres de séjour étudiant et professionnel',
-]
-
-const examples = [
-  {
-    title: 'Étudiant étranger',
-    description: 'Accompagnement d\'un étudiant étranger face au refus de renouvellement de son titre de séjour.',
-  },
-  {
-    title: 'Demandeur d\'asile',
-    description: 'Recours devant la CNDA pour un demandeur d\'asile débouté.',
-  },
-]
-
-const processSteps = [
-  {
-    number: 1,
-    title: 'Analyse de la décision',
-    description: 'Étude complète de la décision préfectorale ou administrative.',
-  },
-  {
-    number: 2,
-    title: 'Rédaction du recours',
-    description: 'Rédaction et dépôt du recours dans les délais légaux stricts.',
-  },
-  {
-    number: 3,
-    title: 'Représentation juridique',
-    description: 'Représentation devant la juridiction compétente (CRRV, tribunal administratif, CNDA, tribunal administratif de Nantes selon le cas).',
-  },
-]
+const { casesHandled, examples, processSteps } = domainDetails.etrangers
 
 export default function EtrangersPage() {
   return (

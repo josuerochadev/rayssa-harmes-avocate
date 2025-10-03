@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Home, CheckCircle, AlertCircle, Phone, Mail } from 'lucide-react'
 import type { Metadata } from 'next'
 import { generateDomainMetadata, generateDomainJsonLd } from '@/lib/metadata'
+import { domainDetails } from '@/data/domainDetails'
 
 export const metadata: Metadata = generateDomainMetadata({
   title: 'Avocat en Droit Immobilier à Strasbourg | Vente, Achat, Contentieux Immobilier',
@@ -17,39 +18,7 @@ const jsonLd = generateDomainJsonLd({
   serviceType: 'Droit Immobilier',
 })
 
-const casesHandled = [
-  'Litiges bailleurs / locataires (loyers impayés, charges, réparations, expulsion)',
-  'Conflits de copropriété et troubles de voisinage',
-  'Litiges liés à la vente ou l\'acquisition (vices cachés, promesse de vente, malfaçons)',
-  'Baux d\'habitation et commerciaux',
-  'Servitudes et mitoyenneté',
-  'Droit de la construction',
-  'Urbanisme et permis de construire',
-]
-
-const examples = [
-  {
-    title: 'Propriétaire vs locataire',
-    description: 'Défense d\'un propriétaire face à un locataire en impayés.',
-  },
-  {
-    title: 'Vice caché',
-    description: 'Assistance d\'un acquéreur ayant découvert un vice caché après achat.',
-  },
-]
-
-const processSteps = [
-  {
-    number: 1,
-    title: 'Échanges amiables',
-    description: 'Tentative de règlement amiable et mise en demeure.',
-  },
-  {
-    number: 2,
-    title: 'Saisine judiciaire',
-    description: 'Si nécessaire, saisine du juge compétent (tribunal judiciaire, juge des contentieux de la protection).',
-  },
-]
+const { casesHandled, examples, processSteps } = domainDetails.immobilier
 
 export default function ImmobilierPage() {
   return (

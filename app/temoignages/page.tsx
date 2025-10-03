@@ -3,90 +3,14 @@ import CaseStudyItem from '@/components/ui/CaseStudyItem'
 import Link from 'next/link'
 import { Star, Users, ArrowRight, AlertTriangle } from 'lucide-react'
 import type { Metadata } from 'next'
+import { testimonials } from '@/data/testimonials'
+import { caseStudies } from '@/data/caseStudies'
 
 export const metadata: Metadata = {
   title: 'Témoignages Clients - Avocat Strasbourg | Avis et Cas de Succès',
   description: 'Découvrez les témoignages de mes clients et mes cas de succès. Avis authentiques sur mon accompagnement juridique à Strasbourg.',
   keywords: 'témoignages avocat Strasbourg, avis clients, cas succès, satisfaction clients, résultats juridiques',
 }
-
-const testimonials = [
-  {
-    quote: 'Maître [NOM] a su m\'accompagner avec professionnalisme et humanité dans une procédure de divorce complexe. Sa clarté d\'explication et sa réactivité m\'ont beaucoup aidée dans cette période difficile.',
-    author: 'Mme M.',
-    caseType: 'Droit de la famille',
-    location: 'Strasbourg',
-  },
-  {
-    quote: 'Grâce à ses conseils avisés, j\'ai pu régulariser ma situation administrative rapidement. Un vrai soulagement après des mois d\'incertitude. Je recommande vivement.',
-    author: 'M. A.',
-    caseType: 'Droit des étrangers',
-    location: 'Haguenau',
-  },
-  {
-    quote: 'Excellente négociation lors de ma rupture conventionnelle. J\'ai obtenu des conditions bien meilleures que ce qui était initialement proposé par mon employeur.',
-    author: 'M. L.',
-    caseType: 'Droit du travail',
-    location: 'Strasbourg',
-  },
-  {
-    quote: 'Accompagnement parfait pour l\'achat de notre maison. Tous les pièges ont été évités grâce à son expertise. Je suis aujourd\'hui propriétaire en toute sérénité.',
-    author: 'M. et Mme D.',
-    caseType: 'Droit immobilier',
-    location: 'Schiltigheim',
-  },
-  {
-    quote: 'Litige commercial résolu de manière très professionnelle. La stratégie mise en place a permis d\'obtenir gain de cause rapidement et efficacement.',
-    author: 'Société X.',
-    caseType: 'Droit des contrats',
-    location: 'Strasbourg',
-  },
-  {
-    quote: 'Merci pour votre aide dans ma procédure de naturalisation. Votre connaissance des rouages administratifs a fait la différence. Aujourd\'hui je suis français !',
-    author: 'M. R.',
-    caseType: 'Droit des étrangers',
-    location: 'Sélestat',
-  },
-  {
-    quote: 'Succession complexe réglée avec brio. Malgré les tensions familiales, vous avez trouvé une solution équitable pour tous. Un grand merci.',
-    author: 'Famille T.',
-    caseType: 'Droit de la famille',
-    location: 'Strasbourg',
-  },
-  {
-    quote: 'Défense exemplaire face au harcèlement que je subissais au travail. Résultat probant aux prud\'hommes. Je ne peux que vous recommander.',
-    author: 'Mme K.',
-    caseType: 'Droit du travail',
-    location: 'Illkirch',
-  },
-]
-
-const caseStudies = [
-  {
-    title: 'Litige commercial - Rupture abusive de contrat',
-    problem: 'Un client entrepreneur avait vu son contrat de distribution résilié brutalement par son partenaire principal, mettant en péril la continuité de son activité.',
-    approach: 'Analyse approfondie des clauses contractuelles, mise en demeure pour rupture abusive, puis assignation devant le tribunal commercial avec demandes de dommages-intérêts.',
-    result: 'Obtention de 85 000€ de dommages-intérêts pour rupture abusive, permettant au client de redresser sa situation financière et de développer de nouveaux partenariats.',
-  },
-  {
-    title: 'Droit de la famille - Garde d\'enfants internationale',
-    problem: 'Divorce avec des enfants résidant à l\'étranger. Le parent français souhaitait obtenir un droit de visite élargi et le retour des enfants en France.',
-    approach: 'Procédure coordonnée entre les juridictions française et étrangère, médiation familiale internationale, négociation d\'un accord parental équilibré.',
-    result: 'Accord amiable permettant le retour des enfants en France avec garde alternée, préservant l\'intérêt supérieur de l\'enfant et les liens avec les deux parents.',
-  },
-  {
-    title: 'Droit des étrangers - Régularisation complexe',
-    problem: 'Situation administrative irrégulière de longue durée avec risque d\'OQTF (Obligation de Quitter le Territoire Français) pour une famille avec enfants scolarisés.',
-    approach: 'Constitution d\'un dossier de régularisation sur la base de la vie privée et familiale, recours hiérarchique, puis recours contentieux devant le tribunal administratif.',
-    result: 'Obtention d\'un titre de séjour "vie privée et familiale" pour toute la famille, régularisation définitive de leur situation en France.',
-  },
-  {
-    title: 'Droit immobilier - Vice caché majeur',
-    problem: 'Découverte de malfaçons importantes dans un logement récemment acheté, avec risque structurel et coûts de réparation évalués à 40 000€.',
-    approach: 'Expertise technique contradictoire, négociation amiable avec les vendeurs et leur assurance, puis procédure judiciaire pour vice caché.',
-    result: 'Résolution amiable avec prise en charge intégrale des travaux de réparation par l\'assurance décennale, évitant une procédure longue et coûteuse.',
-  },
-]
 
 export default function TestimonialsPage() {
   return (

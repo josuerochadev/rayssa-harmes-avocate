@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Heart, ArrowRight, CheckCircle, AlertCircle, Phone, Mail } from 'lucide-react'
 import type { Metadata } from 'next'
 import { generateDomainMetadata, generateDomainJsonLd } from '@/lib/metadata'
+import { domainDetails } from '@/data/domainDetails'
 
 export const metadata: Metadata = generateDomainMetadata({
   title: 'Avocat en Droit de la Famille à Strasbourg | Divorce, Garde d\'Enfants, Succession',
@@ -17,39 +18,7 @@ const jsonLd = generateDomainJsonLd({
   serviceType: 'Droit de la Famille',
 })
 
-const casesHandled = [
-  'Divorce amiable ou contentieux',
-  'Fixation ou révision de l\'autorité parentale, garde et droit de visite',
-  'Pension alimentaire (fixation, révision, recouvrement)',
-  'Prestation compensatoire',
-  'Successions et partages de biens',
-  'Violence conjugale et ordonnances de protection',
-  'Médiation familiale',
-]
-
-const examples = [
-  {
-    title: 'Divorce par consentement mutuel',
-    description: 'Accompagnement d\'un couple dans un divorce par consentement mutuel.',
-  },
-  {
-    title: 'Garde alternée',
-    description: 'Défense d\'un parent pour obtenir une garde alternée.',
-  },
-]
-
-const processSteps = [
-  {
-    number: 1,
-    title: 'Tentative de règlement amiable',
-    description: 'Tentative de règlement amiable si possible.',
-  },
-  {
-    number: 2,
-    title: 'Rédaction et représentation',
-    description: 'Rédaction des actes et représentation devant le juge aux affaires familiales.',
-  },
-]
+const { casesHandled, examples, processSteps } = domainDetails.famille
 
 export default function FamillePage() {
   return (
