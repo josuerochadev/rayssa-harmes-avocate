@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/josuerochadev/rayssa-eskinazi-avocate/actions/workflows/ci.yml/badge.svg)](https://github.com/josuerochadev/rayssa-eskinazi-avocate/actions/workflows/ci.yml)
 
-Site vitrine professionnel pour un cabinet d'avocat basé à Strasbourg, développé avec Next.js 14 et déployé sur Vercel.
+Site vitrine professionnel pour un avocate basé à Strasbourg, développé avec Next.js 14 et déployé sur Vercel.
 
 ## 🎯 Objectifs
 
