@@ -1,104 +1,17 @@
 'use client'
 
-import { useState } from 'react'
 import { Send, AlertCircle } from 'lucide-react'
+import { useContactForm } from '@/lib/hooks/useContactForm'
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
-    consent: false,
-  })
-  const [errors, setErrors] = useState<Record<string, string>>({})
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
-
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {}
-
-    if (!formData.name.trim()) {
-      newErrors.name = 'Le nom est requis'
-    }
-
-    if (!formData.email.trim()) {
-      newErrors.email = 'L\'email est requis'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Email invalide'
-    }
-
-    if (!formData.subject) {
-      newErrors.subject = 'Veuillez sélectionner un domaine'
-    }
-
-    if (!formData.message.trim()) {
-      newErrors.message = 'Le message est requis'
-    } else if (formData.message.trim().length < 10) {
-      newErrors.message = 'Le message doit contenir au moins 10 caractères'
-    }
-
-    if (!formData.consent) {
-      newErrors.consent = 'Vous devez accepter le traitement de vos données'
-    }
-
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
-    }))
-    // Clear error when user types
-    if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }))
-    }
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-
-    if (!validateForm()) {
-      return
-    }
-
-    setIsSubmitting(true)
-    setSubmitStatus('idle')
-
-    try {
-      // Placeholder for Formspree integration
-      const response = await fetch('[FORMSPREE_ENDPOINT]', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
-
-      if (response.ok) {
-        setSubmitStatus('success')
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          subject: '',
-          message: '',
-          consent: false,
-        })
-      } else {
-        setSubmitStatus('error')
-      }
-    } catch (error) {
-      setSubmitStatus('error')
-      console.error('Form submission error:', error)
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
+  const {
+    formData,
+    errors,
+    isSubmitting,
+    submitStatus,
+    handleInputChange,
+    handleSubmit,
+  } = useContactForm()
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6" noValidate>
