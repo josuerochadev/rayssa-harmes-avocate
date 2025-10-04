@@ -9,6 +9,10 @@ import { usePathname } from 'next/navigation'
  * Détecte les éléments avec classe `.animate-on-scroll` lors du défilement
  * et leur ajoute la classe `visible` pour déclencher les animations CSS.
  *
+ * Respecte la préférence utilisateur prefers-reduced-motion :
+ * - Si activée, tous les éléments sont immédiatement visibles sans animation
+ * - Si désactivée, utilise IntersectionObserver pour animer au scroll
+ *
  * Configuration de l'observer :
  * - threshold: 0.1 (élément visible à 10%)
  * - rootMargin: -50px en bas pour déclencher avant d'être complètement visible
@@ -41,6 +45,20 @@ export default function ScrollAnimation() {
   const pathname = usePathname()
 
   useEffect(() => {
+    // Vérifier la préférence prefers-reduced-motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    // Si l'utilisateur préfère réduire les animations, rendre tous les éléments immédiatement visibles
+    if (prefersReducedMotion) {
+      const timeout = setTimeout(() => {
+        const elements = document.querySelectorAll('.animate-on-scroll')
+        elements.forEach((el) => el.classList.add('visible'))
+      }, 0)
+
+      return () => clearTimeout(timeout)
+    }
+
+    // Sinon, utiliser l'IntersectionObserver pour les animations au scroll
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

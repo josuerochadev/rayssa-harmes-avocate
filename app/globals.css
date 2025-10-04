@@ -4,6 +4,43 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;500;600;700&display=swap');
 
+/* NProgress - Loading bar styles */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #882D17; /* primary color */
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+}
+
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #882D17, 0 0 5px #882D17;
+  opacity: 1.0;
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Respect prefers-reduced-motion for nprogress */
+@media (prefers-reduced-motion: reduce) {
+  #nprogress .bar {
+    transition: none !important;
+  }
+
+  #nprogress .peg {
+    display: none !important;
+  }
+}
+
 @layer base {
   html {
     @apply scroll-smooth;
@@ -207,4 +244,49 @@ select:focus {
 /* Skip to content link */
 .skip-link {
   @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded;
+}
+
+/* Respect prefers-reduced-motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable scroll animations */
+  .animate-on-scroll {
+    @apply opacity-100 translate-y-0;
+    transition: none !important;
+  }
+
+  /* Disable button hover animations */
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .btn-outline:hover,
+  .btn-green:hover,
+  .btn-accent:hover {
+    transform: none !important;
+  }
+
+  /* Disable card hover animations */
+  .card:hover,
+  .card-secondary:hover,
+  .card-accent:hover {
+    transform: none !important;
+  }
+
+  /* Disable hover lift/scale */
+  .hover-lift:hover,
+  .hover-scale:hover {
+    transform: none !important;
+  }
+
+  /* Disable link underline animation */
+  .link-underline::after {
+    transition: none !important;
+  }
 }

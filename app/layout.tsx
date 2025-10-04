@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import ScrollAnimation from '@/components/ui/ScrollAnimation'
+import NavigationLoader from '@/components/ui/NavigationLoader'
 import WebVitals from '@/components/analytics/WebVitals'
 import PlausibleScript from '@/components/analytics/PlausibleScript'
 
@@ -69,6 +70,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col">
         <WebVitals />
         <ScrollAnimation />
+        <NavigationLoader />
         <a href="#main-content" className="skip-link">
           Aller au contenu principal
         </a>
