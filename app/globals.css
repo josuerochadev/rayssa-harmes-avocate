@@ -73,6 +73,7 @@
 
   .link-underline:hover::after {
     width: 100%;
+    will-change: width;
   }
   
   button, .btn {
@@ -81,6 +82,14 @@
   
   .btn-primary {
     @apply bg-primary text-white px-8 py-4 rounded-button font-medium shadow-sm hover:shadow-soft hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;
+  }
+
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  .btn-outline:hover,
+  .btn-green:hover,
+  .btn-accent:hover {
+    will-change: transform, box-shadow;
   }
 
   .btn-secondary {
@@ -114,6 +123,12 @@
     @apply bg-white rounded-card border border-neutral-200 hover:shadow-soft-lg hover:scale-[1.02] transition-all duration-300;
   }
 
+  .card:hover,
+  .card-secondary:hover,
+  .card-accent:hover {
+    will-change: transform, box-shadow;
+  }
+
   .card-secondary {
     @apply bg-secondary rounded-card border border-neutral-200 hover:shadow-soft-lg hover:scale-[1.02] transition-all duration-300;
   }
@@ -124,10 +139,12 @@
   
   .animate-on-scroll {
     @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+    will-change: opacity, transform;
   }
-  
+
   .animate-on-scroll.visible {
     @apply opacity-100 translate-y-0;
+    will-change: auto;
   }
 }
 
@@ -141,8 +158,16 @@
   @apply transition-transform duration-200 hover:-translate-y-1;
 }
 
+.hover-lift:hover {
+  will-change: transform;
+}
+
 .hover-scale {
   @apply transition-transform duration-200 hover:scale-105;
+}
+
+.hover-scale:hover {
+  will-change: transform;
 }
 
 /* Input styles */

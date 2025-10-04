@@ -4,6 +4,8 @@ import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import ScrollAnimation from '@/components/ui/ScrollAnimation'
+import WebVitals from '@/components/analytics/WebVitals'
+import PlausibleScript from '@/components/analytics/PlausibleScript'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const besley = Besley({ subsets: ['latin'], variable: '--font-besley' })
@@ -62,8 +64,10 @@ export default function RootLayout({
     <html lang="fr" className={`${inter.variable} ${besley.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <PlausibleScript />
       </head>
       <body className="min-h-screen flex flex-col">
+        <WebVitals />
         <ScrollAnimation />
         <a href="#main-content" className="skip-link">
           Aller au contenu principal
