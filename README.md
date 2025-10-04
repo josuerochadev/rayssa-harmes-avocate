@@ -15,24 +15,28 @@ Site vitrine professionnel pour un avocate basé à Strasbourg, développé avec
 
 - **Framework** : Next.js 14 (App Router)
 - **Styling** : Tailwind CSS
+- **Langage** : TypeScript
+- **Icons** : Lucide React
+- **Tests unitaires** : Vitest + Testing Library
+- **Tests E2E** : Playwright
 - **Déploiement** : Vercel
 - **Analytics** : Plausible (RGPD-friendly)
 - **Formulaires** : Formspree
 - **Rendez-vous** : Calendly
-- **Langues** : TypeScript
 
 ## 🎨 Design & Branding
 
 ### Palette de couleurs
-- **Primaire** : `#7A3E1E` (bordeaux)
-- **Secondaire** : `#F2E8DC` (beige doux)
-- **Accent** : `#B58B00` (doré discret)
-- **Blanc** : `#FFFFFF`
-- **Gris texte** : `#333333`
+- **Primaire** : `#A85840` (terracotta principal)
+- **Secondaire** : `#F9F6F2` (beige très clair)
+- **Accent** : `#D4A574` (or discret / sable doré)
+- **Success** : `#2D5F3F` (vert forêt discret)
+- **Neutral** : Gamme de gris 50-900
 
 ### Typographie
 - **Titres** : Roboto Slab (Serif)
 - **Texte** : Inter (Sans-serif)
+- **Taille de base** : 18px (1.125rem) pour une meilleure lisibilité
 
 ## 📁 Structure du Projet
 
@@ -48,7 +52,7 @@ Site vitrine professionnel pour un avocate basé à Strasbourg, développé avec
 │   │   ├── etrangers/          # Droit des étrangers
 │   │   ├── travail/            # Droit du travail
 │   │   └── immobilier/         # Droit immobilier
-│   ├── témoignages/            # Témoignages clients
+│   ├── temoignages/            # Témoignages clients
 │   ├── honoraires/             # Grille tarifaire
 │   ├── contact/                # Contact et RDV
 │   ├── mentions-legales/       # Mentions légales
@@ -60,6 +64,9 @@ Site vitrine professionnel pour un avocate basé à Strasbourg, développé avec
 │   ├── layout/                # Header, Footer
 │   ├── ui/                    # Composants UI
 │   └── sections/              # Sections spécifiques
+├── e2e/                       # Tests End-to-End (Playwright)
+├── lib/                       # Utilitaires et helpers
+├── data/                      # Données statiques
 ├── public/                    # Assets statiques
 └── package.json
 ```
@@ -97,10 +104,41 @@ NEXT_PUBLIC_PLAUSIBLE_DOMAIN="votre-domaine.com"
 ### 3. Développement local
 
 ```bash
-npm run dev
+npm run dev               # Démarrer le serveur de développement
+npm run build             # Build de production
+npm run start             # Démarrer le serveur de production
+npm run lint              # Linter le code
+npm run type-check        # Vérification TypeScript
 ```
 
 Le site sera accessible à l'adresse `http://localhost:3000`.
+
+## 🧪 Tests
+
+Le projet inclut des tests unitaires (Vitest) et des tests End-to-End (Playwright).
+
+### Tests unitaires
+
+```bash
+npm run test              # Lancer les tests en mode watch
+npm run test:run          # Lancer les tests une fois
+npm run test:ui           # Interface UI pour les tests
+npm run test:coverage     # Générer le rapport de couverture
+```
+
+### Tests E2E
+
+```bash
+npm run test:e2e          # Lancer les tests E2E
+npm run test:e2e:ui       # Interface UI pour les tests E2E
+npm run test:e2e:headed   # Lancer avec navigateur visible
+```
+
+### Lancer tous les tests
+
+```bash
+npm run test:all          # Tests unitaires + E2E
+```
 
 ## 📝 Contenus à Personnaliser
 
@@ -163,12 +201,23 @@ Le site sera accessible à l'adresse `http://localhost:3000`.
 
 ## 🚀 Déploiement sur Vercel
 
+### CI/CD avec GitHub Actions
+
+Le projet inclut une pipeline CI/CD qui s'exécute automatiquement :
+- ✅ Vérification TypeScript
+- ✅ Lint du code
+- ✅ Tests unitaires (Vitest)
+- ✅ Tests E2E (Playwright)
+- ✅ Build de production
+
+Le badge CI en haut du README indique le statut de la dernière exécution.
+
 ### Déploiement automatique
 
 1. Poussez votre code sur GitHub
 2. Connectez votre repository à [Vercel](https://vercel.com)
 3. Configurez les variables d'environnement dans les paramètres Vercel
-4. Le déploiement se fera automatiquement
+4. Le déploiement se fera automatiquement après chaque push sur `main`
 
 ### Variables d'environnement Vercel
 
@@ -263,18 +312,28 @@ Pour toute question technique ou modification :
 
 ## 📋 Checklist de Mise en Production
 
+### Configuration
 - [ ] Remplacer tous les placeholders `[PLACEHOLDER]`
 - [ ] Ajouter la photo professionnelle
 - [ ] Configurer Formspree
 - [ ] Configurer Calendly
-- [ ] Intégrer Google Maps
+- [ ] Intégrer Google Maps (optionnel)
 - [ ] Ajouter Plausible Analytics
+
+### Tests
+- [ ] Tous les tests unitaires passent (`npm run test:run`)
+- [ ] Tous les tests E2E passent (`npm run test:e2e`)
+- [ ] Vérification TypeScript sans erreurs (`npm run type-check`)
+- [ ] Lint sans erreurs (`npm run lint`)
 - [ ] Tester le formulaire de contact
 - [ ] Vérifier l'accessibilité
+
+### Déploiement
 - [ ] Tester sur mobile
 - [ ] Configurer les redirections si nécessaire
 - [ ] Mettre à jour le sitemap si ajout de pages
 - [ ] Test final sur tous les navigateurs
+- [ ] Vérifier le build de production (`npm run build`)
 
 ---
 
