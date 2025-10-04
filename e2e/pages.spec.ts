@@ -10,9 +10,9 @@ test.describe('Pages Content E2E', () => {
     // Check for CTA button
     await expect(page.getByRole('link', { name: /prendre rdv/i }).first()).toBeVisible()
 
-    // Check for domain cards (use first to avoid strict mode violation)
-    await expect(page.getByText(/droit des contrats/i).first()).toBeVisible()
-    await expect(page.getByText(/droit de la famille/i).first()).toBeVisible()
+    // Check for domain cards in main content (not in header dropdown)
+    await expect(page.locator('#main-content').getByText(/droit des contrats/i).first()).toBeVisible()
+    await expect(page.locator('#main-content').getByText(/droit de la famille/i).first()).toBeVisible()
   })
 
   test('should display about page with lawyer information', async ({ page }) => {
@@ -130,7 +130,7 @@ test.describe('Pages Content E2E', () => {
     await page.goto('/domaines/contrats', { waitUntil: 'load' })
 
     // Check for process/steps section (the actual text is "Procédure type")
-    await expect(page.getByText(/procédure type|cas traités/i)).toBeVisible()
+    await expect(page.getByText(/procédure type|cas traités/i).first()).toBeVisible()
   })
 
   test('should have working internal links in content', async ({ page }) => {

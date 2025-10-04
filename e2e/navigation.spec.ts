@@ -15,7 +15,7 @@ test.describe('Navigation E2E', () => {
     // Test Témoignages link
     await page.goto('/', { waitUntil: 'load' })
     await page.getByRole('link', { name: 'Témoignages' }).first().click()
-    await expect(page).toHaveURL('/témoignages')
+    await expect(page).toHaveURL('/temoignages')
 
     // Test Honoraires link
     await page.goto('/', { waitUntil: 'load' })
@@ -86,8 +86,8 @@ test.describe('Navigation E2E', () => {
     // Wait for menu to be visible - check for the mobile nav specifically
     await expect(page.locator('nav.fixed.right-0')).toBeVisible()
 
-    // Click on a navigation item
-    await page.getByRole('link', { name: 'Contact' }).last().click()
+    // Click on Contact link specifically in the mobile nav to avoid desktop header interception
+    await page.locator('nav.fixed.right-0').getByRole('link', { name: 'Contact' }).click()
 
     // Should navigate and close menu
     await expect(page).toHaveURL('/contact')
