@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { isValidEmail, isNotEmpty, hasMinLength } from '@/lib/utils/validation'
-import { API, ERROR_MESSAGES, VALIDATION } from '@/lib/constants'
+import { ERROR_MESSAGES, VALIDATION } from '@/lib/constants'
 
 export interface ContactFormData {
   name: string
@@ -160,7 +160,8 @@ export function useContactForm(): UseContactFormReturn {
     setSubmitStatus('idle')
 
     try {
-      const response = await fetch(API.FORMSPREE || '[FORMSPREE_ENDPOINT]', {
+      // Utiliser l'API route Next.js pour validation backend et rate limiting
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -168,11 +169,21 @@ export function useContactForm(): UseContactFormReturn {
         body: JSON.stringify(formData),
       })
 
+      const data = await response.json()
+
       if (response.ok) {
         setSubmitStatus('success')
         // Réinitialise le formulaire après succès
         setFormData(INITIAL_FORM_DATA)
         setErrors({})
+      } else if (response.status === 400 && data.errors) {
+        // Erreurs de validation backend
+        setErrors(data.errors)
+        setSubmitStatus('idle')
+      } else if (response.status === 429) {
+        // Rate limit dépassé
+        setErrors({ _form: data.error || 'Trop de tentatives. Veuillez réessayer plus tard.' })
+        setSubmitStatus('error')
       } else {
         setSubmitStatus('error')
       }
