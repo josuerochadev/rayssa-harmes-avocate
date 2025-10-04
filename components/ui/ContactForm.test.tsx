@@ -122,7 +122,10 @@ describe('ContactForm Integration', () => {
 
   it('should submit form successfully with valid data', async () => {
     const user = userEvent.setup()
-    const mockFetch = vi.fn().mockResolvedValue({ ok: true })
+    const mockFetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ success: true })
+    })
     global.fetch = mockFetch
 
     render(<ContactForm />)
@@ -145,7 +148,10 @@ describe('ContactForm Integration', () => {
 
   it('should show error message on submission failure', async () => {
     const user = userEvent.setup()
-    const mockFetch = vi.fn().mockResolvedValue({ ok: false })
+    const mockFetch = vi.fn().mockResolvedValue({
+      ok: false,
+      json: async () => ({ error: 'Submission failed' })
+    })
     global.fetch = mockFetch
 
     render(<ContactForm />)
@@ -186,7 +192,10 @@ describe('ContactForm Integration', () => {
 
   it('should show loading state while submitting', async () => {
     const user = userEvent.setup()
-    const mockFetch = vi.fn(() => new Promise((resolve) => setTimeout(() => resolve({ ok: true } as Response), 100)))
+    const mockFetch = vi.fn(() => new Promise((resolve) => setTimeout(() => resolve({
+      ok: true,
+      json: async () => ({ success: true })
+    } as Response), 100)))
     global.fetch = mockFetch as any
 
     render(<ContactForm />)

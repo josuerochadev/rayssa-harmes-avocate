@@ -232,7 +232,10 @@ describe('useContactForm', () => {
 
     it('should submit successfully with valid data', async () => {
       const { result } = renderHook(() => useContactForm())
-      const mockFetch = vi.fn().mockResolvedValue({ ok: true })
+      const mockFetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({ success: true })
+      })
       global.fetch = mockFetch
 
       act(() => {
@@ -266,7 +269,10 @@ describe('useContactForm', () => {
 
     it('should reset form after successful submission', async () => {
       const { result } = renderHook(() => useContactForm())
-      const mockFetch = vi.fn().mockResolvedValue({ ok: true })
+      const mockFetch = vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({ success: true })
+      })
       global.fetch = mockFetch
 
       act(() => {
@@ -306,7 +312,10 @@ describe('useContactForm', () => {
 
     it('should handle submission error', async () => {
       const { result } = renderHook(() => useContactForm())
-      const mockFetch = vi.fn().mockResolvedValue({ ok: false })
+      const mockFetch = vi.fn().mockResolvedValue({
+        ok: false,
+        json: async () => ({ error: 'Submission failed' })
+      })
       global.fetch = mockFetch
 
       act(() => {
