@@ -3,6 +3,20 @@ import Image from 'next/image'
 import { Calendar, Mail, Shield, Clock, Star, Heart } from 'lucide-react'
 import LanguageBadges from '@/components/ui/LanguageBadges'
 
+/**
+ * Section Hero de la page d'accueil
+ *
+ * Affiche la bannière principale avec :
+ * - Badges de langues parlées
+ * - Zone d'intervention géographique
+ * - Titre principal et sous-titre
+ * - Texte de présentation
+ * - CTAs (Prendre RDV, Contact)
+ * - Points forts du cabinet (confiance, expertise, etc.)
+ * - Image professionnelle avec ombre
+ *
+ * @returns Composant section hero
+ */
 export default function Hero() {
   return (
     <section className="relative section-hero geometric-accent">

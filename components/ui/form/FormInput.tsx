@@ -1,15 +1,36 @@
+/**
+ * Props pour le composant FormInput
+ */
 interface FormInputProps {
+  /** ID unique du champ */
   id: string
+  /** Nom du champ (utilisé pour l'état du formulaire) */
   name: string
+  /** Type du champ input */
   type?: 'text' | 'email' | 'tel'
+  /** Label affiché au-dessus du champ */
   label: string
+  /** Valeur actuelle du champ */
   value: string
+  /** Handler de changement */
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  /** Message d'erreur de validation */
   error?: string
+  /** Champ requis (affiche *) */
   required?: boolean
+  /** Texte de placeholder */
   placeholder?: string
 }
 
+/**
+ * Composant de champ input avec gestion d'erreurs
+ *
+ * Input accessible avec label, états d'erreur, et styles cohérents.
+ * Utilise aria-invalid et aria-describedby pour l'accessibilité.
+ *
+ * @param props - Props du composant
+ * @returns Input de formulaire stylisé
+ */
 export default function FormInput({
   id,
   name,

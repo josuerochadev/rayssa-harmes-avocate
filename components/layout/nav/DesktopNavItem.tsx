@@ -2,11 +2,28 @@ import Link from 'next/link'
 import { ChevronDown } from 'lucide-react'
 import type { NavigationItem } from '@/data/navigation'
 
+/**
+ * Props pour le composant DesktopNavItem
+ */
 interface DesktopNavItemProps {
+  /** Item de navigation avec nom, href et enfants optionnels */
   item: NavigationItem
+  /** Fonction déterminant si un lien est actif */
   isActive: (href: string) => boolean
 }
 
+/**
+ * Item de navigation pour le menu desktop avec dropdown
+ *
+ * Composant de navigation pour header desktop gérant :
+ * - Lien principal avec état actif
+ * - Dropdown au hover si l'item a des enfants
+ * - Icône ChevronDown avec rotation au hover
+ * - Animation de fade-in et slide-up pour le dropdown
+ *
+ * @param props - Props du composant
+ * @returns Item de navigation desktop
+ */
 export default function DesktopNavItem({ item, isActive }: DesktopNavItemProps) {
   return (
     <div className="relative group">

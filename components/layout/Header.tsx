@@ -9,6 +9,22 @@ import DesktopNavItem from './nav/DesktopNavItem'
 import MobileNavItem from './nav/MobileNavItem'
 import { navigation } from '@/data/navigation'
 
+/**
+ * Header principal du site avec navigation responsive
+ *
+ * Composant complexe gérant :
+ * - Navigation desktop avec dropdowns
+ * - Menu mobile avec overlay
+ * - Barre de contact sticky (téléphone, email)
+ * - Badges de langues parlées
+ * - État actif des liens de navigation
+ * - Animation au scroll (shadow)
+ *
+ * Le header devient sticky avec ombre au scroll > 10px.
+ * Le menu mobile s'ouvre en overlay avec backdrop sur mobile/tablette.
+ *
+ * @returns Composant header avec navigation
+ */
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -22,6 +38,11 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  /**
+   * Détermine si un lien de navigation est actif
+   * @param href - URL du lien à vérifier
+   * @returns true si le lien correspond au pathname actuel
+   */
   const isActiveLink = (href: string) => {
     if (href === '/') {
       return pathname === '/'

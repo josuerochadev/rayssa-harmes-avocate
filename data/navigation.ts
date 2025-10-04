@@ -1,16 +1,30 @@
+/**
+ * Type pour un item enfant de navigation (sous-menu)
+ */
 export interface NavigationChild {
+  /** Nom affiché du lien */
   name: string
+  /** URL de destination */
   href: string
 }
 
+/**
+ * Type pour un item de navigation principal
+ */
 export interface NavigationItem {
+  /** Nom affiché du lien */
   name: string
+  /** URL de destination */
   href: string
+  /** Items enfants optionnels (sous-menu dropdown) */
   children?: NavigationChild[]
 }
 
 /**
  * Configuration de la navigation principale du site
+ *
+ * Tableau d'items de navigation utilisé par le Header pour générer
+ * les menus desktop (avec dropdowns) et mobile.
  */
 export const navigation: NavigationItem[] = [
   { name: 'Accueil', href: '/' },

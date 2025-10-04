@@ -3,11 +3,34 @@
 import { useEffect } from 'react'
 import { Calendar } from 'lucide-react'
 
+/**
+ * Props pour le composant CalendlyWidget
+ */
 interface CalendlyWidgetProps {
+  /** URL de la page Calendly (défaut: https://calendly.com/harmes-avocat) */
   url?: string
+  /** Classes CSS additionnelles */
   className?: string
 }
 
+/**
+ * Widget de prise de rendez-vous intégré via Calendly
+ *
+ * Composant client qui charge dynamiquement les scripts et styles Calendly
+ * pour permettre la prise de rendez-vous en ligne. Gère :
+ * - Chargement asynchrone du SDK Calendly (CSS + JS)
+ * - Ouverture du widget en popup ou inline
+ * - Fallback vers lien direct si le script n'est pas chargé
+ * - Nettoyage des scripts au démontage du composant
+ *
+ * @param props - Props du composant
+ * @returns Composant widget Calendly avec bouton et widget inline
+ *
+ * @example
+ * ```tsx
+ * <CalendlyWidget url="https://calendly.com/harmes-avocat" />
+ * ```
+ */
 export default function CalendlyWidget({
   url = 'https://calendly.com/harmes-avocat',
   className = ''

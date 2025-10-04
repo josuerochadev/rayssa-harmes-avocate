@@ -1,8 +1,16 @@
+/**
+ * Props pour le composant LanguageBadges
+ */
 interface LanguageBadgesProps {
+  /** Variante visuelle du badge (défaut: 'header') */
   variant?: 'header' | 'footer'
+  /** Classes CSS additionnelles */
   className?: string
 }
 
+/**
+ * Liste des langues parlées par l'avocate
+ */
 const languages = [
   { code: 'FR', name: 'Français' },
   { code: 'PT', name: 'Português' },
@@ -10,6 +18,25 @@ const languages = [
   { code: 'ES', name: 'Español' },
 ]
 
+/**
+ * Badges d'affichage des langues parlées
+ *
+ * Affiche les langues maîtrisées par l'avocate sous forme de badges
+ * avec codes ISO (FR, PT, EN, ES). Deux variantes de style disponibles
+ * pour s'adapter au header et au footer.
+ *
+ * @param props - Props du composant
+ * @returns Composant badges de langues
+ *
+ * @example
+ * ```tsx
+ * // Dans le header
+ * <LanguageBadges variant="header" />
+ *
+ * // Dans le footer
+ * <LanguageBadges variant="footer" />
+ * ```
+ */
 export default function LanguageBadges({ variant = 'header', className = '' }: LanguageBadgesProps) {
   const baseClasses = 'inline-flex items-center px-2 py-1 text-xs font-medium rounded transition-colors'
   

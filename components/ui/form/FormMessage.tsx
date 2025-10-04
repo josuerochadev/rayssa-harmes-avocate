@@ -1,9 +1,24 @@
+/**
+ * Props pour le composant FormMessage
+ */
 interface FormMessageProps {
+  /** Type de message (success: vert, error: rouge) */
   type: 'success' | 'error'
+  /** Titre du message */
   title: string
+  /** Contenu du message (texte ou JSX) */
   message: string | React.ReactNode
 }
 
+/**
+ * Composant de message de feedback pour formulaire
+ *
+ * Affiche un message de succès (vert) ou d'erreur (rouge) avec icône,
+ * titre et contenu. Utilisé pour le feedback après soumission.
+ *
+ * @param props - Props du composant
+ * @returns Message de feedback stylisé
+ */
 export default function FormMessage({ type, title, message }: FormMessageProps) {
   const styles = {
     success: {

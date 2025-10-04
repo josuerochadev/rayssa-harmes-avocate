@@ -38,7 +38,48 @@ const INITIAL_FORM_DATA: ContactFormData = {
 
 /**
  * Hook personnalisé pour gérer la logique du formulaire de contact
- * Gère l'état, la validation et la soumission du formulaire
+ *
+ * Gère l'état complet du formulaire de contact incluant :
+ * - Données du formulaire (nom, email, téléphone, sujet, message, consentement)
+ * - Validation en temps réel avec messages d'erreur personnalisés
+ * - Soumission asynchrone vers Formspree
+ * - États de chargement et de succès/erreur
+ * - Réinitialisation automatique après succès
+ *
+ * @returns Objet contenant l'état et les handlers du formulaire
+ * @returns {ContactFormData} formData - Données actuelles du formulaire
+ * @returns {ContactFormErrors} errors - Erreurs de validation par champ
+ * @returns {boolean} isSubmitting - État de soumission en cours
+ * @returns {SubmitStatus} submitStatus - Statut de soumission ('idle' | 'success' | 'error')
+ * @returns {Function} handleInputChange - Handler de changement des champs
+ * @returns {Function} handleSubmit - Handler de soumission du formulaire
+ * @returns {Function} validateForm - Fonction de validation manuelle
+ *
+ * @example
+ * ```tsx
+ * function ContactPage() {
+ *   const {
+ *     formData,
+ *     errors,
+ *     isSubmitting,
+ *     submitStatus,
+ *     handleInputChange,
+ *     handleSubmit
+ *   } = useContactForm()
+ *
+ *   return (
+ *     <form onSubmit={handleSubmit}>
+ *       <input
+ *         name="email"
+ *         value={formData.email}
+ *         onChange={handleInputChange}
+ *       />
+ *       {errors.email && <span>{errors.email}</span>}
+ *       <button disabled={isSubmitting}>Envoyer</button>
+ *     </form>
+ *   )
+ * }
+ * ```
  */
 export function useContactForm(): UseContactFormReturn {
   const [formData, setFormData] = useState<ContactFormData>(INITIAL_FORM_DATA)

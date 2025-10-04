@@ -1,15 +1,36 @@
+/**
+ * Props pour le composant FormTextarea
+ */
 interface FormTextareaProps {
+  /** ID unique du champ */
   id: string
+  /** Nom du champ (utilisé pour l'état du formulaire) */
   name: string
+  /** Label affiché au-dessus du textarea */
   label: string
+  /** Valeur actuelle du champ */
   value: string
+  /** Handler de changement */
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
+  /** Message d'erreur de validation */
   error?: string
+  /** Champ requis (affiche *) */
   required?: boolean
+  /** Texte de placeholder */
   placeholder?: string
+  /** Nombre de lignes visibles (défaut: 6) */
   rows?: number
 }
 
+/**
+ * Composant de textarea avec gestion d'erreurs
+ *
+ * Textarea accessible avec label, états d'erreur, redimensionnement vertical,
+ * et styles cohérents. Utilise aria-invalid et aria-describedby.
+ *
+ * @param props - Props du composant
+ * @returns Textarea de formulaire stylisé
+ */
 export default function FormTextarea({
   id,
   name,

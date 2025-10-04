@@ -7,16 +7,27 @@ import {
   LucideIcon
 } from 'lucide-react'
 
+/**
+ * Type pour un domaine d'intervention juridique
+ */
 export interface Domain {
+  /** Titre du domaine */
   title: string
+  /** Description courte du domaine */
   description: string
+  /** URL vers la page de détail */
   href: string
+  /** Icône Lucide représentant le domaine */
   icon: LucideIcon
+  /** Points clés / services proposés */
   highlights: string[]
 }
 
 /**
  * Liste complète des domaines d'intervention juridique
+ *
+ * Tableau des domaines affichés sur la page d'accueil et la page /domaines.
+ * Chaque domaine a sa propre page de détail avec contenu approfondi.
  */
 export const domains: Domain[] = [
   {

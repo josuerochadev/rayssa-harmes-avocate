@@ -1,14 +1,43 @@
 import Link from 'next/link'
 import { LucideIcon, ArrowRight } from 'lucide-react'
 
+/**
+ * Props pour le composant DomainCard
+ */
 interface DomainCardProps {
+  /** Titre du domaine d'intervention (ex: "Droit de la Famille") */
   title: string
+  /** Description courte du domaine */
   description: string
+  /** URL vers la page de détail du domaine */
   href: string
+  /** Icône Lucide à afficher */
   icon: LucideIcon
+  /** Classes CSS additionnelles */
   className?: string
 }
 
+/**
+ * Carte interactive de présentation d'un domaine d'intervention juridique
+ *
+ * Affiche un domaine avec son icône, titre et description. La carte est cliquable
+ * et redirige vers la page de détail. Animations au hover pour feedback visuel.
+ *
+ * @param props - Props du composant
+ * @returns Composant carte de domaine
+ *
+ * @example
+ * ```tsx
+ * import { Scale } from 'lucide-react'
+ *
+ * <DomainCard
+ *   title="Droit des contrats"
+ *   description="Rédaction, négociation et contentieux contractuel"
+ *   href="/domaines/contrats"
+ *   icon={Scale}
+ * />
+ * ```
+ */
 export default function DomainCard({ 
   title, 
   description, 

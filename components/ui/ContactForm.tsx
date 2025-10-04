@@ -9,6 +9,9 @@ import FormCheckbox from './form/FormCheckbox'
 import FormMessage from './form/FormMessage'
 import FormAlert from './form/FormAlert'
 
+/**
+ * Options de domaines juridiques pour le formulaire de contact
+ */
 const DOMAIN_OPTIONS = [
   { value: 'contrats', label: 'Droit des contrats' },
   { value: 'famille', label: 'Droit de la famille' },
@@ -18,6 +21,23 @@ const DOMAIN_OPTIONS = [
   { value: 'autre', label: 'Autre' },
 ]
 
+/**
+ * Formulaire de contact avec validation et gestion d'erreurs
+ *
+ * Formulaire complet de prise de contact incluant :
+ * - Validation en temps réel des champs
+ * - Gestion des erreurs avec messages personnalisés
+ * - Soumission asynchrone vers Formspree
+ * - Consentement RGPD obligatoire
+ * - Messages de succès/erreur
+ *
+ * @returns Composant formulaire de contact
+ *
+ * @example
+ * ```tsx
+ * <ContactForm />
+ * ```
+ */
 export default function ContactForm() {
   const {
     formData,

@@ -3,6 +3,40 @@
 import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 
+/**
+ * Composant d'animation au scroll avec IntersectionObserver
+ *
+ * Détecte les éléments avec classe `.animate-on-scroll` lors du défilement
+ * et leur ajoute la classe `visible` pour déclencher les animations CSS.
+ *
+ * Configuration de l'observer :
+ * - threshold: 0.1 (élément visible à 10%)
+ * - rootMargin: -50px en bas pour déclencher avant d'être complètement visible
+ *
+ * Se ré-initialise automatiquement lors du changement de route Next.js.
+ *
+ * @returns null - Composant sans rendu visuel
+ *
+ * @example
+ * ```tsx
+ * // Dans layout.tsx
+ * export default function RootLayout({ children }) {
+ *   return (
+ *     <html>
+ *       <body>
+ *         <ScrollAnimation />
+ *         {children}
+ *       </body>
+ *     </html>
+ *   )
+ * }
+ *
+ * // Dans un composant
+ * <div className="animate-on-scroll">
+ *   Ce contenu s'animera au scroll
+ * </div>
+ * ```
+ */
 export default function ScrollAnimation() {
   const pathname = usePathname()
 

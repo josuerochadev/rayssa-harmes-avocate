@@ -1,12 +1,29 @@
 import Link from 'next/link'
 import type { NavigationItem } from '@/data/navigation'
 
+/**
+ * Props pour le composant MobileNavItem
+ */
 interface MobileNavItemProps {
+  /** Item de navigation avec nom, href et enfants optionnels */
   item: NavigationItem
+  /** Fonction déterminant si un lien est actif */
   isActive: (href: string) => boolean
+  /** Callback pour fermer le menu mobile */
   onClose: () => void
 }
 
+/**
+ * Item de navigation pour le menu mobile
+ *
+ * Composant de navigation pour menu mobile gérant :
+ * - Lien principal avec état actif
+ * - Liste d'enfants affichée sous le lien parent si présents
+ * - Fermeture automatique du menu au clic sur un lien
+ *
+ * @param props - Props du composant
+ * @returns Item de navigation mobile
+ */
 export default function MobileNavItem({ item, isActive, onClose }: MobileNavItemProps) {
   return (
     <div>

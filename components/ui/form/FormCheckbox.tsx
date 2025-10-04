@@ -1,13 +1,32 @@
+/**
+ * Props pour le composant FormCheckbox
+ */
 interface FormCheckboxProps {
+  /** ID unique du champ */
   id: string
+  /** Nom du champ (utilisé pour l'état du formulaire) */
   name: string
+  /** État coché/décoché */
   checked: boolean
+  /** Handler de changement */
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  /** Label affiché à côté du checkbox (peut contenir du JSX) */
   label: React.ReactNode
+  /** Message d'erreur de validation */
   error?: string
+  /** Champ requis */
   required?: boolean
 }
 
+/**
+ * Composant de checkbox avec gestion d'erreurs
+ *
+ * Checkbox accessible avec label flexible (texte ou JSX), états d'erreur,
+ * et styles cohérents. Layout flex avec checkbox à gauche et label à droite.
+ *
+ * @param props - Props du composant
+ * @returns Checkbox de formulaire stylisé
+ */
 export default function FormCheckbox({
   id,
   name,

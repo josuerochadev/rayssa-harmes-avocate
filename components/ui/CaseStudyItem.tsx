@@ -1,13 +1,45 @@
 import { CheckCircle, ArrowRight, AlertTriangle } from 'lucide-react'
 
+/**
+ * Props pour le composant CaseStudyItem
+ */
 interface CaseStudyItemProps {
+  /** Titre de l'étude de cas */
   title: string
+  /** Description de la problématique initiale */
   problem: string
+  /** Approche juridique adoptée */
   approach: string
+  /** Résultat obtenu pour le client */
   result: string
+  /** Classes CSS additionnelles */
   className?: string
 }
 
+/**
+ * Composant d'affichage d'une étude de cas juridique
+ *
+ * Présente un cas client structuré en 3 sections avec icônes colorées :
+ * - Problématique (rouge) : situation initiale du client
+ * - Approche (bleu) : stratégie juridique mise en place
+ * - Résultat (vert) : issue favorable obtenue
+ *
+ * Inclut un avertissement déontologique standard rappelant que les résultats
+ * passés ne préjugent pas des résultats futurs.
+ *
+ * @param props - Props du composant
+ * @returns Composant carte d'étude de cas
+ *
+ * @example
+ * ```tsx
+ * <CaseStudyItem
+ *   title="Obtention d'un titre de séjour"
+ *   problem="Client en situation irrégulière depuis 3 ans"
+ *   approach="Constitution d'un dossier démontrant l'ancrage en France"
+ *   result="Titre de séjour obtenu avec autorisation de travail"
+ * />
+ * ```
+ */
 export default function CaseStudyItem({
   title,
   problem,
