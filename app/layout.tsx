@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Besley } from 'next/font/google'
+import { Suspense } from 'react'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
@@ -70,7 +71,9 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col">
         <WebVitals />
         <ScrollAnimation />
-        <NavigationLoader />
+        <Suspense fallback={null}>
+          <NavigationLoader />
+        </Suspense>
         <a href="#main-content" className="skip-link">
           Aller au contenu principal
         </a>

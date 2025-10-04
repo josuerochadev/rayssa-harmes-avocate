@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { FileQuestion, Home, ArrowLeft } from 'lucide-react'
 
@@ -6,6 +8,8 @@ import { FileQuestion, Home, ArrowLeft } from 'lucide-react'
  *
  * Affichée automatiquement par Next.js lorsqu'une route n'existe pas.
  * Design cohérent avec le thème du site (sienna/green) et adapté pour un cabinet d'avocat.
+ *
+ * Doit être un Client Component pour gérer le bouton "Page précédente" avec onClick.
  */
 export default function NotFound() {
   return (
