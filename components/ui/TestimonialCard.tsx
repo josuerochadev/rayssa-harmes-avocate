@@ -1,13 +1,41 @@
 import { Quote } from 'lucide-react'
 
+/**
+ * Props pour le composant TestimonialCard
+ */
 interface TestimonialCardProps {
+  /** Citation du témoignage client */
   quote: string
+  /** Nom de l'auteur du témoignage */
   author: string
+  /** Type de cas juridique traité */
   caseType: string
+  /** Localisation du client */
   location: string
+  /** Classes CSS additionnelles */
   className?: string
 }
 
+/**
+ * Carte d'affichage d'un témoignage client
+ *
+ * Présente un témoignage de client avec citation, nom de l'auteur,
+ * type de cas traité et localisation. Design avec icône de guillemet
+ * en coin supérieur droit et footer séparé par bordure.
+ *
+ * @param props - Props du composant
+ * @returns Composant carte de témoignage
+ *
+ * @example
+ * ```tsx
+ * <TestimonialCard
+ *   quote="Maître Harmes a su gérer mon dossier avec professionnalisme"
+ *   author="Marie L."
+ *   caseType="Droit de la famille"
+ *   location="Strasbourg"
+ * />
+ * ```
+ */
 export default function TestimonialCard({
   quote,
   author,

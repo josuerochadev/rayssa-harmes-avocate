@@ -1,50 +1,34 @@
 import Link from 'next/link'
 import { Briefcase, CheckCircle, AlertCircle, Phone, Mail } from 'lucide-react'
 import type { Metadata } from 'next'
+import { generateDomainMetadata, generateDomainJsonLd } from '@/lib/metadata'
+import { domainDetails } from '@/data/domainDetails'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateDomainMetadata({
   title: 'Avocat en Droit du Travail à Strasbourg | Licenciement, Harcèlement, Prud\'hommes',
   description: 'Avocat spécialisé en droit du travail à Strasbourg. Licenciement, harcèlement, prud\'hommes, rupture conventionnelle. Défense de vos droits.',
   keywords: 'avocat droit travail Strasbourg, licenciement, harcèlement, prud\'hommes, rupture conventionnelle, contrat travail',
-}
+  domain: 'travail',
+})
 
-const casesHandled = [
-  'Contentieux devant le conseil de prud\'hommes (CPH)',
-  'Licenciement abusif ou sans cause réelle et sérieuse',
-  'Harcèlement moral ou sexuel',
-  'Contestation d\'heures supplémentaires non payées',
-  'Rupture conventionnelle ou autres modes de rupture du contrat de travail',
-  'Discrimination et égalité professionnelle',
-  'Accident du travail et maladie professionnelle',
-]
+const jsonLd = generateDomainJsonLd({
+  name: 'Droit du Travail',
+  description: 'Services juridiques en droit du travail : licenciement, harcèlement, prud\'hommes, rupture conventionnelle.',
+  url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://rayssa-harmes-avocate.fr'}/domaines/travail`,
+  serviceType: 'Droit du Travail',
+})
 
-const examples = [
-  {
-    title: 'Licenciement sans motif',
-    description: 'Défense d\'un salarié licencié sans motif valable.',
-  },
-  {
-    title: 'Procédure disciplinaire',
-    description: 'Accompagnement d\'une entreprise dans une procédure disciplinaire.',
-  },
-]
-
-const processSteps = [
-  {
-    number: 1,
-    title: 'Phase de conciliation',
-    description: 'Phase de conciliation obligatoire devant le conseil de prud\'hommes.',
-  },
-  {
-    number: 2,
-    title: 'Audience de jugement',
-    description: 'Si échec, audience de jugement et plaidoirie devant la formation paritaire.',
-  },
-]
+const { casesHandled, examples, processSteps } = domainDetails.travail
 
 export default function TravailPage() {
   return (
     <>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero section */}
       <section className="section-padding bg-gradient-to-br from-white via-secondary/30 to-white">
         <div className="container-custom">

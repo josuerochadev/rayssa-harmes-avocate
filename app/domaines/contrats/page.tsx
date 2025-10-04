@@ -1,50 +1,34 @@
 import Link from 'next/link'
 import { FileText, ArrowRight, CheckCircle, AlertCircle, Phone, Mail } from 'lucide-react'
 import type { Metadata } from 'next'
+import { generateDomainMetadata, generateDomainJsonLd } from '@/lib/metadata'
+import { domainDetails } from '@/data/domainDetails'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateDomainMetadata({
   title: 'Avocat en Droit des Contrats à Strasbourg | Conseil & Contentieux Commercial',
   description: 'Avocat spécialisé en droit des contrats à Strasbourg. Rédaction, négociation, contentieux commercial et recouvrement de créances. Conseil personnalisé.',
   keywords: 'avocat droit contrats Strasbourg, contentieux commercial, rédaction contrats, recouvrement créances, droit affaires',
-}
+  domain: 'contrats',
+})
 
-const casesHandled = [
-  'Rédaction et analyse de contrats civils ou commerciaux',
-  'Litiges liés à l\'inexécution, la résiliation ou la responsabilité contractuelle',
-  'Recouvrement de créances contractuelles',
-  'Contrats de vente et de prestations de services',
-  'Baux commerciaux et professionnels',
-  'Garanties et responsabilités contractuelles',
-  'Médiation et négociation commerciale',
-]
+const jsonLd = generateDomainJsonLd({
+  name: 'Droit des Contrats',
+  description: 'Services juridiques en droit des contrats : rédaction, négociation, contentieux commercial et recouvrement de créances.',
+  url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://rayssa-harmes-avocate.fr'}/domaines/contrats`,
+  serviceType: 'Droit des Contrats',
+})
 
-const examples = [
-  {
-    title: 'Conseil entreprise',
-    description: 'Conseil à une entreprise pour sécuriser un contrat commercial.',
-  },
-  {
-    title: 'Rupture abusive',
-    description: 'Représentation d\'un particulier pour rupture abusive d\'un contrat de prestation de services.',
-  },
-]
-
-const processSteps = [
-  {
-    number: 1,
-    title: 'Audit du contrat',
-    description: 'Audit du contrat et analyse juridique approfondie.',
-  },
-  {
-    number: 2,
-    title: 'Mise en demeure et négociation',
-    description: 'Mise en demeure, négociation ou saisine du tribunal judiciaire selon le litige.',
-  },
-]
+const { casesHandled, examples, processSteps } = domainDetails.contrats
 
 export default function ContractsPage() {
   return (
     <>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero section */}
       <section className="section-padding bg-gradient-to-br from-white via-secondary/30 to-white">
         <div className="container-custom">

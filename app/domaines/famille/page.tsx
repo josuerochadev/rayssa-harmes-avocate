@@ -1,50 +1,34 @@
 import Link from 'next/link'
 import { Heart, ArrowRight, CheckCircle, AlertCircle, Phone, Mail } from 'lucide-react'
 import type { Metadata } from 'next'
+import { generateDomainMetadata, generateDomainJsonLd } from '@/lib/metadata'
+import { domainDetails } from '@/data/domainDetails'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = generateDomainMetadata({
   title: 'Avocat en Droit de la Famille à Strasbourg | Divorce, Garde d\'Enfants, Succession',
   description: 'Avocat spécialisé en droit de la famille à Strasbourg. Divorce, séparation, garde d\'enfants, succession. Accompagnement humain et juridique.',
   keywords: 'avocat droit famille Strasbourg, divorce, garde enfants, succession, pension alimentaire, séparation',
-}
+  domain: 'famille',
+})
 
-const casesHandled = [
-  'Divorce amiable ou contentieux',
-  'Fixation ou révision de l\'autorité parentale, garde et droit de visite',
-  'Pension alimentaire (fixation, révision, recouvrement)',
-  'Prestation compensatoire',
-  'Successions et partages de biens',
-  'Violence conjugale et ordonnances de protection',
-  'Médiation familiale',
-]
+const jsonLd = generateDomainJsonLd({
+  name: 'Droit de la Famille',
+  description: 'Services juridiques en droit de la famille : divorce, séparation, garde d\'enfants, succession.',
+  url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://rayssa-harmes-avocate.fr'}/domaines/famille`,
+  serviceType: 'Droit de la Famille',
+})
 
-const examples = [
-  {
-    title: 'Divorce par consentement mutuel',
-    description: 'Accompagnement d\'un couple dans un divorce par consentement mutuel.',
-  },
-  {
-    title: 'Garde alternée',
-    description: 'Défense d\'un parent pour obtenir une garde alternée.',
-  },
-]
-
-const processSteps = [
-  {
-    number: 1,
-    title: 'Tentative de règlement amiable',
-    description: 'Tentative de règlement amiable si possible.',
-  },
-  {
-    number: 2,
-    title: 'Rédaction et représentation',
-    description: 'Rédaction des actes et représentation devant le juge aux affaires familiales.',
-  },
-]
+const { casesHandled, examples, processSteps } = domainDetails.famille
 
 export default function FamillePage() {
   return (
     <>
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* Hero section */}
       <section className="section-padding bg-gradient-to-br from-white via-secondary/30 to-white">
         <div className="container-custom">

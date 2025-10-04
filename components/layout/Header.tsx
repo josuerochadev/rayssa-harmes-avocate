@@ -3,28 +3,28 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Scale, Phone, Mail, ChevronDown } from 'lucide-react'
+import { Menu, X, Scale, Phone, Mail } from 'lucide-react'
 import LanguageBadges from '@/components/ui/LanguageBadges'
+import DesktopNavItem from './nav/DesktopNavItem'
+import MobileNavItem from './nav/MobileNavItem'
+import { navigation } from '@/data/navigation'
 
-const navigation = [
-  { name: 'Accueil', href: '/' },
-  { name: 'À propos', href: '/a-propos' },
-  { 
-    name: 'Domaines d\'intervention', 
-    href: '/domaines',
-    children: [
-      { name: 'Droit des contrats', href: '/domaines/contrats' },
-      { name: 'Droit de la famille', href: '/domaines/famille' },
-      { name: 'Droit des étrangers', href: '/domaines/etrangers' },
-      { name: 'Droit du travail', href: '/domaines/travail' },
-      { name: 'Droit immobilier', href: '/domaines/immobilier' },
-    ]
-  },
-  { name: 'Témoignages', href: '/témoignages' },
-  { name: 'Honoraires', href: '/honoraires' },
-  { name: 'Contact', href: '/contact' },
-]
-
+/**
+ * Header principal du site avec navigation responsive
+ *
+ * Composant complexe gérant :
+ * - Navigation desktop avec dropdowns
+ * - Menu mobile avec overlay
+ * - Barre de contact sticky (téléphone, email)
+ * - Badges de langues parlées
+ * - État actif des liens de navigation
+ * - Animation au scroll (shadow)
+ *
+ * Le header devient sticky avec ombre au scroll > 10px.
+ * Le menu mobile s'ouvre en overlay avec backdrop sur mobile/tablette.
+ *
+ * @returns Composant header avec navigation
+ */
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -38,6 +38,11 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  /**
+   * Détermine si un lien de navigation est actif
+   * @param href - URL du lien à vérifier
+   * @returns true si le lien correspond au pathname actuel
+   */
   const isActiveLink = (href: string) => {
     if (href === '/') {
       return pathname === '/'
@@ -95,41 +100,9 @@ export default function Header() {
           {/* Desktop navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navigation.map((item) => (
-              <div key={item.name} className="relative group">
-                <Link
-                  href={item.href}
-                  className={`font-medium transition-colors hover:text-accent flex items-center gap-1 ${
-                    isActiveLink(item.href) ? 'text-primary' : 'text-neutral-700'
-                  }`}
-                >
-                  {item.name}
-                  {item.children && (
-                    <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" />
-                  )}
-                </Link>
-                {item.children && (
-                  <div className="absolute left-0 top-full mt-2 w-64 bg-white shadow-xl rounded-lg border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
-                    <div className="py-2">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.name}
-                          href={child.href}
-                          className={`block px-4 py-2 text-sm transition-colors hover:bg-secondary hover:text-primary ${
-                            isActiveLink(child.href) ? 'text-primary bg-secondary' : 'text-neutral-700'
-                          }`}
-                        >
-                          {child.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
+              <DesktopNavItem key={item.name} item={item} isActive={isActiveLink} />
             ))}
-            <Link
-              href="/contact"
-              className="btn-primary"
-            >
+            <Link href="/contact" className="btn-primary">
               Prendre RDV
             </Link>
           </div>
@@ -174,33 +147,12 @@ export default function Header() {
               </div>
               <div className="px-4 py-6 space-y-4">
                 {navigation.map((item) => (
-                  <div key={item.name}>
-                    <Link
-                      href={item.href}
-                      className={`block py-2 font-medium transition-colors ${
-                        isActiveLink(item.href) ? 'text-primary' : 'text-neutral-700 hover:text-accent'
-                      }`}
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                    {item.children && (
-                      <div className="ml-4 mt-2 space-y-2">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.name}
-                            href={child.href}
-                            className={`block py-1 text-sm transition-colors ${
-                              isActiveLink(child.href) ? 'text-primary' : 'text-neutral-600 hover:text-accent'
-                            }`}
-                            onClick={() => setMobileMenuOpen(false)}
-                          >
-                            {child.name}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  <MobileNavItem
+                    key={item.name}
+                    item={item}
+                    isActive={isActiveLink}
+                    onClose={() => setMobileMenuOpen(false)}
+                  />
                 ))}
                 <div className="pt-4 border-t">
                   <Link

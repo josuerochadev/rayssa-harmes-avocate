@@ -2,6 +2,10 @@ import Link from 'next/link'
 import { Scale, Phone, Mail, MapPin, Clock, Linkedin } from 'lucide-react'
 import LanguageBadges from '@/components/ui/LanguageBadges'
 
+/**
+ * Structure de navigation pour le footer
+ * Contient les liens principaux, domaines d'intervention et mentions légales
+ */
 const navigation = {
   main: [
     { name: 'Accueil', href: '/' },
@@ -24,6 +28,20 @@ const navigation = {
   ],
 }
 
+/**
+ * Footer principal du site avec informations de contact et navigation
+ *
+ * Footer complet sur fond primary (terracotta) incluant :
+ * - Logo et présentation du cabinet avec badges de langues
+ * - Coordonnées complètes (adresse, téléphone, email, LinkedIn, horaires)
+ * - Navigation rapide vers toutes les pages principales
+ * - Grille des domaines d'intervention
+ * - Mentions légales et copyright
+ *
+ * Layout responsive : 1 colonne (mobile) → 2 colonnes (tablette) → 4 colonnes (desktop)
+ *
+ * @returns Composant footer du site
+ */
 export default function Footer() {
   return (
     <footer className="bg-primary text-white">
