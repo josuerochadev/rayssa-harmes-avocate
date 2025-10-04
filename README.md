@@ -140,6 +140,115 @@ npm run test:e2e:headed   # Lancer avec navigateur visible
 npm run test:all          # Tests unitaires + E2E
 ```
 
+## 🔄 Workflow de Développement
+
+### Stratégie Git Flow
+
+Le projet utilise une stratégie Git Flow simplifiée avec deux branches principales :
+
+- **`main`** : Branche de production (déploiement automatique sur Vercel)
+- **`dev`** : Branche de développement (intégration et tests)
+
+#### Workflow recommandé
+
+1. **Créer une feature branch** depuis `dev` :
+   ```bash
+   git checkout dev
+   git pull origin dev
+   git checkout -b feature/ma-nouvelle-fonctionnalite
+   ```
+
+2. **Développer et commiter régulièrement** :
+   ```bash
+   git add .
+   git commit -m "feat: ajouter nouvelle fonctionnalité"
+   ```
+
+3. **Pousser et créer une Pull Request** vers `dev` :
+   ```bash
+   git push origin feature/ma-nouvelle-fonctionnalite
+   # Créer une PR sur GitHub vers dev
+   ```
+
+4. **Merger vers main** après validation sur `dev` :
+   ```bash
+   git checkout main
+   git merge dev
+   git push origin main
+   ```
+
+### Pre-commit Hooks (Husky + lint-staged)
+
+Le projet utilise **Husky** et **lint-staged** pour automatiser les vérifications avant chaque commit.
+
+#### Hooks configurés
+
+Avant chaque commit, les vérifications suivantes s'exécutent automatiquement :
+
+1. **ESLint** : Analyse et correction automatique du code sur les fichiers stagés
+2. **TypeScript** : Vérification de la compilation TypeScript
+
+```bash
+# Ces commandes s'exécutent automatiquement avant chaque commit
+npx lint-staged          # ESLint sur fichiers stagés (.ts, .tsx, .js, .jsx)
+npm run type-check       # Vérification TypeScript
+```
+
+#### Que faire si le hook échoue ?
+
+- **ESLint errors** : Corrigez les erreurs signalées dans le code
+- **TypeScript errors** : Résolvez les erreurs de typage
+- Le commit sera bloqué jusqu'à ce que toutes les vérifications passent
+
+#### Désactiver temporairement (non recommandé)
+
+```bash
+git commit --no-verify -m "votre message"  # Bypass les hooks (à éviter !)
+```
+
+### Conventions de Commit
+
+Le projet utilise **Conventional Commits** pour des messages de commit standardisés :
+
+```
+<type>(<scope>): <description>
+
+[corps optionnel]
+
+[footer optionnel]
+```
+
+#### Types de commit
+
+- `feat`: Nouvelle fonctionnalité
+- `fix`: Correction de bug
+- `docs`: Modification de la documentation
+- `style`: Changements de style (formatage, etc.)
+- `refactor`: Refactoring du code
+- `test`: Ajout ou modification de tests
+- `chore`: Tâches de maintenance (dépendances, config, etc.)
+- `perf`: Amélioration des performances
+
+#### Exemples
+
+```bash
+git commit -m "feat: ajouter section témoignages clients"
+git commit -m "fix: corriger validation formulaire de contact"
+git commit -m "docs: mettre à jour README avec instructions deployment"
+git commit -m "refactor: optimiser performance composant ContactForm"
+git commit -m "test: ajouter tests E2E pour navigation"
+```
+
+### Configuration locale
+
+Les hooks sont automatiquement installés lors du `npm install` grâce au script `prepare` dans `package.json`.
+
+Si vous clonez le projet pour la première fois :
+
+```bash
+npm install              # Installe les dépendances + configure Husky
+```
+
 ## 📝 Contenus à Personnaliser
 
 ### Informations essentielles à remplacer
