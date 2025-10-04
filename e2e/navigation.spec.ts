@@ -58,7 +58,8 @@ test.describe('Navigation E2E', () => {
 
     for (const pagePath of pages) {
       await page.goto(pagePath, { waitUntil: 'load' })
-      await expect(page.getByRole('link', { name: /prendre rdv/i })).toBeVisible()
+      // Use first() to avoid strict mode violation when multiple "Prendre RDV" buttons exist
+      await expect(page.getByRole('link', { name: /prendre rdv/i }).first()).toBeVisible()
     }
   })
 
@@ -82,8 +83,8 @@ test.describe('Navigation E2E', () => {
     // Open mobile menu
     await page.getByRole('button', { name: /ouvrir le menu/i }).click()
 
-    // Wait for menu to be visible
-    await expect(page.getByText('Menu')).toBeVisible()
+    // Wait for menu to be visible - check for the mobile nav specifically
+    await expect(page.locator('nav.fixed.right-0')).toBeVisible()
 
     // Click on a navigation item
     await page.getByRole('link', { name: 'Contact' }).last().click()
@@ -98,20 +99,22 @@ test.describe('Navigation E2E', () => {
 
     // Open mobile menu
     await page.getByRole('button', { name: /ouvrir le menu/i }).click()
-    await expect(page.getByText('Menu')).toBeVisible()
+    await expect(page.locator('nav.fixed.right-0')).toBeVisible()
 
     // Click backdrop (the overlay)
     await page.locator('.fixed.inset-0.bg-black').click({ position: { x: 10, y: 10 } })
 
     // Menu should be closed
-    await expect(page.getByText('Menu')).not.toBeVisible()
+    await expect(page.locator('nav.fixed.right-0')).not.toBeVisible()
   })
 
   test('should display language badges in header', async ({ page }) => {
     await page.goto('/', { waitUntil: 'load' })
 
-    // Check for language badges (assuming they're visible)
-    await expect(page.locator('text=/français|portugais|anglais/i').first()).toBeVisible()
+    // Check for language badges in the header specifically
+    await expect(page.getByRole('banner').getByText('Langues :')).toBeVisible()
+    // Check for one of the language codes in the header
+    await expect(page.getByRole('banner').locator('text=/FR|PT|EN|ES/').first()).toBeVisible()
   })
 
   test('should have sticky header that stays on top when scrolling', async ({ page }) => {
@@ -130,17 +133,18 @@ test.describe('Navigation E2E', () => {
 
   test('should navigate to all domain pages', async ({ page }) => {
     const domains = [
-      { path: '/domaines/contrats', name: 'Droit des contrats' },
-      { path: '/domaines/famille', name: 'Droit de la famille' },
-      { path: '/domaines/etrangers', name: 'Droit des étrangers' },
-      { path: '/domaines/travail', name: 'Droit du travail' },
-      { path: '/domaines/immobilier', name: 'Droit immobilier' },
+      { path: '/domaines/contrats', name: 'Droit des Contrats' },
+      { path: '/domaines/famille', name: 'Droit de la Famille' },
+      { path: '/domaines/etrangers', name: 'Droit des Étrangers' },
+      { path: '/domaines/travail', name: 'Droit du Travail' },
+      { path: '/domaines/immobilier', name: 'Droit Immobilier' },
     ]
 
     for (const domain of domains) {
       await page.goto(domain.path, { waitUntil: 'load' })
       await expect(page).toHaveURL(domain.path)
-      await expect(page.locator('h1')).toContainText(domain.name)
+      // H1 contains "Avocat en [Domain Name]" so we check for the domain name with case insensitive
+      await expect(page.locator('h1')).toContainText(new RegExp(domain.name, 'i'))
     }
   })
 

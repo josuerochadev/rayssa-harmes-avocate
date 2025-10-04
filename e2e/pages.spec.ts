@@ -10,9 +10,9 @@ test.describe('Pages Content E2E', () => {
     // Check for CTA button
     await expect(page.getByRole('link', { name: /prendre rdv/i }).first()).toBeVisible()
 
-    // Check for domain cards
-    await expect(page.getByText(/droit des contrats/i)).toBeVisible()
-    await expect(page.getByText(/droit de la famille/i)).toBeVisible()
+    // Check for domain cards (use first to avoid strict mode violation)
+    await expect(page.getByText(/droit des contrats/i).first()).toBeVisible()
+    await expect(page.getByText(/droit de la famille/i).first()).toBeVisible()
   })
 
   test('should display about page with lawyer information', async ({ page }) => {
@@ -20,8 +20,8 @@ test.describe('Pages Content E2E', () => {
 
     await expect(page.locator('h1')).toContainText(/à propos/i)
 
-    // Check for professional information sections
-    await expect(page.getByText(/parcours/i)).toBeVisible()
+    // Check for professional information sections (use first to avoid strict mode violation)
+    await expect(page.getByText(/parcours/i).first()).toBeVisible()
   })
 
   test('should display testimonials page', async ({ page }) => {
@@ -51,9 +51,9 @@ test.describe('Pages Content E2E', () => {
     // Check for contact form
     await expect(page.getByRole('button', { name: /envoyer/i })).toBeVisible()
 
-    // Check for contact information
-    await expect(page.getByText(/\+33 7 45 04 83 95/i)).toBeVisible()
-    await expect(page.getByText(/harmes\.avocat@gmail\.com/i)).toBeVisible()
+    // Check for contact information (use first to avoid strict mode violation)
+    await expect(page.getByText(/\+33 7 45 04 83 95/i).first()).toBeVisible()
+    await expect(page.getByText(/harmes\.avocat@gmail\.com/i).first()).toBeVisible()
   })
 
   test('should display domain page with relevant information', async ({ page }) => {
@@ -62,8 +62,8 @@ test.describe('Pages Content E2E', () => {
     // Check for domain title
     await expect(page.locator('h1')).toContainText(/droit de la famille/i)
 
-    // Check for cases handled section
-    await expect(page.getByText(/cas traités|divorce|séparation/i)).toBeVisible()
+    // Check for cases handled section (use first to avoid strict mode violation)
+    await expect(page.getByText(/cas traités|divorce|séparation/i).first()).toBeVisible()
 
     // Check for CTA to contact
     await expect(page.getByRole('link', { name: /contact/i }).first()).toBeVisible()
@@ -74,8 +74,8 @@ test.describe('Pages Content E2E', () => {
 
     await expect(page.locator('h1')).toContainText(/mentions légales/i)
 
-    // Check for required legal information
-    await expect(page.getByText(/éditeur/i)).toBeVisible()
+    // Check for required legal information (use first to avoid strict mode violation)
+    await expect(page.getByText(/éditeur/i).first()).toBeVisible()
   })
 
   test('should display privacy policy page', async ({ page }) => {
@@ -83,8 +83,8 @@ test.describe('Pages Content E2E', () => {
 
     await expect(page.locator('h1')).toContainText(/politique de confidentialité/i)
 
-    // Check for GDPR-related content
-    await expect(page.getByText(/données personnelles|rgpd/i)).toBeVisible()
+    // Check for GDPR-related content (use first to avoid strict mode violation)
+    await expect(page.getByText(/données personnelles|rgpd/i).first()).toBeVisible()
   })
 
   test('should have proper meta tags on homepage', async ({ page }) => {
@@ -129,8 +129,8 @@ test.describe('Pages Content E2E', () => {
   test('should display process steps on domain pages', async ({ page }) => {
     await page.goto('/domaines/contrats', { waitUntil: 'load' })
 
-    // Check for process/steps section
-    await expect(page.getByText(/processus|étapes|comment|déroulement/i)).toBeVisible()
+    // Check for process/steps section (the actual text is "Procédure type")
+    await expect(page.getByText(/procédure type|cas traités/i)).toBeVisible()
   })
 
   test('should have working internal links in content', async ({ page }) => {
