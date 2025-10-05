@@ -1,11 +1,23 @@
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+
+// Hoist the env stub to ensure it runs before module imports
+vi.hoisted(() => {
+  process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT = 'https://formspree.io/f/test123'
+})
+
 import { render, screen, waitFor } from '@/test/utils'
-import { describe, it, expect, vi, beforeEach } from 'vitest'
 import userEvent from '@testing-library/user-event'
 import ContactForm from './ContactForm'
+
+const MOCK_FORMSPREE_ENDPOINT = 'https://formspree.io/f/test123'
 
 describe('ContactForm Integration', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+  })
+
+  afterEach(() => {
+    vi.restoreAllMocks()
   })
 
   it('should render all form fields', () => {

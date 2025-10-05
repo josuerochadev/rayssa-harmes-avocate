@@ -1,6 +1,14 @@
-import { renderHook, act, waitFor } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+
+// Hoist the env stub to ensure it runs before module imports
+vi.hoisted(() => {
+  process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT = 'https://formspree.io/f/test123'
+})
+
+import { renderHook, act, waitFor } from '@testing-library/react'
 import { useContactForm } from './useContactForm'
+
+const MOCK_FORMSPREE_ENDPOINT = 'https://formspree.io/f/test123'
 
 describe('useContactForm', () => {
   beforeEach(() => {
@@ -261,7 +269,16 @@ describe('useContactForm', () => {
       })
 
       await waitFor(() => {
-        expect(mockFetch).toHaveBeenCalled()
+        expect(mockFetch).toHaveBeenCalledWith(
+          MOCK_FORMSPREE_ENDPOINT,
+          expect.objectContaining({
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+            },
+          })
+        )
         expect(result.current.submitStatus).toBe('success')
         expect(result.current.isSubmitting).toBe(false)
       })
