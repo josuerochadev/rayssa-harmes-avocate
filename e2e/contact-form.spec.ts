@@ -71,7 +71,7 @@ test.describe('Contact Form E2E', () => {
     // E2E just verifies the checkbox is present and can be interacted with
 
     const submitButton = page.getByRole('button', { name: /envoyer le message/i })
-    const consentCheckbox = page.locator('input[type="checkbox"][name="consent"]')
+    const consentCheckbox = page.getByRole('checkbox')
 
     // Verify checkbox is present and initially unchecked
     await expect(consentCheckbox).toBeVisible()
@@ -80,8 +80,8 @@ test.describe('Contact Form E2E', () => {
     // Verify button is initially disabled
     await expect(submitButton).toBeDisabled()
 
-    // Click consent checkbox
-    await consentCheckbox.click()
+    // Click consent checkbox - use force to bypass sticky header
+    await consentCheckbox.click({ force: true })
 
     // Verify checkbox is now checked
     await expect(consentCheckbox).toBeChecked()
