@@ -2,6 +2,15 @@ import { test, expect } from '@playwright/test'
 
 test.describe('Contact Form E2E', () => {
   test.beforeEach(async ({ page }) => {
+    // Mock Formspree API to prevent actual submissions and allow validation testing
+    await page.route('**/formspree.io/**', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({ ok: true }),
+      })
+    })
+
     await page.goto('/contact', { waitUntil: 'load' })
   })
 
@@ -16,14 +25,11 @@ test.describe('Contact Form E2E', () => {
   })
 
   test('should show validation errors for empty required fields', async ({ page }) => {
-    // NOTE: The consent checkbox logic (button disabled/enabled) is tested in unit tests
-    // E2E tests focus on user flows. We trigger form submit directly due to Playwright/React18 limitation.
-
     // Enable consent checkbox
     await page.locator('input[type="checkbox"][name="consent"]').click()
 
-    // Trigger React submit event (bypasses disabled button and native form submission)
-    await page.locator('form').dispatchEvent('submit')
+    // Click submit button to trigger validation
+    await page.getByRole('button', { name: /envoyer le message/i }).click()
 
     // Check for validation errors
     await expect(page.getByText(/le nom est requis/i)).toBeVisible()
@@ -35,7 +41,7 @@ test.describe('Contact Form E2E', () => {
   test('should validate email format', async ({ page }) => {
     await page.getByLabel(/email/i).fill('invalid-email')
     await page.locator('input[type="checkbox"][name="consent"]').click()
-    await page.locator('form').dispatchEvent('submit')
+    await page.getByRole('button', { name: /envoyer le message/i }).click()
 
     await expect(page.getByText(/email invalide/i)).toBeVisible()
   })
@@ -43,7 +49,7 @@ test.describe('Contact Form E2E', () => {
   test('should validate message minimum length', async ({ page }) => {
     await page.getByLabel(/message/i).fill('Short')
     await page.locator('input[type="checkbox"][name="consent"]').click()
-    await page.locator('form').dispatchEvent('submit')
+    await page.getByRole('button', { name: /envoyer le message/i }).click()
 
     await expect(page.getByText(/le message doit contenir au moins 10 caractères/i)).toBeVisible()
   })
@@ -74,7 +80,7 @@ test.describe('Contact Form E2E', () => {
   test('should clear field error when user starts typing', async ({ page }) => {
     // Submit to trigger errors
     await page.locator('input[type="checkbox"][name="consent"]').click()
-    await page.locator('form').dispatchEvent('submit')
+    await page.getByRole('button', { name: /envoyer le message/i }).click()
 
     // Verify error is shown
     await expect(page.getByText(/le nom est requis/i)).toBeVisible()
@@ -115,12 +121,11 @@ test.describe('Contact Form E2E', () => {
     await page.getByLabel(/message/i).fill('Je souhaite obtenir des informations sur un contrat de location.')
     await page.locator('input[type="checkbox"][name="consent"]').click()
 
-    // Submit form via React event
-    await page.locator('form').dispatchEvent('submit')
+    // Submit form
+    await page.getByRole('button', { name: /envoyer le message/i }).click()
 
-    // Wait for submission (this will fail if no endpoint is configured, but validates the form logic)
-    // In a real scenario, you'd mock the API or test against a real endpoint
-    await expect(page.getByRole('button', { name: /envoi en cours/i })).toBeVisible({ timeout: 2000 })
+    // Wait for submission to complete and show success message
+    await expect(page.getByText(/message envoyé avec succès/i)).toBeVisible({ timeout: 5000 })
   })
 
   test('should maintain form values during validation', async ({ page }) => {
@@ -131,7 +136,7 @@ test.describe('Contact Form E2E', () => {
 
     // Submit form
     await page.locator('input[type="checkbox"][name="consent"]').click()
-    await page.locator('form').dispatchEvent('submit')
+    await page.getByRole('button', { name: /envoyer le message/i }).click()
 
     // Check that values are maintained
     await expect(page.getByLabel(/nom et prénom/i)).toHaveValue('Jean Dupont')

@@ -90,5 +90,9 @@ export default defineConfig({
     timeout: 180000, // 3 minutes for server startup in CI
     stdout: 'pipe',
     stderr: 'pipe',
+    env: {
+      // Mock Formspree endpoint for e2e tests
+      NEXT_PUBLIC_FORMSPREE_ENDPOINT: 'https://formspree.io/f/test123',
+    },
   },
 })

@@ -25,7 +25,7 @@ export function middleware(request: NextRequest) {
   const cspHeader = `
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://assets.calendly.com https://va.vercel-scripts.com;
-    style-src 'self' 'nonce-${nonce}' https://fonts.googleapis.com https://assets.calendly.com;
+    style-src 'self' 'nonce-${nonce}' 'unsafe-hashes' https://fonts.googleapis.com https://assets.calendly.com;
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data: https:;
     connect-src 'self' https://formspree.io https://*.formspree.io https://vitals.vercel-insights.com https://va.vercel-scripts.com;
