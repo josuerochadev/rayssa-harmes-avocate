@@ -25,8 +25,8 @@ test.describe('Contact Form E2E', () => {
   })
 
   test('should show validation errors for empty required fields', async ({ page }) => {
-    // Enable consent checkbox
-    await page.locator('input[type="checkbox"][name="consent"]').click()
+    // Enable consent checkbox - use force to bypass sticky header
+    await page.getByRole('checkbox').click({ force: true })
 
     // Wait for button to be enabled
     const submitButton = page.getByRole('button', { name: /envoyer le message/i })
@@ -44,7 +44,8 @@ test.describe('Contact Form E2E', () => {
 
   test('should validate email format', async ({ page }) => {
     await page.getByLabel(/email/i).fill('invalid-email')
-    await page.locator('input[type="checkbox"][name="consent"]').click()
+    // Use force: true to bypass sticky header interception
+    await page.getByRole('checkbox').click({ force: true })
 
     const submitButton = page.getByRole('button', { name: /envoyer le message/i })
     await expect(submitButton).toBeEnabled({ timeout: 2000 })
@@ -55,7 +56,8 @@ test.describe('Contact Form E2E', () => {
 
   test('should validate message minimum length', async ({ page }) => {
     await page.getByLabel(/message/i).fill('Short')
-    await page.locator('input[type="checkbox"][name="consent"]').click()
+    // Use force: true to bypass sticky header interception
+    await page.getByRole('checkbox').click({ force: true })
 
     const submitButton = page.getByRole('button', { name: /envoyer le message/i })
     await expect(submitButton).toBeEnabled({ timeout: 2000 })
@@ -88,8 +90,8 @@ test.describe('Contact Form E2E', () => {
   })
 
   test('should clear field error when user starts typing', async ({ page }) => {
-    // Submit to trigger errors
-    await page.locator('input[type="checkbox"][name="consent"]').click()
+    // Submit to trigger errors - use force to bypass sticky header
+    await page.getByRole('checkbox').click({ force: true })
 
     const submitButton = page.getByRole('button', { name: /envoyer le message/i })
     await expect(submitButton).toBeEnabled({ timeout: 2000 })
@@ -132,7 +134,8 @@ test.describe('Contact Form E2E', () => {
     await page.getByLabel(/téléphone/i).fill('+33 6 12 34 56 78')
     await page.getByLabel(/domaine concerné/i).selectOption('contrats')
     await page.getByLabel(/message/i).fill('Je souhaite obtenir des informations sur un contrat de location.')
-    await page.locator('input[type="checkbox"][name="consent"]').click()
+    // Use force to bypass sticky header
+    await page.getByRole('checkbox').click({ force: true })
 
     // Wait for button to be enabled and submit
     const submitButton = page.getByRole('button', { name: /envoyer le message/i })
@@ -149,8 +152,8 @@ test.describe('Contact Form E2E', () => {
     await page.getByLabel(/email/i).fill('invalid-email')
     await page.getByLabel(/téléphone/i).fill('+33 6 12 34 56 78')
 
-    // Submit form
-    await page.locator('input[type="checkbox"][name="consent"]').click()
+    // Submit form - use force to bypass sticky header
+    await page.getByRole('checkbox').click({ force: true })
 
     const submitButton = page.getByRole('button', { name: /envoyer le message/i })
     await expect(submitButton).toBeEnabled({ timeout: 2000 })
