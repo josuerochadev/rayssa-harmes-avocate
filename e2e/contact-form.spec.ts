@@ -28,8 +28,12 @@ test.describe('Contact Form E2E', () => {
     // Enable consent checkbox
     await page.locator('input[type="checkbox"][name="consent"]').click()
 
+    // Wait for button to be enabled
+    const submitButton = page.getByRole('button', { name: /envoyer le message/i })
+    await expect(submitButton).toBeEnabled({ timeout: 2000 })
+
     // Click submit button to trigger validation
-    await page.getByRole('button', { name: /envoyer le message/i }).click()
+    await submitButton.click()
 
     // Check for validation errors
     await expect(page.getByText(/le nom est requis/i)).toBeVisible()
@@ -41,7 +45,10 @@ test.describe('Contact Form E2E', () => {
   test('should validate email format', async ({ page }) => {
     await page.getByLabel(/email/i).fill('invalid-email')
     await page.locator('input[type="checkbox"][name="consent"]').click()
-    await page.getByRole('button', { name: /envoyer le message/i }).click()
+
+    const submitButton = page.getByRole('button', { name: /envoyer le message/i })
+    await expect(submitButton).toBeEnabled({ timeout: 2000 })
+    await submitButton.click()
 
     await expect(page.getByText(/email invalide/i)).toBeVisible()
   })
@@ -49,7 +56,10 @@ test.describe('Contact Form E2E', () => {
   test('should validate message minimum length', async ({ page }) => {
     await page.getByLabel(/message/i).fill('Short')
     await page.locator('input[type="checkbox"][name="consent"]').click()
-    await page.getByRole('button', { name: /envoyer le message/i }).click()
+
+    const submitButton = page.getByRole('button', { name: /envoyer le message/i })
+    await expect(submitButton).toBeEnabled({ timeout: 2000 })
+    await submitButton.click()
 
     await expect(page.getByText(/le message doit contenir au moins 10 caractères/i)).toBeVisible()
   })
@@ -80,7 +90,10 @@ test.describe('Contact Form E2E', () => {
   test('should clear field error when user starts typing', async ({ page }) => {
     // Submit to trigger errors
     await page.locator('input[type="checkbox"][name="consent"]').click()
-    await page.getByRole('button', { name: /envoyer le message/i }).click()
+
+    const submitButton = page.getByRole('button', { name: /envoyer le message/i })
+    await expect(submitButton).toBeEnabled({ timeout: 2000 })
+    await submitButton.click()
 
     // Verify error is shown
     await expect(page.getByText(/le nom est requis/i)).toBeVisible()
@@ -121,8 +134,10 @@ test.describe('Contact Form E2E', () => {
     await page.getByLabel(/message/i).fill('Je souhaite obtenir des informations sur un contrat de location.')
     await page.locator('input[type="checkbox"][name="consent"]').click()
 
-    // Submit form
-    await page.getByRole('button', { name: /envoyer le message/i }).click()
+    // Wait for button to be enabled and submit
+    const submitButton = page.getByRole('button', { name: /envoyer le message/i })
+    await expect(submitButton).toBeEnabled({ timeout: 2000 })
+    await submitButton.click()
 
     // Wait for submission to complete and show success message
     await expect(page.getByText(/message envoyé avec succès/i)).toBeVisible({ timeout: 5000 })
@@ -136,7 +151,10 @@ test.describe('Contact Form E2E', () => {
 
     // Submit form
     await page.locator('input[type="checkbox"][name="consent"]').click()
-    await page.getByRole('button', { name: /envoyer le message/i }).click()
+
+    const submitButton = page.getByRole('button', { name: /envoyer le message/i })
+    await expect(submitButton).toBeEnabled({ timeout: 2000 })
+    await submitButton.click()
 
     // Check that values are maintained
     await expect(page.getByLabel(/nom et prénom/i)).toHaveValue('Jean Dupont')
