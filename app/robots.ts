@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private/', '/admin/'],
     },
-    sitemap: 'https://your-domain.com/sitemap.xml',
+    sitemap: 'https://harmes-avocat.fr/sitemap.xml',
   }
 }

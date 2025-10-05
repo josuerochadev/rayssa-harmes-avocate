@@ -8,12 +8,12 @@ L'application implémente plusieurs couches de sécurité pour protéger les don
 
 ## 🔒 Mesures de sécurité implémentées
 
-### 1. Validation côté serveur (API Route)
+### 1. Validation côté client
 
-**Fichier** : `app/api/contact/route.ts`
+**Fichier** : `lib/hooks/useContactForm.ts`
 
-- ✅ **Validation backend** : Toutes les données du formulaire sont validées côté serveur avant traitement
-- ✅ **Double validation** : Validation client (UX) + serveur (sécurité)
+- ✅ **Validation frontend** : Toutes les données du formulaire sont validées avant envoi
+- ✅ **Messages d'erreur** : Feedback immédiat à l'utilisateur
 - ✅ **Sanitization** : Les données sont validées avec des règles strictes (email, longueur, etc.)
 
 **Règles de validation** :
@@ -24,24 +24,22 @@ L'application implémente plusieurs couches de sécurité pour protéger les don
 - Message : requis, min 10 caractères
 - Consentement RGPD : obligatoire
 
-### 2. Rate Limiting (Protection anti-spam)
+### 2. Protection Anti-Spam (Formspree)
 
-**Fichier** : `app/api/contact/route.ts`
+**Service** : Formspree (https://formspree.io)
 
-- ✅ **Limite de requêtes** : Maximum 3 soumissions par IP par heure
-- ✅ **Fenêtre glissante** : Système de window de 1 heure
-- ✅ **Stockage en mémoire** : Map avec nettoyage automatique des entrées expirées
-- ✅ **HTTP 429** : Retourne le code approprié quand la limite est dépassée
+Le formulaire envoie directement les données à Formspree qui gère :
 
-**Configuration** :
-```typescript
-const RATE_LIMIT = {
-  MAX_REQUESTS: 3,      // 3 requêtes max
-  WINDOW_MS: 3600000,   // par heure (1h)
-}
-```
+- ✅ **Rate limiting** : Maximum 2 soumissions par minute par IP
+- ✅ **Honeypot fields** : Pièges à bots automatiques
+- ✅ **Email validation** : Vérification des adresses email
+- ✅ **Blocklist** : Filtrage des domaines suspects
 
-**Note pour la production** : Pour un environnement multi-instance (scaling horizontal), il est recommandé d'utiliser Redis ou une solution similaire au lieu du stockage en mémoire.
+**Avantages** :
+- Pas de backend complexe à maintenir
+- Protection professionnelle contre le spam
+- Conforme RGPD
+- Monitoring via dashboard Formspree
 
 ### 3. Content Security Policy (CSP) stricte
 
@@ -72,6 +70,7 @@ upgrade-insecure-requests;
 - Google Fonts (fonts.googleapis.com, fonts.gstatic.com)
 - Calendly (calendly.com, assets.calendly.com)
 - Formspree (formspree.io)
+- Vercel Analytics (va.vercel-scripts.com, vitals.vercel-insights.com)
 
 ### 4. Headers de sécurité supplémentaires
 
@@ -93,7 +92,7 @@ upgrade-insecure-requests;
 
 ## 🚨 Points d'attention
 
-### Formspree Endpoint
+### Formspree Configuration
 
 ⚠️ **Configuration requise** : Le endpoint Formspree doit être configuré via variable d'environnement
 
@@ -102,32 +101,14 @@ upgrade-insecure-requests;
 NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/YOUR_FORM_ID
 ```
 
-**Mode développement** : Si le endpoint n'est pas configuré, l'API simule un succès (pour faciliter le développement).
+**Voir** : `FORMSPREE_SETUP.md` pour le guide complet de configuration.
 
-### Rate Limiting en production
-
-⚠️ **Multi-instance** : Le rate limiting actuel utilise le stockage en mémoire, ce qui ne fonctionne pas correctement avec plusieurs instances (load balancing).
-
-**Solutions recommandées pour la production** :
-1. **Redis** : Utiliser Redis pour partager l'état entre instances
-2. **Upstash** : Service Redis serverless compatible Vercel/Netlify
-3. **Vercel KV** : Key-value store natif Vercel
-
-Exemple avec Vercel KV :
-```typescript
-import { kv } from '@vercel/kv'
-
-async function isRateLimited(ip: string): Promise<boolean> {
-  const key = `rate-limit:${ip}`
-  const count = await kv.incr(key)
-
-  if (count === 1) {
-    await kv.expire(key, 3600) // 1 heure
-  }
-
-  return count > RATE_LIMIT.MAX_REQUESTS
-}
-```
+**Sécurité Formspree** :
+- ✅ Protection anti-spam intégrée
+- ✅ Rate limiting automatique (2 req/min/IP)
+- ✅ Validation email
+- ✅ Honeypot fields
+- ✅ Conforme RGPD
 
 ### CSP et développement
 

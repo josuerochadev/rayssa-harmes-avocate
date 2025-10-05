@@ -45,6 +45,7 @@ export default function ContactForm() {
     isSubmitting,
     submitStatus,
     handleInputChange,
+    handleCheckboxChange,
     handleSubmit,
   } = useContactForm()
 
@@ -131,7 +132,7 @@ export default function ContactForm() {
         id="consent"
         name="consent"
         checked={formData.consent}
-        onChange={handleInputChange}
+        onChange={handleCheckboxChange}
         error={errors.consent}
         required
         label={
