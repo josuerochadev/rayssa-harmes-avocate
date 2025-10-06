@@ -53,8 +53,17 @@ test.describe('Navigation E2E', () => {
 
     for (const pagePath of pages) {
       await page.goto(pagePath, { waitUntil: 'load' })
-      // Use first() to avoid strict mode violation when multiple "Prendre RDV" buttons exist
-      await expect(page.getByRole('link', { name: /prendre rdv/i }).first()).toBeVisible()
+
+      // Check if button is visible (desktop) or exists in mobile menu
+      const prendreRdvButtons = page.getByRole('link', { name: /prendre r(dv|endez-vous)/i })
+
+      // On mobile, button might be in hamburger menu, so just check it exists
+      const isMobile = page.viewportSize()?.width! < 768
+      if (isMobile) {
+        await expect(prendreRdvButtons).toHaveCount(1, { timeout: 10000 })
+      } else {
+        await expect(prendreRdvButtons.first()).toBeVisible()
+      }
     }
   })
 
