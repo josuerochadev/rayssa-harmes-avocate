@@ -145,8 +145,8 @@ export default function HomePage() {
         <div className="container-custom text-center">
           <h2 className="text-white mb-6">Besoin d&apos;un conseil juridique ?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Contactez-moi dès aujourd&apos;hui pour un premier échange gratuit de 15 minutes.
-            J&apos;étudierai votre situation et vous proposerai les meilleures solutions.
+            Contactez-moi dès aujourd&apos;hui pour échanger sur votre situation.
+            J&apos;étudierai votre dossier et vous proposerai les meilleures solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">

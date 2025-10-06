@@ -13,7 +13,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Contact & Rendez-vous - Avocat Strasbourg | Consultation Juridique',
-  description: 'Contactez votre avocat à Strasbourg. Prise de rendez-vous rapide, consultation gratuite 15min. Adresse, horaires, plan d\'accès.',
+  description: 'Contactez votre avocat à Strasbourg. Prise de rendez-vous rapide. Adresse, horaires, plan d\'accès.',
   keywords: 'contact avocat Strasbourg, rendez-vous, consultation juridique, adresse cabinet, horaires',
 }
 
@@ -62,8 +62,8 @@ export default function ContactPage() {
             </h1>
             
             <p className="text-xl text-gray-600 leading-relaxed">
-              Contactez-moi pour un premier échange gratuit de 15 minutes.
-              J&apos;analyse votre situation et vous propose les meilleures solutions
+              Contactez-moi pour échanger sur votre situation.
+              J&apos;analyse votre dossier et vous propose les meilleures solutions
               juridiques adaptées à vos besoins.
             </p>
           </div>
@@ -162,8 +162,8 @@ export default function ContactPage() {
           <div className="text-center mb-12">
             <h2 className="mb-6">Réservez votre consultation</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Planifiez directement votre rendez-vous en ligne. Choisissez le créneau 
-              qui vous convient le mieux pour votre appel de cadrage gratuit.
+              Planifiez directement votre rendez-vous en ligne. Choisissez le créneau
+              qui vous convient le mieux.
             </p>
           </div>
           

@@ -85,8 +85,8 @@ export default function CalendlyWidget({
         </div>
         
         <p className="text-gray-600 mb-6">
-          Réservez un appel de cadrage gratuit de 15-20 minutes pour discuter
-          de votre situation et déterminer comment je peux vous aider.
+          Réservez un rendez-vous pour discuter de votre situation
+          et déterminer comment je peux vous aider.
         </p>
         
         <button

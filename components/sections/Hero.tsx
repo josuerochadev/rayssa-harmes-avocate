@@ -100,14 +100,6 @@ export default function Hero() {
                   Avocate depuis 2024
                 </div>
               </div>
-
-              {/* Floating call badge */}
-              <div className="absolute -top-4 -right-4 bg-primary text-white p-4 rounded-xl shadow-lg">
-                <div className="text-center">
-                  <div className="text-2xl font-bold">15min</div>
-                  <div className="text-xs opacity-90">Appel gratuit</div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

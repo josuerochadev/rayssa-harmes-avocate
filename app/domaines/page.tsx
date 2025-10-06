@@ -123,8 +123,8 @@ export default function DomainsPage() {
         <div className="container-custom text-center">
           <h2 className="text-white mb-6">Une question juridique ?</h2>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            N&apos;attendez pas que la situation se complique. Contactez-moi dès maintenant 
-            pour un premier échange gratuit et sans engagement.
+            N&apos;attendez pas que la situation se complique. Contactez-moi dès maintenant
+            pour échanger sur votre dossier.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link href="/contact" className="bg-white text-primary px-8 py-4 rounded-button font-medium hover:bg-gray-100 transition-colors">

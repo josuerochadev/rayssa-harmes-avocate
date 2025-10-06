@@ -63,7 +63,6 @@ const pricingMethods = [
 ]
 
 const includedServices = [
-  'Première consultation gratuite de 15 minutes',
   'Devis préalable détaillé et gratuit',
   'Suivi régulier de l\'avancement',
   'Explications claires des procédures',
