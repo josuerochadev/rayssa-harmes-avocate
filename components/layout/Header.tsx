@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Scale, Phone, Mail } from 'lucide-react'
+import FocusTrap from 'focus-trap-react'
 import LanguageBadges from '@/components/ui/LanguageBadges'
 import DesktopNavItem from './nav/DesktopNavItem'
 import MobileNavItem from './nav/MobileNavItem'
@@ -37,6 +38,26 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Gérer la touche Escape pour fermer le menu mobile
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && mobileMenuOpen) {
+        setMobileMenuOpen(false)
+      }
+    }
+
+    if (mobileMenuOpen) {
+      document.addEventListener('keydown', handleEscape)
+      // Empêcher le scroll du body quand le menu est ouvert
+      document.body.style.overflow = 'hidden'
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+      document.body.style.overflow = 'unset'
+    }
+  }, [mobileMenuOpen])
 
   /**
    * Détermine si un lien de navigation est actif
@@ -129,43 +150,56 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu with focus trap */}
         {mobileMenuOpen && (
-          <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label="Menu de navigation">
-            <div className="fixed inset-0 bg-black bg-opacity-25" onClick={() => setMobileMenuOpen(false)} aria-hidden="true" />
-            <nav className="fixed right-0 top-0 h-full w-full max-w-xs bg-white shadow-xl">
-              <div className="flex items-center justify-between p-4 border-b">
-                <span className="font-slab font-semibold text-primary">Menu</span>
-                <button
-                  type="button"
-                  className="p-2 rounded-md text-gray-700 hover:text-primary"
-                  onClick={() => setMobileMenuOpen(false)}
-                  aria-label="Fermer le menu"
-                >
-                  <X className="h-6 w-6" aria-hidden="true" />
-                </button>
-              </div>
-              <div className="px-4 py-6 space-y-4">
-                {navigation.map((item) => (
-                  <MobileNavItem
-                    key={item.name}
-                    item={item}
-                    isActive={isActiveLink}
-                    onClose={() => setMobileMenuOpen(false)}
-                  />
-                ))}
-                <div className="pt-4 border-t">
-                  <Link
-                    href="/contact"
-                    className="btn-primary block text-center"
+          <FocusTrap
+            focusTrapOptions={{
+              initialFocus: false,
+              escapeDeactivates: true,
+              clickOutsideDeactivates: true,
+              returnFocusOnDeactivate: true,
+            }}
+          >
+            <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+              <div
+                className="fixed inset-0 bg-black bg-opacity-25"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-hidden="true"
+              />
+              <nav className="fixed right-0 top-0 h-full w-full max-w-xs bg-white shadow-xl">
+                <div className="flex items-center justify-between p-4 border-b">
+                  <span className="font-slab font-semibold text-primary">Menu</span>
+                  <button
+                    type="button"
+                    className="p-2 rounded-md text-gray-700 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
                     onClick={() => setMobileMenuOpen(false)}
+                    aria-label="Fermer le menu"
                   >
-                    Prendre RDV
-                  </Link>
+                    <X className="h-6 w-6" aria-hidden="true" />
+                  </button>
                 </div>
-              </div>
-            </nav>
-          </div>
+                <div className="px-4 py-6 space-y-4">
+                  {navigation.map((item) => (
+                    <MobileNavItem
+                      key={item.name}
+                      item={item}
+                      isActive={isActiveLink}
+                      onClose={() => setMobileMenuOpen(false)}
+                    />
+                  ))}
+                  <div className="pt-4 border-t">
+                    <Link
+                      href="/contact"
+                      className="btn-primary block text-center"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Prendre RDV
+                    </Link>
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </FocusTrap>
         )}
       </nav>
     </header>

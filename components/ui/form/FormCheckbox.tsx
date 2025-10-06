@@ -1,3 +1,7 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
+
 /**
  * Props pour le composant FormCheckbox
  */
@@ -24,6 +28,8 @@ interface FormCheckboxProps {
  * Checkbox accessible avec label flexible (texte ou JSX), états d'erreur,
  * et styles cohérents. Layout flex avec checkbox à gauche et label à droite.
  *
+ * Utilise une approche uncontrolled avec synchronisation pour meilleure compatibilité E2E.
+ *
  * @param props - Props du composant
  * @returns Checkbox de formulaire stylisé
  */
@@ -36,14 +42,24 @@ export default function FormCheckbox({
   error,
   required = false,
 }: FormCheckboxProps) {
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  // Synchronise l'état checked avec le DOM (pour compatibilité Playwright)
+  useEffect(() => {
+    if (inputRef.current && inputRef.current.checked !== checked) {
+      inputRef.current.checked = checked
+    }
+  }, [checked])
+
   return (
     <div>
       <div className="flex items-start space-x-3">
         <input
+          ref={inputRef}
           type="checkbox"
           id={id}
           name={name}
-          checked={checked}
+          defaultChecked={checked}
           onChange={onChange}
           required={required}
           aria-invalid={error ? 'true' : 'false'}

@@ -1,9 +1,13 @@
 import type { Metadata } from 'next'
 import { Inter, Besley } from 'next/font/google'
+import { Suspense } from 'react'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import ScrollAnimation from '@/components/ui/ScrollAnimation'
+import NavigationLoader from '@/components/ui/NavigationLoader'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const besley = Besley({ subsets: ['latin'], variable: '--font-besley' })
@@ -20,7 +24,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://your-domain.com'),
+  metadataBase: new URL('https://harmes-avocat.fr'),
   alternates: {
     canonical: '/',
     languages: {
@@ -30,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://your-domain.com',
+    url: 'https://harmes-avocat.fr',
     title: 'Avocate à Strasbourg - Conseil et Contentieux Juridique',
     description: 'Cabinet d\'avocat à Strasbourg spécialisé en droit des contrats, famille, étrangers, travail et immobilier. Rendez-vous rapide, écoute et clarté.',
     siteName: 'Cabinet d\'Avocat Strasbourg',
@@ -65,6 +69,9 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col">
         <ScrollAnimation />
+        <Suspense fallback={null}>
+          <NavigationLoader />
+        </Suspense>
         <a href="#main-content" className="skip-link">
           Aller au contenu principal
         </a>
@@ -73,6 +80,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -80,7 +89,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "LegalService",
               "name": "Rayssa Harmes - Avocate",
-              "image": "[URL_PHOTO_PROFESSIONNELLE]",
+              "image": "https://harmes-avocat.fr/rayssa-hero.jpg",
               "description": "Cabinet d'avocat à Strasbourg spécialisé en droit des contrats, droit de la famille, droit des étrangers, droit du travail et droit immobilier.",
               "address": {
                 "@type": "PostalAddress",
@@ -91,10 +100,10 @@ export default function RootLayout({
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": "[LATITUDE]",
-                "longitude": "[LONGITUDE]"
+                "latitude": "48.58908",
+                "longitude": "7.753692"
               },
-              "url": "https://your-domain.com",
+              "url": "https://harmes-avocat.fr",
               "telephone": "+33745048395",
               "openingHoursSpecification": [
                 {
@@ -109,8 +118,8 @@ export default function RootLayout({
                 "@type": "GeoCircle",
                 "geoMidpoint": {
                   "@type": "GeoCoordinates",
-                  "latitude": "[LATITUDE]",
-                  "longitude": "[LONGITUDE]"
+                  "latitude": "48.58908",
+                  "longitude": "7.753692"
                 },
                 "geoRadius": "50000"
               },

@@ -141,5 +141,4 @@ export const API = {
  */
 export const FEATURES = {
   ENABLE_CALENDLY: !!process.env.NEXT_PUBLIC_CALENDLY_URL,
-  ENABLE_ANALYTICS: !!process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN,
 } as const

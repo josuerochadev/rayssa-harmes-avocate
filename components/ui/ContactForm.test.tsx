@@ -1,11 +1,23 @@
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+
+// Hoist the env stub to ensure it runs before module imports
+vi.hoisted(() => {
+  process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT = 'https://formspree.io/f/test123'
+})
+
 import { render, screen, waitFor } from '@/test/utils'
-import { describe, it, expect, vi, beforeEach } from 'vitest'
 import userEvent from '@testing-library/user-event'
 import ContactForm from './ContactForm'
+
+const MOCK_FORMSPREE_ENDPOINT = 'https://formspree.io/f/test123'
 
 describe('ContactForm Integration', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+  })
+
+  afterEach(() => {
+    vi.restoreAllMocks()
   })
 
   it('should render all form fields', () => {
@@ -122,7 +134,10 @@ describe('ContactForm Integration', () => {
 
   it('should submit form successfully with valid data', async () => {
     const user = userEvent.setup()
-    const mockFetch = vi.fn().mockResolvedValue({ ok: true })
+    const mockFetch = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ success: true })
+    })
     global.fetch = mockFetch
 
     render(<ContactForm />)
@@ -145,7 +160,10 @@ describe('ContactForm Integration', () => {
 
   it('should show error message on submission failure', async () => {
     const user = userEvent.setup()
-    const mockFetch = vi.fn().mockResolvedValue({ ok: false })
+    const mockFetch = vi.fn().mockResolvedValue({
+      ok: false,
+      json: async () => ({ error: 'Submission failed' })
+    })
     global.fetch = mockFetch
 
     render(<ContactForm />)
@@ -186,7 +204,10 @@ describe('ContactForm Integration', () => {
 
   it('should show loading state while submitting', async () => {
     const user = userEvent.setup()
-    const mockFetch = vi.fn(() => new Promise((resolve) => setTimeout(() => resolve({ ok: true } as Response), 100)))
+    const mockFetch = vi.fn(() => new Promise((resolve) => setTimeout(() => resolve({
+      ok: true,
+      json: async () => ({ success: true })
+    } as Response), 100)))
     global.fetch = mockFetch as any
 
     render(<ContactForm />)

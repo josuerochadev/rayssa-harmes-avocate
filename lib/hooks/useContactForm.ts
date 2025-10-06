@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { isValidEmail, isNotEmpty, hasMinLength } from '@/lib/utils/validation'
-import { API, ERROR_MESSAGES, VALIDATION } from '@/lib/constants'
+import { ERROR_MESSAGES, VALIDATION, API } from '@/lib/constants'
 
 export interface ContactFormData {
   name: string
@@ -23,6 +23,7 @@ interface UseContactFormReturn {
   isSubmitting: boolean
   submitStatus: SubmitStatus
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void
+  handleCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   handleSubmit: (e: React.FormEvent) => Promise<void>
   validateForm: () => boolean
 }
@@ -135,9 +136,12 @@ export function useContactForm(): UseContactFormReturn {
   ) => {
     const { name, value, type } = e.target
 
+    // Pour les checkboxes, récupère la valeur 'checked'
+    const fieldValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+
     setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value,
+      [name]: fieldValue,
     }))
 
     // Efface l'erreur du champ lors de la saisie
@@ -147,7 +151,24 @@ export function useContactForm(): UseContactFormReturn {
   }
 
   /**
-   * Gère la soumission du formulaire
+   * Handler spécifique pour la checkbox de consentement
+   */
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: checked,
+    }))
+
+    // Efface l'erreur du champ
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: '' }))
+    }
+  }
+
+  /**
+   * Gère la soumission du formulaire vers Formspree
    */
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -160,10 +181,22 @@ export function useContactForm(): UseContactFormReturn {
     setSubmitStatus('idle')
 
     try {
-      const response = await fetch(API.FORMSPREE || '[FORMSPREE_ENDPOINT]', {
+      // Récupérer l'endpoint Formspree depuis les variables d'environnement
+      const formspreeEndpoint = API.FORMSPREE
+
+      if (!formspreeEndpoint) {
+        console.error('NEXT_PUBLIC_FORMSPREE_ENDPOINT non configuré')
+        setSubmitStatus('error')
+        setIsSubmitting(false)
+        return
+      }
+
+      // Envoyer directement à Formspree
+      const response = await fetch(formspreeEndpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
         body: JSON.stringify(formData),
       })
@@ -174,6 +207,18 @@ export function useContactForm(): UseContactFormReturn {
         setFormData(INITIAL_FORM_DATA)
         setErrors({})
       } else {
+        // Formspree peut retourner des erreurs de validation
+        const data = await response.json()
+
+        if (data.errors) {
+          // Formspree retourne les erreurs dans un format spécifique
+          const formspreeErrors: ContactFormErrors = {}
+          data.errors.forEach((error: { field: string; message: string }) => {
+            formspreeErrors[error.field] = error.message
+          })
+          setErrors(formspreeErrors)
+        }
+
         setSubmitStatus('error')
       }
     } catch (error) {
@@ -190,6 +235,7 @@ export function useContactForm(): UseContactFormReturn {
     isSubmitting,
     submitStatus,
     handleInputChange,
+    handleCheckboxChange,
     handleSubmit,
     validateForm,
   }
