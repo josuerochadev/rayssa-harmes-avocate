@@ -28,12 +28,15 @@ test.describe('Contact Form E2E', () => {
     // Enable consent checkbox - use force to bypass sticky header
     await page.getByRole('checkbox').click({ force: true })
 
+    // Wait for checkbox state to update
+    await page.waitForTimeout(100)
+
     // Wait for button to be enabled
     const submitButton = page.getByRole('button', { name: /envoyer le message/i })
     await expect(submitButton).toBeEnabled({ timeout: 2000 })
 
-    // Click submit button to trigger validation
-    await submitButton.click()
+    // Click submit button to trigger validation - use force to bypass interception
+    await submitButton.click({ force: true })
 
     // Check for validation errors
     await expect(page.getByText(/le nom est requis/i)).toBeVisible()
@@ -43,25 +46,46 @@ test.describe('Contact Form E2E', () => {
   })
 
   test('should validate email format', async ({ page }) => {
+    // Fill all required fields except email with valid values
+    await page.getByLabel(/nom et prénom/i).fill('Jean Dupont')
+    await page.getByLabel(/domaine concerné/i).selectOption('contrats')
+    await page.getByLabel(/message/i).fill('Ceci est un message de test suffisamment long')
+
+    // Fill email with invalid value
     await page.getByLabel(/email/i).fill('invalid-email')
+
     // Use force: true to bypass sticky header interception
     await page.getByRole('checkbox').click({ force: true })
 
+    // Wait for checkbox state to update
+    await page.waitForTimeout(100)
+
     const submitButton = page.getByRole('button', { name: /envoyer le message/i })
     await expect(submitButton).toBeEnabled({ timeout: 2000 })
-    await submitButton.click()
+    await submitButton.click({ force: true })
 
     await expect(page.getByText(/email invalide/i)).toBeVisible()
   })
 
   test('should validate message minimum length', async ({ page }) => {
+    // Fill all required fields with valid values
+    await page.getByLabel(/nom et prénom/i).fill('Jean Dupont')
+    await page.getByLabel(/email/i).fill('jean.dupont@example.com')
+    await page.getByLabel(/domaine concerné/i).selectOption('contrats')
+
+    // Fill message with value that's too short
     await page.getByLabel(/message/i).fill('Short')
+
     // Use force: true to bypass sticky header interception
-    await page.getByRole('checkbox').click({ force: true })
+    const checkbox = page.getByRole('checkbox')
+    await checkbox.click({ force: true })
+
+    // Wait for checkbox to be checked
+    await expect(checkbox).toBeChecked({ timeout: 2000 })
 
     const submitButton = page.getByRole('button', { name: /envoyer le message/i })
     await expect(submitButton).toBeEnabled({ timeout: 2000 })
-    await submitButton.click()
+    await submitButton.click({ force: true })
 
     await expect(page.getByText(/le message doit contenir au moins 10 caractères/i)).toBeVisible()
   })
@@ -93,9 +117,12 @@ test.describe('Contact Form E2E', () => {
     // Submit to trigger errors - use force to bypass sticky header
     await page.getByRole('checkbox').click({ force: true })
 
+    // Wait for checkbox state to update
+    await page.waitForTimeout(100)
+
     const submitButton = page.getByRole('button', { name: /envoyer le message/i })
     await expect(submitButton).toBeEnabled({ timeout: 2000 })
-    await submitButton.click()
+    await submitButton.click({ force: true })
 
     // Verify error is shown
     await expect(page.getByText(/le nom est requis/i)).toBeVisible()
@@ -137,27 +164,35 @@ test.describe('Contact Form E2E', () => {
     // Use force to bypass sticky header
     await page.getByRole('checkbox').click({ force: true })
 
+    // Wait for checkbox state to update
+    await page.waitForTimeout(100)
+
     // Wait for button to be enabled and submit
     const submitButton = page.getByRole('button', { name: /envoyer le message/i })
     await expect(submitButton).toBeEnabled({ timeout: 2000 })
-    await submitButton.click()
+    await submitButton.click({ force: true })
 
     // Wait for submission to complete and show success message
     await expect(page.getByText(/message envoyé avec succès/i)).toBeVisible({ timeout: 5000 })
   })
 
   test('should maintain form values during validation', async ({ page }) => {
-    // Fill some fields
+    // Fill all required fields (with some invalid values to trigger validation)
     await page.getByLabel(/nom et prénom/i).fill('Jean Dupont')
     await page.getByLabel(/email/i).fill('invalid-email')
     await page.getByLabel(/téléphone/i).fill('+33 6 12 34 56 78')
+    await page.getByLabel(/domaine concerné/i).selectOption('contrats')
+    await page.getByLabel(/message/i).fill('Message de test suffisamment long')
 
     // Submit form - use force to bypass sticky header
     await page.getByRole('checkbox').click({ force: true })
 
+    // Wait for checkbox state to update
+    await page.waitForTimeout(100)
+
     const submitButton = page.getByRole('button', { name: /envoyer le message/i })
     await expect(submitButton).toBeEnabled({ timeout: 2000 })
-    await submitButton.click()
+    await submitButton.click({ force: true })
 
     // Check that values are maintained
     await expect(page.getByLabel(/nom et prénom/i)).toHaveValue('Jean Dupont')
