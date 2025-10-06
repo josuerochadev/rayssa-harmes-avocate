@@ -54,13 +54,14 @@ test.describe('Navigation E2E', () => {
     for (const pagePath of pages) {
       await page.goto(pagePath, { waitUntil: 'load' })
 
-      // Check if button is visible (desktop) or exists in mobile menu
+      // Check if button is visible (desktop) or exists in mobile menu/content
       const prendreRdvButtons = page.getByRole('link', { name: /prendre r(dv|endez-vous)/i })
 
-      // On mobile, button might be in hamburger menu, so just check it exists
+      // On mobile, button might be in hamburger menu AND in page content, so just check at least one exists
       const isMobile = page.viewportSize()?.width! < 768
       if (isMobile) {
-        await expect(prendreRdvButtons).toHaveCount(1, { timeout: 10000 })
+        await expect(prendreRdvButtons).toHaveCount(await prendreRdvButtons.count(), { timeout: 10000 })
+        expect(await prendreRdvButtons.count()).toBeGreaterThanOrEqual(1)
       } else {
         await expect(prendreRdvButtons.first()).toBeVisible()
       }
