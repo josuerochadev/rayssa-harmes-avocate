@@ -1,10 +1,9 @@
 import ContactForm from '@/components/ui/ContactForm'
-import CalendlyWidget from '@/components/ui/CalendlyWidget'
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
   Car,
   Train,
   Navigation
@@ -155,24 +154,52 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      
-      {/* Calendar widget */}
+
+      {/* Appointment booking */}
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <h2 className="mb-6">Réservez votre consultation</h2>
+            <h2 className="mb-6">Prendre rendez-vous en ligne</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Planifiez directement votre rendez-vous en ligne. Choisissez le créneau
-              qui vous convient le mieux.
+              Réservez directement un créneau dans mon agenda pour échanger sur votre situation.
             </p>
           </div>
-          
-          <div className="max-w-4xl mx-auto">
-            <CalendlyWidget />
+
+          <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
+            <div className="flex items-start space-x-4 mb-6">
+              <div className="bg-primary p-3 rounded-lg flex-shrink-0">
+                <Clock className="h-6 w-6 text-white" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-slab font-semibold text-xl text-primary mb-3">
+                  Réservez votre consultation
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  Choisissez le créneau qui vous convient le mieux. Vous recevrez une confirmation
+                  par email avec tous les détails du rendez-vous.
+                </p>
+                <a
+                  href="https://calendly.com/harmes-avocat"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary inline-flex items-center space-x-2"
+                >
+                  <Clock className="h-4 w-4" />
+                  <span>Voir les créneaux disponibles</span>
+                </a>
+              </div>
+            </div>
+
+            <div className="border-t pt-6">
+              <p className="text-sm text-gray-600">
+                <strong>Note :</strong> Le rendez-vous peut se faire au cabinet (24 avenue des Vosges, 67000 Strasbourg)
+                ou par visioconférence selon votre préférence.
+              </p>
+            </div>
           </div>
         </div>
       </section>
-      
+
       {/* Map and access */}
       <section className="section-padding bg-white">
         <div className="container-custom">
