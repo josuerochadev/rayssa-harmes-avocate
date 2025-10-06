@@ -32,17 +32,17 @@ const accessInfo = [
   {
     icon: Car,
     title: 'En voiture',
-    description: 'Parking gratuit à proximité • Accès facile depuis l\'A4 et A35',
+    description: 'Stationnement payant dans le centre (9h-19h). Privilégiez les Park & Ride en périphérie + tram, ou réservez une place dans un parking public sécurisé (Indigo, etc.).',
   },
   {
     icon: Train,
     title: 'Transports en commun',
-    description: 'Tram A, B, C, D • Lignes de bus • Strasbourg centre',
+    description: 'Bus "Travail" ou "Wissembourg" (2 min à pied) - Lignes 10, 2, C1, C9, H, N1, C3. Trams à 7-8 min : Ancienne Synagogue / Les Halles, Faubourg de Saverne, Homme de Fer. Réseau : 4h30-0h30 (5h30-0h30 dim.).',
   },
   {
     icon: Navigation,
-    title: 'À pied',
-    description: 'Centre-ville accessible • Proche des institutions européennes',
+    title: 'À pied / Situation',
+    description: 'Quartier central, proche commerces. Depuis Homme de Fer : 8 min. Depuis Les Halles / Ancienne Synagogue : 7 min.',
   },
 ]
 
@@ -204,21 +204,26 @@ export default function ContactPage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Map placeholder */}
+            {/* Map */}
             <div className="animate-on-scroll">
               <h2 className="mb-8">Plan d&apos;accès</h2>
-              <div className="bg-gray-200 rounded-lg aspect-[4/3] flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <MapPin className="h-16 w-16 mx-auto mb-4" />
-                  <p>Carte Google Maps</p>
-                  <p className="text-sm">À intégrer avec les coordonnées réelles</p>
-                </div>
+              <div className="rounded-lg overflow-hidden shadow-lg aspect-[4/3]">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.081106564934!2d7.751182175955174!3d48.58914587129696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c85a0b832b71%3A0x7416e211ae6dad4f!2s24%20Av.%20des%20Vosges%2C%2067000%20Strasbourg!5e0!3m2!1sfr!2sfr!4v1759766105072!5m2!1sfr!2sfr"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Localisation du cabinet - 24 avenue des Vosges, 67000 Strasbourg"
+                  aria-label="Carte Google Maps montrant la localisation du cabinet d'avocat"
+                />
               </div>
-              
-              {/* Google Maps embed placeholder */}
-              <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                <p className="text-sm text-yellow-800">
-                  <strong>À faire :</strong> Remplacer par l&apos;embed Google Maps réel avec l&apos;adresse du cabinet
+
+              <div className="mt-4 p-4 bg-secondary/30 rounded-lg">
+                <p className="text-sm text-gray-700">
+                  <strong className="text-primary">Adresse :</strong> {contactInfo.address}, {contactInfo.postalCode} {contactInfo.city}
                 </p>
               </div>
             </div>

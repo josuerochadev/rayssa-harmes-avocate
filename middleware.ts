@@ -31,7 +31,7 @@ export function middleware(request: NextRequest) {
     font-src 'self' https://fonts.gstatic.com;
     img-src 'self' data: https:;
     connect-src 'self' https://formspree.io https://*.formspree.io https://vitals.vercel-insights.com https://va.vercel-scripts.com;
-    frame-src https://calendly.com;
+    frame-src https://calendly.com https://www.google.com;
     object-src 'none';
     base-uri 'self';
     form-action 'self' https://formspree.io;
