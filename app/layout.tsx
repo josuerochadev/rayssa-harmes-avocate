@@ -3,6 +3,7 @@ import { Inter, Besley } from 'next/font/google'
 import { Suspense } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { headers } from 'next/headers'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
@@ -62,6 +63,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const nonce = headers().get('x-nonce') || undefined
+
   return (
     <html lang="fr" className={`${inter.variable} ${besley.variable}`}>
       <head>
@@ -84,6 +87,7 @@ export default function RootLayout({
         <SpeedInsights />
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
