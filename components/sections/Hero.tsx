@@ -77,14 +77,15 @@ export default function Hero() {
           <div className="animate-on-scroll">
             <div className="relative max-w-md mx-auto">
               {/* Main photo */}
-              <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/rayssa-hero.jpg"
                   alt="Rayssa Harmes - Avocate au Barreau de Strasbourg"
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                   priority
-                  sizes="(max-width: 768px) 100vw, 448px"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 448px"
+                  quality={90}
                 />
               </div>
 
