@@ -77,14 +77,16 @@ export default function Hero() {
           <div>
             <div className="relative max-w-md mx-auto">
               {/* Main photo */}
-              <div className="relative h-[550px] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white">
                 <Image
                   src="/rayssa-hero.jpg"
                   alt="Rayssa Harmes - Avocate au Barreau de Strasbourg"
-                  fill
-                  className="object-cover object-top"
+                  width={828}
+                  height={1103}
+                  className="w-full h-auto block rounded-2xl"
                   priority
                   sizes="(max-width: 768px) 100vw, 448px"
+                  style={{ display: 'block', lineHeight: 0 }}
                 />
               </div>
 
