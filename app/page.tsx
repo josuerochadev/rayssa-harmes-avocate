@@ -82,11 +82,10 @@ export default function HomePage() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {domains.map((domain, index) => (
+            {domains.map((domain) => (
               <div
                 key={domain.title}
                 className="animate-on-scroll"
-                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <DomainCard
                   title={domain.title}
