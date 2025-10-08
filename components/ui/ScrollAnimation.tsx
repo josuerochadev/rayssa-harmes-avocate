@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 
 /**
@@ -43,17 +43,8 @@ import { usePathname } from 'next/navigation'
  */
 export default function ScrollAnimation() {
   const pathname = usePathname()
-  const [isMounted, setIsMounted] = useState(false)
-
-  // S'assurer que le composant est monté côté client
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
 
   useEffect(() => {
-    // Ne rien faire tant que le composant n'est pas monté côté client
-    if (!isMounted) return
-
     // Vérifier la préférence prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
@@ -79,17 +70,24 @@ export default function ScrollAnimation() {
       }
     )
 
-    // Utiliser requestAnimationFrame pour garantir que le DOM est prêt
-    const rafId = requestAnimationFrame(() => {
+    // Fonction pour initialiser l'observer
+    const initObserver = () => {
       const elements = document.querySelectorAll('.animate-on-scroll')
       elements.forEach((el) => observer.observe(el))
-    })
+    }
+
+    // Attendre que le DOM soit complètement chargé
+    if (document.readyState === 'complete') {
+      initObserver()
+    } else {
+      window.addEventListener('load', initObserver)
+    }
 
     return () => {
-      cancelAnimationFrame(rafId)
+      window.removeEventListener('load', initObserver)
       observer.disconnect()
     }
-  }, [pathname, isMounted]) // Re-exécuter quand la route change ou après le montage
+  }, [pathname]) // Re-exécuter quand la route change
 
   return null
 }
