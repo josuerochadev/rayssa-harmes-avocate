@@ -40,7 +40,7 @@ test.describe('Pages Content E2E', () => {
     await expect(page.locator('h1')).toContainText(/honoraires/i)
 
     // Check for pricing information
-    await expect(page.getByText(/consultation/i)).toBeVisible()
+    await expect(page.getByText(/honoraire au forfait|temps passé/i).first()).toBeVisible()
   })
 
   test('should display contact page with form and contact info', async ({ page }) => {
