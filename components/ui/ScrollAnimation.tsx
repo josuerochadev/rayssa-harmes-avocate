@@ -61,6 +61,8 @@ export default function ScrollAnimation() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible')
+            // Désobserver l'élément après l'animation pour économiser les ressources
+            observer.unobserve(entry.target)
           }
         })
       },
@@ -73,18 +75,27 @@ export default function ScrollAnimation() {
     // Fonction pour initialiser l'observer
     const initObserver = () => {
       const elements = document.querySelectorAll('.animate-on-scroll')
-      elements.forEach((el) => observer.observe(el))
+      elements.forEach((el) => {
+        // Rendre immédiatement visibles les éléments déjà dans le viewport
+        const rect = el.getBoundingClientRect()
+        const isInViewport = rect.top < window.innerHeight && rect.bottom > 0
+
+        if (isInViewport) {
+          el.classList.add('visible')
+        } else {
+          observer.observe(el)
+        }
+      })
     }
 
-    // Attendre que le DOM soit complètement chargé
-    if (document.readyState === 'complete') {
+    // Initialiser immédiatement au montage du composant
+    // Utiliser requestAnimationFrame pour s'assurer que le DOM est prêt
+    const rafId = requestAnimationFrame(() => {
       initObserver()
-    } else {
-      window.addEventListener('load', initObserver)
-    }
+    })
 
     return () => {
-      window.removeEventListener('load', initObserver)
+      cancelAnimationFrame(rafId)
       observer.disconnect()
     }
   }, [pathname]) // Re-exécuter quand la route change

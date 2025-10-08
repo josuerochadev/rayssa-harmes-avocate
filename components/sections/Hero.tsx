@@ -31,7 +31,7 @@ export default function Hero() {
               </div>
             </div>
             
-            <h1 className="mb-6 animate-fade-in">
+            <h1 className="mb-6">
               <span className="block text-primary">Rayssa Harmes - Avocate à Strasbourg</span>
               <span className="block text-2xl md:text-3xl lg:text-4xl font-normal text-gray-700 mt-2">
                 Particuliers • Entreprises
@@ -74,22 +74,24 @@ export default function Hero() {
           </div>
           
           {/* Professional photo */}
-          <div className="animate-on-scroll">
+          <div>
             <div className="relative max-w-md mx-auto">
               {/* Main photo */}
-              <div className="relative h-[550px] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white">
                 <Image
                   src="/rayssa-hero.jpg"
                   alt="Rayssa Harmes - Avocate au Barreau de Strasbourg"
-                  fill
-                  className="object-cover"
+                  width={828}
+                  height={1103}
+                  className="w-full h-auto block rounded-2xl"
                   priority
                   sizes="(max-width: 768px) 100vw, 448px"
+                  style={{ display: 'block', lineHeight: 0 }}
                 />
               </div>
 
               {/* Credentials badge - floating over photo */}
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm px-6 py-4 rounded-2xl shadow-xl border border-gray-100">
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm px-6 py-4 rounded-2xl shadow-xl border border-gray-100 animate-on-scroll">
                 <div className="flex items-center space-x-3 mb-2">
                   <Star className="h-5 w-5 text-accent" />
                   <span className="font-semibold text-primary">
