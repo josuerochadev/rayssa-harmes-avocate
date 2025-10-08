@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 /**
@@ -43,19 +43,25 @@ import { usePathname } from 'next/navigation'
  */
 export default function ScrollAnimation() {
   const pathname = usePathname()
+  const [isMounted, setIsMounted] = useState(false)
+
+  // S'assurer que le composant est monté côté client
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   useEffect(() => {
+    // Ne rien faire tant que le composant n'est pas monté côté client
+    if (!isMounted) return
+
     // Vérifier la préférence prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     // Si l'utilisateur préfère réduire les animations, rendre tous les éléments immédiatement visibles
     if (prefersReducedMotion) {
-      const timeout = setTimeout(() => {
-        const elements = document.querySelectorAll('.animate-on-scroll')
-        elements.forEach((el) => el.classList.add('visible'))
-      }, 0)
-
-      return () => clearTimeout(timeout)
+      const elements = document.querySelectorAll('.animate-on-scroll')
+      elements.forEach((el) => el.classList.add('visible'))
+      return
     }
 
     // Sinon, utiliser l'IntersectionObserver pour les animations au scroll
@@ -73,17 +79,17 @@ export default function ScrollAnimation() {
       }
     )
 
-    // Petit délai pour s'assurer que le DOM est prêt
-    const timeout = setTimeout(() => {
+    // Utiliser requestAnimationFrame pour garantir que le DOM est prêt
+    const rafId = requestAnimationFrame(() => {
       const elements = document.querySelectorAll('.animate-on-scroll')
       elements.forEach((el) => observer.observe(el))
-    }, 100)
+    })
 
     return () => {
-      clearTimeout(timeout)
+      cancelAnimationFrame(rafId)
       observer.disconnect()
     }
-  }, [pathname]) // Re-exécuter quand la route change
+  }, [pathname, isMounted]) // Re-exécuter quand la route change ou après le montage
 
   return null
 }
