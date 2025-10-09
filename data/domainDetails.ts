@@ -25,10 +25,12 @@ export const domainDetails: Record<string, DomainDetail> = {
       'Fixation ou révision de l\'autorité parentale, garde et droit de visite',
       'Pension alimentaire (fixation, révision, recouvrement)',
       'Prestation compensatoire',
-      'Successions et partages de biens',
       'Violence conjugale et ordonnances de protection',
       'Médiation familiale',
     ],
+
+
+    
     examples: [
       {
         title: 'Divorce par consentement mutuel',
@@ -128,8 +130,7 @@ export const domainDetails: Record<string, DomainDetail> = {
       'Litiges liés à la vente ou l\'acquisition (vices cachés, promesse de vente, malfaçons)',
       'Baux d\'habitation et commerciaux',
       'Servitudes et mitoyenneté',
-      'Droit de la construction',
-      'Urbanisme et permis de construire',
+      'Recouvrement de charges de copropriété',
     ],
     examples: [
       {

@@ -16,11 +16,11 @@ const navigation = {
     { name: 'Contact', href: '/contact' },
   ],
   domains: [
-    { name: 'Droit des contrats', href: '/domaines/contrats' },
-    { name: 'Droit de la famille', href: '/domaines/famille' },
     { name: 'Droit des étrangers', href: '/domaines/etrangers' },
+    { name: 'Droit de la famille', href: '/domaines/famille' },
     { name: 'Droit du travail', href: '/domaines/travail' },
     { name: 'Droit immobilier', href: '/domaines/immobilier' },
+    { name: 'Droit des contrats', href: '/domaines/contrats' },
   ],
   legal: [
     { name: 'Mentions légales', href: '/mentions-legales' },
