@@ -72,31 +72,33 @@ export default function Header() {
   }
 
   return (
+    <>
     <header className={`sticky top-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'
     }`}>
-      {/* Top bar with contact info */}
-      <div className="bg-primary text-white py-2">
+      {/* Top bar with contact info - hidden on mobile to avoid redundancy with call button */}
+      <div className="hidden sm:block bg-primary text-white py-2">
         <div className="container-custom">
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center space-x-6">
+          <div className="flex items-center justify-between text-sm gap-3">
+            <div className="flex items-center gap-4 md:gap-6">
               <a
                 href="tel:+33745048395"
-                className="flex items-center space-x-2 hover:!text-white hover:underline transition-colors"
+                className="flex items-center gap-2 hover:!text-white hover:underline transition-colors whitespace-nowrap"
               >
-                <Phone size={14} />
+                <Phone size={14} className="flex-shrink-0" />
                 <span>+33 7 45 04 83 95</span>
               </a>
               <a
                 href="mailto:harmes.avocat@gmail.com"
-                className="flex items-center space-x-2 hover:!text-white hover:underline transition-colors"
+                className="flex items-center gap-2 hover:!text-white hover:underline transition-colors whitespace-nowrap"
               >
-                <Mail size={14} />
-                <span className="hidden sm:inline">harmes.avocat@gmail.com</span>
-                <span className="sm:hidden">Email</span>
+                <Mail size={14} className="flex-shrink-0" />
+                <span>harmes.avocat@gmail.com</span>
               </a>
             </div>
-            <LanguageBadges />
+            <div className="flex-shrink-0">
+              <LanguageBadges />
+            </div>
           </div>
         </div>
       </div>
@@ -149,59 +151,60 @@ export default function Header() {
             </button>
           </div>
         </div>
-
-        {/* Mobile menu with focus trap */}
-        {mobileMenuOpen && (
-          <FocusTrap
-            focusTrapOptions={{
-              initialFocus: false,
-              escapeDeactivates: true,
-              clickOutsideDeactivates: true,
-              returnFocusOnDeactivate: true,
-            }}
-          >
-            <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label="Menu de navigation">
-              <div
-                className="fixed inset-0 bg-black bg-opacity-25"
-                onClick={() => setMobileMenuOpen(false)}
-                aria-hidden="true"
-              />
-              <nav className="fixed right-0 top-0 h-full w-full max-w-xs bg-white shadow-xl">
-                <div className="flex items-center justify-between p-4 border-b">
-                  <span className="font-slab font-semibold text-primary">Menu</span>
-                  <button
-                    type="button"
-                    className="p-2 rounded-md text-gray-700 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
-                    onClick={() => setMobileMenuOpen(false)}
-                    aria-label="Fermer le menu"
-                  >
-                    <X className="h-6 w-6" aria-hidden="true" />
-                  </button>
-                </div>
-                <div className="px-4 py-6 space-y-4">
-                  {navigation.map((item) => (
-                    <MobileNavItem
-                      key={item.name}
-                      item={item}
-                      isActive={isActiveLink}
-                      onClose={() => setMobileMenuOpen(false)}
-                    />
-                  ))}
-                  <div className="pt-4 border-t">
-                    <Link
-                      href="/contact"
-                      className="btn-primary block text-center"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Prendre RDV
-                    </Link>
-                  </div>
-                </div>
-              </nav>
-            </div>
-          </FocusTrap>
-        )}
       </nav>
     </header>
+
+    {/* Mobile menu with focus trap - outside header to avoid z-index stacking context issues */}
+    {mobileMenuOpen && (
+      <FocusTrap
+        focusTrapOptions={{
+          initialFocus: false,
+          escapeDeactivates: true,
+          clickOutsideDeactivates: true,
+          returnFocusOnDeactivate: true,
+        }}
+      >
+        <div className="fixed inset-0 z-[9999] lg:hidden" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+          <nav className="absolute right-0 top-0 h-full w-full max-w-xs bg-white shadow-2xl flex flex-col">
+            <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
+              <span className="font-slab font-semibold text-primary">Menu</span>
+              <button
+                type="button"
+                className="p-2 rounded-md text-gray-700 hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Fermer le menu"
+              >
+                <X className="h-6 w-6" aria-hidden="true" />
+              </button>
+            </div>
+            <div className="px-4 py-6 space-y-4 overflow-y-auto flex-1">
+              {navigation.map((item) => (
+                <MobileNavItem
+                  key={item.name}
+                  item={item}
+                  isActive={isActiveLink}
+                  onClose={() => setMobileMenuOpen(false)}
+                />
+              ))}
+              <div className="pt-4 border-t">
+                <Link
+                  href="/contact"
+                  className="btn-primary block text-center"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Prendre RDV
+                </Link>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </FocusTrap>
+    )}
+    </>
   )
 }

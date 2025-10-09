@@ -106,7 +106,7 @@ test.describe('Navigation E2E', () => {
     await expect(mobileMenu).toBeVisible()
 
     // Click backdrop (the overlay behind the menu)
-    await page.locator('div[class*="bg-black"][class*="bg-opacity"]').click({ position: { x: 10, y: 10 } })
+    await page.locator('div.bg-black\\/40').click({ position: { x: 10, y: 10 } })
 
     // Menu should be closed
     await expect(mobileMenu).not.toBeVisible()
