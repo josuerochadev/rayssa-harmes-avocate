@@ -29,7 +29,7 @@ export default function DesktopNavItem({ item, isActive }: DesktopNavItemProps) 
     <div className="relative group">
       <Link
         href={item.href}
-        className={`font-medium transition-colors hover:text-accent flex items-center gap-1 ${
+        className={`text-sm font-medium transition-colors hover:text-accent flex items-center gap-1 whitespace-nowrap ${
           isActive(item.href) ? 'text-primary' : 'text-neutral-700'
         }`}
       >
