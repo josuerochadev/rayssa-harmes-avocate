@@ -32,6 +32,9 @@ export const metadata: Metadata = {
       'fr-FR': '/',
     },
   },
+  verification: {
+    google: 'kQW-xkqPFm0iu0gJJalZKnNuf6UOOiNR1NpODZJuBHA',
+  },
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
